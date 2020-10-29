@@ -40,7 +40,7 @@ __tt_extern_c_enter__
  *
  * @return                  the mutex
  */
-tt_mutex_t                  tt_mutex_init_impl(tt_mutex_t * mutex);
+tt_mutex_t*                 tt_mutex_init_impl(tt_mutex_t * mutex);
 
 /*! exit mutex
  *
