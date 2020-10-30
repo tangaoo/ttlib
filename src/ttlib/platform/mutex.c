@@ -46,10 +46,12 @@ tt_bool_t tt_mutex_enter_try_without_profiler(tt_mutex_ref_t mutex)
 /* //////////////////////////////////////////////////////////////////////////////////////
  * interfaces
  */
-tt_mutex_ref_t tt_mutex_init(tt_void_t)
-{}
+tt_mutex_ref_t tt_mutex_init(tt_void_t) // TODO
+{
+    return tt_null;
+}
 
-tt_void_t tt_mutex_exit(tt_mutex_ref_t mutex)
+tt_void_t tt_mutex_exit(tt_mutex_ref_t mutex) // TODO
 {}
 
 tt_bool_t tt_mutex_entry(tt_mutex_ref_t mutex)
