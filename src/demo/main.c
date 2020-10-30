@@ -23,25 +23,6 @@ extern tt_void_t tt_demo_single_list_entry_main(tt_void_t);
 extern tt_void_t tt_demo_list_entry_main(tt_void_t);
 extern tt_void_t demo_crc8_main(tt_void_t);
 
-#define CV_DEFAULT(val) = val
-
-
-int com_test(void)
-{
-	char *a = "abc";
-	char *e = "def";
-
-	const char *b = a;
-	char const *c = a;	
-	char * const d = a;
-
-	a = "d";
-
-	tt_trace_i("%s, %s, %s, %s", a, b, c, d);
-
-	return 0;
-}
-
 int main(void)
 {
 	tt_lib_init();
@@ -51,33 +32,32 @@ int main(void)
 	if (!tt_init(tt_null, tt_static_large_allocator_init((tb_byte_t*)malloc(1 * 1024 * 1024), 1 * 1024 * 1024, 8))) return -1;
 #endif		
 	tt_trace_d("tt_lib_init");
-	com_test();
 
 //	tt_assert(1);
 //	tt_abort();
 
-//	tt_trace_i("\n demo_utils_main**************************************");
-//	demo_utils_main();
+	tt_trace_raw("\n\n");
+	tt_trace_i("demo_utils_main**************************************");
+	demo_utils_main();
 
-//	tt_trace_i("\n demo_circular_buffer*********************************");
-//	demo_circular_buffer();
+	tt_trace_raw("\n\n");
+	tt_trace_i("demo_circular_buffer*********************************");
+	demo_circular_buffer();
 
-//	tt_trace_i("\n demo_single_list_entry*******************************");
-//	tt_demo_single_list_entry_main();
+	tt_trace_raw("\n\n");
+	tt_trace_i("demo_single_list_entry*******************************");
+	tt_demo_single_list_entry_main();
 
-//	tt_trace_i("\n demo_list_entry*******************************");
-//	tt_demo_list_entry_main();
+	tt_trace_raw("\n\n");
+	tt_trace_i("demo_list_entry*******************************");
+	tt_demo_list_entry_main();
 
+	tt_trace_raw("\n\n");
+	tt_trace_i("demo_crc8*******************************");
 	demo_crc8_main();
+
 	tt_trace_d("long, %d", sizeof(long));
 	tt_trace_d("long double, %d", sizeof(long double));
-
-	
-//	tb_demo_container_queue_entry_main(0, tb_null);
-//	tb_demo_memory_queue_buffer_main(0, tb_null);
-//	tb_demo_circular_buffer_main(0, tb_null);
-//	tb_demo_container_single_list_entry_main(0, tb_null);
-//	tb_vector_int_test();
 	
 	system("pause"); //stop
 	return 0;

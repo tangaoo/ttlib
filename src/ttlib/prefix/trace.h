@@ -46,7 +46,8 @@ __tt_extern_c_enter__
 #define tt_trace_a(fmt, ...)                    tt_trace_assert_p(__tt_prefix__, fmt, __VA_ARGS__)
 #define tt_trace_e(fmt, ...)                    tt_trace_error_p(__tt_prefix__, fmt, __VA_ARGS__)
 
-
+/// raw
+ #define tt_trace_raw(fmt, ...)                  do{ tt_trace_done(tt_null, tt_null, fmt __tt_new_line__, __VA_ARGS__); }while(0)
 
 
 __tt_extern_c_leave__

@@ -48,7 +48,7 @@ tt_void_t tt_demo_single_list_entry_main(tt_void_t)
 	tt_single_list_entry_insert_head(&g_list, &node[1].entry);
 	tt_single_list_entry_insert_head(&g_list, &node[0].entry);
 	
-	tt_trace_d("\n---------------");
+	tt_trace_d("---------------");
 	/// walk list
 	for (entry = tt_iterator_head(iterator); entry != tt_iterator_tail(iterator); entry = tt_iterator_next(iterator, entry))
 	{

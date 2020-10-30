@@ -34,7 +34,7 @@ __tt_extern_c_enter__
  * interfaces
  */
 
-/*! init mutex(not malloc in function)
+/*! init mutex(alloc mutex outside)
  *
  * @param mutex             the mutex
  *
@@ -50,7 +50,7 @@ tt_mutex_t*                 tt_mutex_init_impl(tt_mutex_t * mutex);
  */
 tt_void_t                   tt_mutex_exit_impl(tt_mutex_t * mutex);
 
-/*! int mutex(dynamic malloc)
+/*! int mutex(dynamic malloc inside)
  *
  * @return                  the mutex
  */
