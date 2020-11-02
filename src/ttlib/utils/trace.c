@@ -6,10 +6,11 @@
 * includes 
 */
 #include "trace.h"
+#include "../platform/platform.h"
 #include <stdio.h>
 #include <stdarg.h>
 
-#define snprintf _snprintf   //snprintf直到C99时才进入标准库
+#define snprintf _snprintf   // >=C99 support 'snprintf'
 #define TT_TRACE_LINE_SIZE      1024
 
 /*//////////////////////////////////////////////////////////////////////////////////////
@@ -17,7 +18,8 @@
 */
 static tt_char_t g_line[TT_TRACE_LINE_SIZE];
 static tt_trace_mode_e g_trace_mode = TT_TRACE_MODE_PRINT;
-
+static tt_mutex_t g_mutex_trace;
+static tt_mutex_ref_t g_mutex_trace_ref = &g_mutex_trace;
 
 /* //////////////////////////////////////////////////////////////////////////////////////
 * implementation
@@ -25,20 +27,24 @@ static tt_trace_mode_e g_trace_mode = TT_TRACE_MODE_PRINT;
 
 tt_bool_t tt_trace_init(tt_void_t)
 {
-	return tt_true;
+	return tt_null != tt_mutex_init_impl(&g_mutex_trace) ? tt_true : tt_false;
 }
 
 tt_bool_t tt_trace_exit(tt_void_t)
 {
+	tt_mutex_exit_impl(&g_mutex_trace);
 	return tt_true;
 }
 
 tt_bool_t tt_trace_mode_set(tt_trace_mode_e mode)
 {
 	// mutex enter
+	tt_mutex_entry(g_mutex_trace_ref);
+
 	g_trace_mode = mode;
 
 	// mutex leave
+	tt_mutex_leave(g_mutex_trace_ref);
 
 	return tt_true;
 }
@@ -53,6 +59,8 @@ tt_void_t tt_trace_done_with_args(tt_char_t const* prefix, tt_char_t const* modu
 {
 	// check
 	// mutex enter
+	tt_mutex_entry(g_mutex_trace_ref);
+
 	do
 	{
 		tt_char_t *p = g_line;
@@ -75,6 +83,7 @@ tt_void_t tt_trace_done_with_args(tt_char_t const* prefix, tt_char_t const* modu
 	} while (0);
 
 	// mutex leave
+	tt_mutex_leave(g_mutex_trace_ref);
 	
 }
 

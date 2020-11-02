@@ -20,6 +20,7 @@ target("ttlib_demo")
     set_kind("binary")
     add_deps("ttlib")
     add_files("src/demo/**.c")
+    -- add_syslinks("pthread")
 
 --
 -- If you want to known more usage about xmake, please see https://xmake.io

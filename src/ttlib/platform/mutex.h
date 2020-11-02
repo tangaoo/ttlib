@@ -15,13 +15,16 @@
  */
 #include "prefix.h"
 
-#define POSIX   1
+//#define  POSIX   1
+#define  WIN     1
 
 #ifdef  POSIX
-#include "pthread.h"
-
+#   include "pthread.h"
 typedef pthread_mutex_t    tt_mutex_t;
 typedef pthread_mutex_t*   tt_mutex_ref_t;
+#else
+typedef tt_int32_t    tt_mutex_t;
+typedef tt_int32_t*   tt_mutex_ref_t;
 
 #endif
 
@@ -38,7 +41,7 @@ __tt_extern_c_enter__
  *
  * @param mutex             the mutex
  *
- * @return                  the mutex
+ * @return                  the mutex or tt_null
  */
 tt_mutex_t*                 tt_mutex_init_impl(tt_mutex_t * mutex);
 

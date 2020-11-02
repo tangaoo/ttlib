@@ -49,7 +49,7 @@ tt_void_t                      tt_spinlock_exit_impl(tt_spinlock_t * spinlock);
  *
  * @return                     the spinlock
  */
-tt_spinlock_ref_t              tt_spinlock_init(tt_spinlock_ref_t spinlock);
+tt_spinlock_ref_t              tt_spinlock_init(tt_void_t);
 
 /*! exit spinlock
  *
