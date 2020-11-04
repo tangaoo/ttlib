@@ -3,23 +3,16 @@ add_rules("mode.debug", "mode.release")
 
 target("ttlib")
     set_kind("static")
-    -- add_files("src/ttlib/algorithm/*.c")
-    -- add_files("src/ttlib/buffer/*.c")
-    -- add_files("src/ttlib/container/*.c")
-    -- add_files("src/ttlib/container/element/*.c")
-    -- add_files("src/ttlib/image/*.c")
-    -- add_files("src/ttlib/libm/*.c")
-    -- add_files("src/ttlib/memory/*.c")
-    -- add_files("src/ttlib/memory/impl/*.c")
-    -- add_files("src/ttlib/memory_pool/*.c")
-    -- add_files("src/ttlib/platform/*.c")
-    -- add_files("src/ttlib/utils/*.c")
     add_files("src/ttlib/**.c")
+    add_includedirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include")
+    add_linkdirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\lib\\x86")
+    add_links("pthreadVC2")
+    
 
 target("ttlib_demo")
     set_kind("binary")
     add_deps("ttlib")
-    add_files("src/demo/**.c")
+    add_files("src/demo/**.c")    
     -- add_syslinks("pthread")
 
 --

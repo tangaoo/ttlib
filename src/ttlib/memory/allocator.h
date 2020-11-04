@@ -1,1 +1,346 @@
+/*
+ * @Copyright (C)  2020  .Harman. all right reserved
+ * @file       allocator.h
+ * @ingroup    memory
+ * @author     tango
+ * @date       2020-11 
+ * @brief      allocator.h file
+ */
 
+#ifndef TT_MEMORY_ALLOCATOR_H
+#define TT_MEMORY_ALLOCATOR_H
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
+#include "prefix.h"
+#include "../platform/platform.h"
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * extern
+ */
+__tt_extern_c_enter__
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * types
+ */
+
+/// the allocator type enum
+typedef enum __tt_allocator_type_e
+{
+    TT_ALLOCATOR_TYPE_NONE      = 0,
+    TT_ALLOCATOR_TYPE_DEFAULT   = 1,
+    TT_ALLOCATOR_TYPE_NATIVE    = 2,
+    TT_ALLOCATOR_TYPE_STATIC    = 3,
+    TT_ALLOCATOR_TYPE_LARGE     = 4,
+    TT_ALLOCATOR_TYPE_SMALL     = 5
+
+}tt_allocator_type_e;
+
+/// the allocator flag
+typedef enum __tt_allocator_flag_e
+{
+    TT_ALLOCATOR_FLAG_NONE      = 0,
+    TT_ALLOCATOR_FLAG_NOLOCK    = 1
+}tt_allocator_flag_e;
+
+/// the allocator type
+typedef struct __tt_allocator_t
+{
+    /// the type
+    tt_uint32_t                 type : 16;
+
+    /// the flag
+    tt_uint32_t                 flag : 16;
+
+    /// the lock
+    tt_spinlock_t               lock;
+
+    /*! malloc data
+     *
+     * @param allocator         the allocator 
+     * @param size              the size
+     *
+     * @return                  the data address
+     */
+    tt_pointer_t                (*malloc)(struct __tt_allocator_t* allocator, tt_size_t size __tt_debug_decl__);
+  
+    /*! realloc data
+     *
+     * @param allocator         the allocator 
+     * @param data              data addr will realloc 
+     * @param size              the size
+     *
+     * @return                  the data address
+     */
+    tt_pointer_t                (*ralloc)(struct __tt_allocator_t* allocator, tt_pointer_t data, tt_size_t size __tt_debug_decl__);    
+
+    /*! free data
+     *
+     * @param allocator         the allocator 
+     * @param data              the data will free
+     *
+     * @return                  tt_true or tt_false
+     */
+    tt_bool_t                   (*free)(struct __tt_allocator_t* allocator, tt_pointer_t data __tt_debug_decl__); 
+
+    /*! malloc large data
+     *
+     * @param allocator         the allocator 
+     * @param size              the size
+     *
+     * @return                  the data address
+     */
+    tt_pointer_t                (*large_malloc)(struct __tt_allocator_t* allocator, tt_size_t size __tt_debug_decl__);
+  
+    /*! realloc large data
+     *
+     * @param allocator         the allocator 
+     * @param data              data addr will realloc 
+     * @param size              the size
+     *
+     * @return                  the data address
+     */
+    tt_pointer_t                (*large_ralloc)(struct __tt_allocator_t* allocator, tt_pointer_t data, tt_size_t size __tt_debug_decl__);    
+
+    /*! free large data
+     *
+     * @param allocator         the allocator 
+     * @param data              the data will free
+     *
+     * @return                  tt_true or tt_false
+     */
+    tt_bool_t                   (*large_free)(struct __tt_allocator_t* allocator, tt_pointer_t data __tt_debug_decl__); 
+
+    /*! clear allocator
+     *
+     * @param allocator         the allocator 
+     */
+    tt_bool_t                   (*clear)(struct __tt_allocator_t* allocator); 
+
+    /*! exit allocator
+     *
+     * @param allocator         the allocator 
+     */
+    tt_bool_t                   (*exit)(struct __tt_allocator_t* allocator); 
+
+}tt_allocator_t, *tt_allocator_ref_t;
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * interfaces
+ */
+
+/*! the allocator
+ *
+ * @return                      the allocator
+ */
+tt_allocator_ref_t              tt_allocator(tt_void_t);
+
+/*! the allocator type
+ *
+ * @param allocator             the allocator
+ *
+ * @return                      the allocator type
+ */
+tt_size_t                       tt_allocator_type(tt_allocator_ref_t allocator);       
+
+/*! malloc it
+ *
+ * @param allocator             the allocator
+ * @param size                  the size
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_malloc_(tt_allocator_ref_t allocator, tt_size_t size __tt_debug_decl__);
+
+/*! malloc it and set 0
+ *
+ * @param allocator             the allocator
+ * @param size                  the size
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_malloc0_(tt_allocator_ref_t allocator, tt_size_t size __tt_debug_decl__);
+
+/*! nalloc it
+ *
+ * @param allocator             the allocator
+ * @param item                  the item count
+ * @param size                  the item size
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_nalloc_(tt_allocator_ref_t allocator, tt_size_t item, tt_size_t size __tt_debug_decl__);
+
+/*! nalloc it and set 0
+ *
+ * @param allocator             the allocator
+ * @param item                  the item count
+ * @param size                  the item size
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_nalloc0_(tt_allocator_ref_t allocator, tt_size_t item, tt_size_t size __tt_debug_decl__);
+
+/*! ralloc 
+ *
+ * @param allocator             the allocator
+ * @param data                  addr will ralloc
+ * @param size                  the item size
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_ralloc_(tt_allocator_ref_t allocator, tt_pointer_t data, tt_size_t size __tt_debug_decl__);
+
+/*! free 
+ *
+ * @param allocator             the allocator
+ * @param data                  addr will free
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_free_(tt_allocator_ref_t allocator, tt_pointer_t data __tt_debug_decl__);
+
+/*! large malloc it
+ *
+ * @param allocator             the allocator
+ * @param size                  the size
+ * @param real                  the real allocated size >= size, optional
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_large_malloc_(tt_allocator_ref_t allocator, tt_size_t size, tt_size_t* real __tt_debug_decl__);
+
+/*! large malloc it and set 0
+ *
+ * @param allocator             the allocator
+ * @param size                  the size
+ * @param real                  the real allocated size >= size, optional
+ * 
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_large_malloc0_(tt_allocator_ref_t allocator, tt_size_t size, tt_size_t* real __tt_debug_decl__);
+
+/*! large nalloc it
+ *
+ * @param allocator             the allocator
+ * @param item                  the item count
+ * @param size                  the item size
+ * @param real                  the real allocated size >= size, optional
+ * 
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_large_nalloc_(tt_allocator_ref_t allocator, tt_size_t item, tt_size_t size, tt_size_t* real __tt_debug_decl__);
+
+/*! large nalloc it and set 0
+ *
+ * @param allocator             the allocator
+ * @param item                  the item count
+ * @param size                  the item size
+ * @param real                  the real allocated size >= size, optional
+ * 
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_large_nalloc0_(tt_allocator_ref_t allocator, tt_size_t item, tt_size_t size, tt_size_t* real __tt_debug_decl__);
+
+/*! large ralloc 
+ *
+ * @param allocator             the allocator
+ * @param data                  addr will ralloc
+ * @param size                  the item size
+ * @param real                  the real allocated size >= size, optional
+ * 
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_large_ralloc_(tt_allocator_ref_t allocator, tt_pointer_t data, tt_size_t size, tt_size_t* real __tt_debug_decl__);
+
+/*! large free 
+ *
+ * @param allocator             the allocator
+ * @param data                  addr will free
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_large_free_(tt_allocator_ref_t allocator, tt_pointer_t data __tt_debug_decl__);
+
+/*! align malloc it
+ *
+ * @param allocator             the allocator
+ * @param size                  the size
+ * @param align                 the alignment bytes
+
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_align_malloc_(tt_allocator_ref_t allocator, tt_size_t size, tt_size_t align __tt_debug_decl__);
+
+/*! align malloc it and set 0
+ *
+ * @param allocator             the allocator
+ * @param size                  the size
+ * @param align                 the alignment bytes
+
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_align_malloc0_(tt_allocator_ref_t allocator, tt_size_t size, tt_size_t align __tt_debug_decl__);
+
+/*! align nalloc it
+ *
+ * @param allocator             the allocator
+ * @param item                  the item count 
+ * @param size                  the size
+ * @param align                 the alignment bytes
+
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_align_nalloc_(tt_allocator_ref_t allocator, tt_size_t item, tt_size_t size, tt_size_t align __tt_debug_decl__);
+
+/*! align nalloc it and set 0
+ *
+ * @param allocator             the allocator
+ * @param item                  the item count
+ * @param size                  the size
+ * @param align                 the alignment bytes
+
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_align_nalloc0_(tt_allocator_ref_t allocator, tt_size_t item, tt_size_t size, tt_size_t align __tt_debug_decl__);
+
+/*! align ralloc it
+ *
+ * @param allocator             the allocator
+ * @param data                  addr of data will ralloc
+ * @param size                  the size
+ * @param align                 the alignment bytes
+
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_align_ralloc_(tt_allocator_ref_t allocator, tt_pointer_t data, tt_size_t size, tt_size_t align __tt_debug_decl__);
+
+/*! align free 
+ *
+ * @param allocator             the allocator
+ * @param data                  addr will free
+ * @param align                 the alignment bytes
+ *
+ * @return                      addr of data malloc
+ */
+tt_pointer_t                    tt_allocator_align_free_(tt_allocator_ref_t allocator, tt_pointer_t data, tt_size_t align __tt_debug_decl__);
+
+/*! clear it
+ *
+ * @param allocator             the allocator 
+ */
+tt_void_t                       tt_allocator_clear(tt_allocator_ref_t allocator);
+
+/*! exit it
+ *
+ * @param allocator             the allocator 
+ */
+tt_void_t                       tt_allocator_exit(tt_allocator_ref_t allocator);
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * extern
+ */
+__tt_extern_c_leave__
+
+#endif

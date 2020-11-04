@@ -39,7 +39,6 @@ tt_uint8_t const g_crc8_table[] =
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
  */
-
 tt_uint8_t tt_crc8_make(tt_byte_t const* data, tt_size_t size, tt_uint8_t seed)
 {
     // check
