@@ -9,9 +9,11 @@
 
 //extern c
 #ifdef __cplusplus
-#	define __tt_extern_c_enter__                        extern "C" {
-#	define __tt_extern_c_leave__                        }
+#   define __tt_extern_c__                            extern "C"
+#	define __tt_extern_c_enter__                      extern "C" {
+#	define __tt_extern_c_leave__                      }
 #else
+#   define __tt_extern_c__
 #	define __tt_extern_c_enter__                        
 #	define __tt_extern_c_leave__
 #endif

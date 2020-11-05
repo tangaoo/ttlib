@@ -340,12 +340,10 @@ tt_pointer_t tt_allocator_align_ralloc_(tt_allocator_ref_t allocator, tt_pointer
     return (tt_pointer_t)data_new;
 }
 
-tt_bool_t tt_allocator_align_free_(tt_allocator_ref_t allocator, tt_pointer_t data, tt_size_t align __tt_debug_decl__)
+tt_bool_t tt_allocator_align_free_(tt_allocator_ref_t allocator, tt_pointer_t data __tt_debug_decl__)
 {
     /// assert
     tt_assert(allocator && data);
-    tt_assertf(!(align & 3), "invalid align size(%lu)", align);
-    tt_assertf(!((tt_size_t)data & (align - 1)), "invalid align address(%p)", data);
 
     /// adjust data with diff
     tt_byte_t diff = ((tt_byte_t *)data)[-1];

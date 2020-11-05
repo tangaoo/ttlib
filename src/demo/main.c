@@ -35,6 +35,7 @@ int main(void)
 
 //	tt_assert(1);
 //	tt_abort();
+	tt_malloc(4);
 
 	tt_trace_raw("\n\n");
 	tt_trace_i("demo_utils_main**************************************");

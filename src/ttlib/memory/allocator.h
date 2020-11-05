@@ -22,6 +22,30 @@
 __tt_extern_c_enter__
 
 /* //////////////////////////////////////////////////////////////////////////////////////
+ * macros
+ */
+#define tt_allocator_malloc(allocator, size)                         tt_allocator_malloc_(allocator, size __tt_debug_val__)
+#define tt_allocator_malloc0(allocator, size)                        tt_allocator_malloc0_(allocator, size __tt_debug_val__)
+#define tt_allocator_nalloc(allocator, item, size)                   tt_allocator_nalloc_(allocator, item, size __tt_debug_val__)
+#define tt_allocator_nalloc0(allocator, item, size)                  tt_allocator_nalloc0_(allocator, item, size __tt_debug_val__)
+#define tt_allocator_ralloc(allocator, data, size)                   tt_allocator_ralloc_(allocator, (tt_pointer_t)data, size __tt_debug_val__)
+#define tt_allocator_free(allocator, data)                           tt_allocator_free_(allocator, (tt_pointer_t)data __tt_debug_val__)
+
+#define tt_allocator_large_malloc(allocator, size, real)             tt_allocator_large_malloc_(allocator, size, real __tt_debug_val__)
+#define tt_allocator_large_malloc0(allocator, size, real)            tt_allocator_large_malloc0_(allocator, size, real __tt_debug_val__)
+#define tt_allocator_large_nalloc(allocator, item, size, real)       tt_allocator_large_nalloc_(allocator, item, size, real __tt_debug_val__)
+#define tt_allocator_large_nalloc0(allocator, item, size, real)      tt_allocator_large_nalloc0_(allocator, item, size, real __tt_debug_val__)
+#define tt_allocator_large_ralloc(allocator, data, size, real)       tt_allocator_large_ralloc_(allocator, (tt_pointer_t)data, size, real __tt_debug_val__)
+#define tt_allocator_large_free(allocator, data)                     tt_allocator_large_free_(allocator, (tt_pointer_t)data __tt_debug_val__)
+
+#define tt_allocator_align_malloc(allocator, size, align)            tt_allocator_align_malloc_(allocator, size, align __tt_debug_val__)
+#define tt_allocator_align_malloc0(allocator, size, align)           tt_allocator_align_malloc0_(allocator, size, align __tt_debug_val__)
+#define tt_allocator_align_nalloc(allocator, item, size, align)      tt_allocator_align_nalloc_(allocator, item, size, align __tt_debug_val__)
+#define tt_allocator_align_nalloc0(allocator, item, size, align)     tt_allocator_align_nalloc0_(allocator, item, size, align __tt_debug_val__)
+#define tt_allocator_align_ralloc(allocator, data, size, align)      tt_allocator_align_ralloc_(allocator, (tt_pointer_t)data, size, align __tt_debug_val__)
+#define tt_allocator_align_free(allocator, data, align)              tt_allocator_align_free_(allocator, (tt_pointer_t)data, align __tt_debug_val__)
+
+/* //////////////////////////////////////////////////////////////////////////////////////
  * types
  */
 
@@ -324,7 +348,7 @@ tt_pointer_t                    tt_allocator_align_ralloc_(tt_allocator_ref_t al
  *
  * @return                      tt_true or tt_false
  */
-tt_bool_t                       tt_allocator_align_free_(tt_allocator_ref_t allocator, tt_pointer_t data, tt_size_t align __tt_debug_decl__);
+tt_bool_t                       tt_allocator_align_free_(tt_allocator_ref_t allocator, tt_pointer_t data __tt_debug_decl__);
 
 /*! clear it
  *
