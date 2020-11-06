@@ -19,7 +19,7 @@
 #endif
 
 /// 64 bit
-#define TT_CPU_BIT_64               1
+#define TT_CPU_BIT_64               0
 
 /// gcc complie
 #define TT_COMPILER_IS_GCC          0

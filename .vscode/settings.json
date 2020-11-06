@@ -1,5 +1,6 @@
 {
     "C_Cpp.errorSquiggles": "Disabled",
-    "C_Cpp.dimInactiveRegions": false,
+    // "C_Cpp.dimInactiveRegions": false,
+    "C_Cpp.dimInactiveRegions": true,
     "C_Cpp.default.intelliSenseMode": "msvc-x86"
 }

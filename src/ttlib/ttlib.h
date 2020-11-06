@@ -1,19 +1,47 @@
+/*
+ * @Copyright (C)  2020  .Tango. all right reserved
+ * @file       ttlib.h
+ * @ingroup    ttlib
+ * @author     tango
+ * @date       2020-11 
+ * @brief      ttlib.h file
+ */
 
-#ifndef _TT_LIB_
-#define _TT_LIB_
+#ifndef _TT_TTLIB_
+#define _TT_TTLIB_
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "prefix/prefix.h"
 #include "buffer/buffer.h"
 #include "container/container.h"
 #include "container/iterator.h"
 #include "algorithm/algorithm.h"
 #include "utils/utils.h"
+#include "memory/memory.h"
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * extern
+ */
 __tt_extern_c_enter__
 
-tt_void_t tt_lib_init(tt_void_t);
+/*! the ttlib init, must do before use
+ *
+ * @param allocator             the memory allocator
+ * @param priv                  the private data
+ *
+ * @return              tt_void
+ */
+tt_bool_t tt_lib_init(tt_handle_t priv, tt_allocator_ref_t allocator);
+
+/*! the ttlib exit
+ */
 tt_void_t tt_lib_exit(tt_void_t);
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * extern
+ */
 __tt_extern_c_leave__
 
 #endif

@@ -33,6 +33,10 @@
 /*//////////////////////////////////////////////////////////////////////////////////////
 * type
 */
+typedef signed int                                 tt_int_t;
+typedef unsigned int                               tt_uint_t;
+typedef signed short                               tt_short_t;
+typedef unsigned short                             tt_ushort_t;
 typedef signed char                                tt_int8_t;
 typedef unsigned char                              tt_uint8_t;
 typedef signed short                               tt_int16_t;
@@ -50,11 +54,18 @@ typedef void                                       tt_void_t;
 typedef tt_void_t *                                tt_pointer_t;
 typedef tt_void_t const *                          tt_cpointer_t;
 typedef tt_pointer_t                               tt_handle_t;
+
+/// long and size
 #	if defined(TT_WIN_MSVC) && TT_CPU_BIT_64
-typedef tt_uint64_t                                tt_size_t;
+typedef tt_int64_t                                 tt_long_t;
+typedef tt_uint64_t                                tt_ulong_t;
 #	else
-typedef tt_uint32_t                                tt_size_t;
+typedef signed long                                tt_long_t;
+typedef unsigned long                              tt_ulong_t;
 #	endif
+typedef tt_ulong_t                                 tt_size_t;
+
+
 
 #elif (defined TT_DSP)
 

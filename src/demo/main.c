@@ -23,19 +23,18 @@ extern tt_void_t tt_demo_single_list_entry_main(tt_void_t);
 extern tt_void_t tt_demo_list_entry_main(tt_void_t);
 extern tt_void_t demo_crc8_main(tt_void_t);
 
+
 int main(void)
 {
-	tt_lib_init();
 #if 1
-//	if (!tt_init(tt_null, tt_native_allocator())) return -1;
+	if (!tt_lib_init(tt_null, tt_native_allocator())) return -1;
 #else
 	if (!tt_init(tt_null, tt_static_large_allocator_init((tb_byte_t*)malloc(1 * 1024 * 1024), 1 * 1024 * 1024, 8))) return -1;
 #endif		
-	tt_trace_d("tt_lib_init");
 
 //	tt_assert(1);
 //	tt_abort();
-	tt_malloc(4);
+	tt_int32_t* pdata =  (tt_int32_t*)tt_malloc(sizeof(tt_int32_t));
 
 	tt_trace_raw("\n\n");
 	tt_trace_i("demo_utils_main**************************************");

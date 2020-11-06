@@ -1,5 +1,5 @@
 /*
- * @Copyright (C)  2020  .Harman. all right reserved
+ * @Copyright (C)  2020  .Tango. all right reserved
  * @file       prefix.h
  * @ingroup    memory
  * @author     tango
