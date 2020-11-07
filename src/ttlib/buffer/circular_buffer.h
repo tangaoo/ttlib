@@ -30,43 +30,43 @@ typedef struct __tt_circular_buffer_t
 /*! circular buffer init
  *
  * @param buffer
- * @param data, user real buffer start addr
- * @param size, real buffer size
+ * @param data,      user real buffer start addr
+ * @param size,      real buffer size
  */
-tt_bool_t tt_circular_buffer_init(tt_circular_buffer_ref_t buff, tt_byte_t *data, tt_size_t size);
+tt_bool_t            tt_circular_buffer_init(tt_circular_buffer_ref_t buff, tt_byte_t *data, tt_size_t size);
 
 /*! circular buffer exit
  *
  * @param buffer
  */
-tt_bool_t tt_circular_buffer_exit(tt_circular_buffer_ref_t buff);
+tt_bool_t            tt_circular_buffer_exit(tt_circular_buffer_ref_t buff);
 
 /*! circular buffer read
  *
  * @param buffer
- * @param out, user real buff for read
- * @param size, size of user real buff
- * @return size of user have read
+ * @param out,       user real buff for read
+ * @param size,      size of user real buff
+ * @return           size of user have read
  */
-tt_uint64_t tt_circular_buffer_read(tt_circular_buffer_ref_t buff, tt_byte_t *out, tt_size_t size);
+tt_uint64_t          tt_circular_buffer_read(tt_circular_buffer_ref_t buff, tt_byte_t *out, tt_size_t size);
 
 /*! circular buffer writ, not cover if full
 *
 * @param buffer
-* @param in, user real buff for write
-* @param size, size of user write buff
-* @return size of user have write
+* @param in,         user real buff for write
+* @param size,       size of user write buff
+* @return            size of user have write
 */
-tt_uint64_t tt_circular_buffer_writ(tt_circular_buffer_ref_t buff, tt_byte_t *in, tt_size_t size);
+tt_uint64_t          tt_circular_buffer_writ(tt_circular_buffer_ref_t buff, tt_byte_t *in, tt_size_t size);
 
 /*! circular buffer writ, covered if full
 *
 * @param buffer
-* @param in, user real buff for write
-* @param size, size of user write buff
-* @return size of user have write
+* @param in,         user real buff for write
+* @param size,       size of user write buff
+* @return            size of user have write
 */
-tt_uint64_t tt_circular_buffer_writ_cover(tt_circular_buffer_ref_t buff, tt_byte_t *in, tt_size_t size);
+tt_uint64_t          tt_circular_buffer_writ_cover(tt_circular_buffer_ref_t buff, tt_byte_t *in, tt_size_t size);
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * extern

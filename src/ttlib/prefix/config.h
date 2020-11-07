@@ -7,7 +7,7 @@
 #endif
 
 /// debug
-#define __tt_debug__                   1
+#define __tt_debug__          1
 
 /// platform
 #if 1
@@ -18,10 +18,7 @@
 #	define TT_ARM
 #endif
 
-/// 64 bit
-#define TT_CPU_BIT_64               0
-
 /// gcc complie
-#define TT_COMPILER_IS_GCC          0
+#define TT_COMPILER_IS_GCC     0
 
 #endif

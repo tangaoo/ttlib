@@ -34,6 +34,11 @@ int main(void)
 
 //	tt_assert(1);
 //	tt_abort();
+	tt_trace_d("long size, %d", sizeof(long));
+	long tdata = -1;
+	tt_trace_d("tdata, %ld", tdata);
+
+#if 0
 	tt_int32_t* pdata =  (tt_int32_t*)tt_malloc(sizeof(tt_int32_t));
 
 	tt_trace_raw("\n\n");
@@ -58,7 +63,7 @@ int main(void)
 
 	tt_trace_d("long, %d", sizeof(long));
 	tt_trace_d("long double, %d", sizeof(long double));
-	
+#endif	
 	system("pause"); //stop
 	return 0;
 }
