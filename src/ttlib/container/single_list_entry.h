@@ -11,7 +11,7 @@
 __tt_extern_c_enter__
 
 /// the entry of list item
-#define tt_single_list_entry(head, entry)   ((((tt_byte_t*)(entry)) - (head)->eoff))
+#define tt_single_list_entry(head, entry)   ((((tt_byte_t*)(entry)) - (head)->eoffset))
 
 /*! get the list entry with zero offset
 *

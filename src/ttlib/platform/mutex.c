@@ -13,7 +13,7 @@
 #include "mutex.h"
 
 
-#ifdef  POSIX
+#if defined(POSIX) && POSIX
 /* //////////////////////////////////////////////////////////////////////////////////////
  * private interfaces
  */
@@ -50,11 +50,31 @@ tt_bool_t tt_mutex_enter_try_without_profiler(tt_mutex_ref_t mutex)
  */
 tt_mutex_ref_t tt_mutex_init(tt_void_t) // TODO
 {
-    return tt_null;
+    /// make mutex
+    tt_mutex_t *mutex = (tt_mutex_ref_t)tt_malloc0(sizeof(tt_mutex_t));
+    tt_assert(mutex);
+    tt_check_return_val(mutex, tt_null);
+
+    tt_mutex_ref_t pmutex = tt_mutex_init_impl(mutex);
+    if(pmutex) return pmutex;
+    else
+    {
+        if(mutex) tt_free((tt_pointer_t)mutex);
+        return tt_null;
+    }   
 }
 
 tt_void_t tt_mutex_exit(tt_mutex_ref_t mutex) // TODO
-{}
+{
+    tt_assert(mutex);
+    tt_check_return_val(mutex, tt_null);
+
+    if(mutex)
+    {
+        tt_mutex_exit_impl(mutex);
+        tt_free((tt_pointer_t)mutex);
+    }
+}
 
 tt_bool_t tt_mutex_entry(tt_mutex_ref_t mutex)
 {
@@ -71,7 +91,7 @@ tt_bool_t tt_mutex_leave(tt_mutex_ref_t mutex)
     return pthread_mutex_unlock((pthread_mutex_t*)mutex) == 0 ? tt_true : tt_false;
 }
 
-#else
+#else if defined(NO_POSIX) && NO_POSIX
 /* //////////////////////////////////////////////////////////////////////////////////////
  * interfaces
  */

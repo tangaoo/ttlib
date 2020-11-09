@@ -7,7 +7,7 @@
 
 
 /// the list entry
-#define tt_list_entry(head, entry)   ((((tt_byte_t*)(entry)) - (head)->eoff))
+#define tt_list_entry(head, entry)   ((((tt_byte_t*)(entry)) - (head)->eoffset))
 
 /*! get the list entry with zero offset
 *

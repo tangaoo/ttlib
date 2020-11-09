@@ -2,5 +2,12 @@
     "C_Cpp.errorSquiggles": "Disabled",
     // "C_Cpp.dimInactiveRegions": false,
     "C_Cpp.dimInactiveRegions": true,
-    "C_Cpp.default.intelliSenseMode": "msvc-x86"
+    "C_Cpp.default.intelliSenseMode": "msvc-x86",
+    "files.associations": {
+        "array": "cpp",
+        "functional": "cpp",
+        "tuple": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp"
+    }
 }

@@ -22,6 +22,7 @@ extern tt_void_t demo_circular_buffer(tt_void_t);
 extern tt_void_t tt_demo_single_list_entry_main(tt_void_t);
 extern tt_void_t tt_demo_list_entry_main(tt_void_t);
 extern tt_void_t demo_crc8_main(tt_void_t);
+extern tt_void_t tt_demo_queue_entry_main(tt_void_t);
 
 
 int main(void)
@@ -34,10 +35,11 @@ int main(void)
 
 //	tt_assert(1);
 //	tt_abort();
-	tt_trace_d("long size, %d", sizeof(long));
-	long tdata = -1;
-	tt_trace_d("tdata, %ld", tdata);
+	// tt_trace_d("long size, %d", sizeof(long));
+	// long tdata = -1;
+	// tt_trace_d("tdata, %ld", tdata);
 
+	tt_demo_queue_entry_main();
 #if 0
 	tt_int32_t* pdata =  (tt_int32_t*)tt_malloc(sizeof(tt_int32_t));
 

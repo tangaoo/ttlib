@@ -16,14 +16,14 @@
 #include "prefix.h"
 
 #define  POSIX             1
-#define  WIN               0
+#define  NO_POSIX          0
 
 #if defined(POSIX) && POSIX
 #   include "pthread.h"
 typedef pthread_mutex_t    tt_mutex_t;
 typedef pthread_mutex_t*   tt_mutex_ref_t;
 
-#else defined(WIN) && WIN
+#else if defined(NO_POSIX) && NO_POSIX
 typedef tt_int32_t         tt_mutex_t;
 typedef tt_int32_t*        tt_mutex_ref_t;
 
