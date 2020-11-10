@@ -1,4 +1,6 @@
 
+#if 0
+
 #define _CRT_SECURE_NO_WARNINGS
 
 #include "image.h"
@@ -16,7 +18,7 @@ unsigned char *raw_to_grey8(t_grey * grey_p, int *length_p)
 	t_bitmap_info_header info_header;
 	t_rgb_quad quad[256];
 
-	file_header.type = 0x4D42;           //bmpÀàĞÍ
+	file_header.type = 0x4D42;           //bmpç±»å‹
 	file_header.size = sizeof(t_bitmap_file_header) + sizeof(t_bitmap_info_header) + 256 * sizeof(t_rgb_quad) + grey_p->row * grey_p->col;
 	printf("%d, %d, %d, %d\n", sizeof(t_bitmap_file_header), sizeof(t_bitmap_info_header), 256 * sizeof(t_rgb_quad), grey_p->row * grey_p->col);
 	file_header.reserved1 = 0;
@@ -107,3 +109,4 @@ unsigned char grg_to_bmp(void)
 
 	return 0;
 }
+#endif

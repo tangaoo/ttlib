@@ -1,3 +1,4 @@
+#if 0
 
 #ifndef _IMAGE_H_
 #define _IMAGE_H_
@@ -8,48 +9,48 @@ typedef unsigned char BYTE;
 typedef long LONG;
 
 #pragma pack(1)
-//Î»Í¼ÎÄ¼şÍ·
+//ä½å›¾æ–‡ä»¶å¤´
 typedef struct tag_bitmap_file_header
 {
-	WORD   type;            //Î»Í¼ÎÄ¼şÀàĞÍ£¬¡°BM¡±
-	DWORD  size;            //Î»Í¼ÎÄ¼ş×Ü´óĞ¡£¬ µ¥Î»×Ö½Ú
-	WORD   reserved1;       //±£Áô 0
-	WORD   reserved2;       //±£Áô 0
-	DWORD  offset;          //Í·µ½Î»Í¼Êı¾İµÄÆ«ÒÆÁ¿£¬µ¥Î»×Ö½Ú
+	WORD   type;            //ä½å›¾æ–‡ä»¶ç±»å‹ï¼Œâ€œBMâ€
+	DWORD  size;            //ä½å›¾æ–‡ä»¶æ€»å¤§å°ï¼Œ å•ä½å­—èŠ‚
+	WORD   reserved1;       //ä¿ç•™ 0
+	WORD   reserved2;       //ä¿ç•™ 0
+	DWORD  offset;          //å¤´åˆ°ä½å›¾æ•°æ®çš„åç§»é‡ï¼Œå•ä½å­—èŠ‚
 }t_bitmap_file_header, t_bitmap_file_header_p;
 
 
-//Î»Í¼ĞÅÏ¢Í·
+//ä½å›¾ä¿¡æ¯å¤´
 typedef struct tag_bitmap_info_header
 {
-	DWORD size;             //Î»Í¼ĞÅÏ¢Í·ËùÕ¼×Ö½ÚÊı
-	LONG  width;            //Î»Í¼¿í£¬µ¥Î»ÏñËØ
-	LONG  height;           //Î»Í¼¸ß£¬µ¥Î»ÏñËØ
-	WORD  planes;           //Éè±¸¼¶±ğ£¬±ØĞëÎª1
-	WORD  bit_count;        //Ã¿¸öÏñËØµÄÎ»Êı£¬1£¬ 4£¬ 8£¬ 24
-	DWORD compression;      //Ñ¹ËõÀàĞÍ£¬0²»Ñ¹Ëõ
-	DWORD img_size;         //Î»Í¼´óĞ¡
-	LONG  xpels_per_meter;  //Ë®Æ½·Ö±æÂÊ£¬Ã¿Ã×ÏñËØÊı
-	LONG  ypels_per_meter;  //´¹Ö±·Ö±æÂÊ£¬Ã¿Ã×ÏñËØÊı
-	DWORD colour_used;      //Î»Í¼Êµ¼ÊÊ¹ÓÃÑÕÉ«±íÖĞµÄÑÕÉ«Êı
-	DWORD colour_important; //Î»Í¼ÏÔÊ¾¹ı³ÌÖĞÖØÒªµÄÑÕÉ«Êı
+	DWORD size;             //ä½å›¾ä¿¡æ¯å¤´æ‰€å å­—èŠ‚æ•°
+	LONG  width;            //ä½å›¾å®½ï¼Œå•ä½åƒç´ 
+	LONG  height;           //ä½å›¾é«˜ï¼Œå•ä½åƒç´ 
+	WORD  planes;           //è®¾å¤‡çº§åˆ«ï¼Œå¿…é¡»ä¸º1
+	WORD  bit_count;        //æ¯ä¸ªåƒç´ çš„ä½æ•°ï¼Œ1ï¼Œ 4ï¼Œ 8ï¼Œ 24
+	DWORD compression;      //å‹ç¼©ç±»å‹ï¼Œ0ä¸å‹ç¼©
+	DWORD img_size;         //ä½å›¾å¤§å°
+	LONG  xpels_per_meter;  //æ°´å¹³åˆ†è¾¨ç‡ï¼Œæ¯ç±³åƒç´ æ•°
+	LONG  ypels_per_meter;  //å‚ç›´åˆ†è¾¨ç‡ï¼Œæ¯ç±³åƒç´ æ•°
+	DWORD colour_used;      //ä½å›¾å®é™…ä½¿ç”¨é¢œè‰²è¡¨ä¸­çš„é¢œè‰²æ•°
+	DWORD colour_important; //ä½å›¾æ˜¾ç¤ºè¿‡ç¨‹ä¸­é‡è¦çš„é¢œè‰²æ•°
 }t_bitmap_info_header, t_bitmap_info_header_p;
 
-//ÑÕÉ«±í
+//é¢œè‰²è¡¨
 typedef struct tag_rgb_quad 
 {
-	BYTE  blue;             //ÑÕÉ«µÄÀ¶É«·ÖÁ¿
-	BYTE  green;            //ÑÕÉ«µÄÂÌÉ«·ÖÁ¿
-	BYTE  red;              //ÑÕÉ«µÄºìÉ«·ÖÁ¿
-	BYTE  reserved;         //±£Áô
+	BYTE  blue;             //é¢œè‰²çš„è“è‰²åˆ†é‡
+	BYTE  green;            //é¢œè‰²çš„ç»¿è‰²åˆ†é‡
+	BYTE  red;              //é¢œè‰²çš„çº¢è‰²åˆ†é‡
+	BYTE  reserved;         //ä¿ç•™
 }t_rgb_quad;
 
-//»Ò¶ÈÍ¼½á¹¹Ìå
+//ç°åº¦å›¾ç»“æ„ä½“
 typedef struct tag_grey
 {
-	int row;                //¾ØÕóĞĞÊı
-	int col;                //¾ØÕóÁĞÊı
-	unsigned char *matrix_pp; //»Ò¶ÈÍ¼Ïñ¾ØÕó
+	int row;                //çŸ©é˜µè¡Œæ•°
+	int col;                //çŸ©é˜µåˆ—æ•°
+	unsigned char *matrix_pp; //ç°åº¦å›¾åƒçŸ©é˜µ
 }t_grey;
 
 #pragma pack () 
@@ -57,3 +58,6 @@ typedef struct tag_grey
 extern unsigned char grg_to_bmp(void);
 
 #endif // !_IMAGE_H_
+
+
+#endif
