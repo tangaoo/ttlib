@@ -67,7 +67,7 @@ tt_mutex_ref_t tt_mutex_init(tt_void_t) // TODO
 tt_void_t tt_mutex_exit(tt_mutex_ref_t mutex) // TODO
 {
     tt_assert(mutex);
-    tt_check_return_val(mutex, tt_null);
+    tt_check_return(mutex);
 
     if(mutex)
     {

@@ -77,7 +77,7 @@ static __tt_inline__ tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
 #   define tt_offsetof(s, m)            (tt_size_t)&(((s const*)0)->m)
 #endif
 
-/// container of   根据结构体成员变量(m)的地址(p)获得该结构体类型(s)定义的结构体变量的地址
+/// container_of  璺熸嵁绫诲瀷涓簊鐨勭粨鏋勪綋鎴愬憳鍙橀噺m鐨勫湴鍧�p锛屾眰寰楃粨鏋勪綋棣栧湴鍧�
 #define tt_container_of(s, m, p)        ((s*)(((tt_byte_t*)(p)) - tt_offsetof(s, m)))
 
 /// memsizeof
@@ -95,5 +95,10 @@ static __tt_inline__ tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
 /// swap
 #define tt_swap(t, l, r)                do { t __p = (r); (r) = (l); (l) = __p; } while (0)
 
+/// pointer to u8
+#define tt_p2u8(x)                      ((tt_uint8_t)(tt_size_t)(x))
+
+/// unsigned integer to pointer
+#define tt_u2p(x)                       ((tt_pointer_t)(tt_size_t)(x))
 
 #endif
