@@ -44,6 +44,6 @@ __tt_extern_c_enter__
 #endif
 
 
-__tt_extern_c_enter__
+__tt_extern_c_leave__
 
 #endif

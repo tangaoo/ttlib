@@ -11,7 +11,7 @@ unsigned char MemPoolInit(tMemoryPool *pMemPool, void *addr, unsigned int usize,
 {
 	unsigned int i;
 
-	pMemPool->pBlock = addr;
+	pMemPool->pBlock = (tt_byte_t *)addr;
 	pMemPool->nSize = usize;
 	pMemPool->nCnt = cnt;
 	pMemPool->nFirst = 0;
@@ -31,7 +31,7 @@ void *MemAlloc(tMemoryPool *pMemPool)
 	GateIn();
 	if (pMemPool->nFree == 0)
 	{	
-		tb_trace_i("have no buffer ,error");
+		tt_trace_i("have no buffer ,error");
 		return NULL;
 	}
 
@@ -51,7 +51,7 @@ unsigned char MemFree(tMemoryPool *pMemPool, void *addr)
 	GateIn();
 	if ((unsigned char*)addr < pMemPool->pBlock || (unsigned char*)addr > (pMemPool->pBlock + pMemPool->nSize * pMemPool->nCnt))
 	{
-		tb_trace_i("addr is not valid");
+		tt_trace_i("addr is not valid");
 		return 1;
 	}
 

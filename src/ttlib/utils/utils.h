@@ -4,6 +4,7 @@
 
 #include "crc8.h"
 #include "trace.h"
+#include "bit.h"
 
 
 #endif

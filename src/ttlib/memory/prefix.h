@@ -15,6 +15,6 @@
 #include "../prefix.h"
 
 // the pool data address alignment 
-#define TT_POOL_DATA_ALIGN                  8 //TT_CPU_BITBYTE
+#define TT_POOL_DATA_ALIGN           TT_CPU_BITBYTE
 
 #endif

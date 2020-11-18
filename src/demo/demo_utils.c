@@ -37,7 +37,7 @@ tt_uint32_t demo_utils_main(tt_void_t)
 	tt_trace_d("tb_align, %d", tt_align(1, 8));
 	tt_trace_d("tb_align, %d", tt_align_u32(1, 8));
 	tt_trace_d("tb_align, %d", tt_align_u64(1, 8));
-	tt_trace_d("tb_align_pow2, %d", tt_align_pow2(3));
+//  tt_trace_d("tb_align_pow2, %d", tt_align_pow2(3));
 
 	typedef struct _test{
 		int a;

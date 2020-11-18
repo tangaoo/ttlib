@@ -21,4 +21,9 @@
 /// gcc complie
 #define TT_COMPILER_IS_GCC     0
 
+/// endian
+//#define TT_WORD_BIGENDIAN
+#define TT_WORD_LITTLEENDIAN
+
+
 #endif

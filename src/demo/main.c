@@ -25,6 +25,9 @@ extern tt_void_t demo_crc8_main(tt_void_t);
 extern tt_void_t tt_demo_queue_entry_main(tt_void_t);
 
 
+
+
+
 int main(void)
 {
 #if 1
@@ -32,14 +35,14 @@ int main(void)
 #else
 	if (!tt_init(tt_null, tt_static_large_allocator_init((tb_byte_t*)malloc(1 * 1024 * 1024), 1 * 1024 * 1024, 8))) return -1;
 #endif		
-
+	
 //	tt_assert(1);
 //	tt_abort();
 	// tt_trace_d("long size, %d", sizeof(long));
 	// long tdata = -1;
 	// tt_trace_d("tdata, %ld", tdata);
 
-	tt_demo_queue_entry_main();
+	// tt_demo_queue_entry_main();
 #if 0
 	tt_int32_t* pdata =  (tt_int32_t*)tt_malloc(sizeof(tt_int32_t));
 

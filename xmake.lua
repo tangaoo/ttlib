@@ -1,5 +1,6 @@
 add_rules("mode.debug", "mode.release")
 --add_includedirs("src/ttlib")
+-- set_languages("c99") 
 
 target("ttlib")
     set_kind("static")

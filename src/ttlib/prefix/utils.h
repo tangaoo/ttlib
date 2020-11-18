@@ -47,21 +47,21 @@
 /// align u64
 #define tt_align_u64(x, b)              (((tt_uint64_t)(x) + ((tt_uint64_t)(b) - 1)) & ~((tt_uint64_t)(b) - 1))
 
-static __tt_inline__ tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
-{
-	tt_check_return_val(x, 32);
+// static __tt_inline__ tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
+// {
+// 	tt_check_return_val(x, 32);
 
-	tt_size_t n = 31;
-	if (x & 0xffff0000) { n -= 16;  x >>= 16; }
-	if (x & 0xff00)     { n -= 8;   x >>= 8; }
-	if (x & 0xf0)       { n -= 4;   x >>= 4; }
-	if (x & 0xc)        { n -= 2;   x >>= 2; }
-	if (x & 0x2)        { n--; }
+// 	tt_size_t n = 31;
+// 	if (x & 0xffff0000) { n -= 16;  x >>= 16; }
+// 	if (x & 0xff00)     { n -= 8;   x >>= 8; }
+// 	if (x & 0xf0)       { n -= 4;   x >>= 4; }
+// 	if (x & 0xc)        { n -= 2;   x >>= 2; }
+// 	if (x & 0x2)        { n--; }
 
-	return n;
-}
-/// align by pow2
-#define tt_align_pow2(x)                (((x) > 1)? (tt_ispow2(x)? (x) : ((tt_size_t)1 << (32 - tt_bits_cl0_u32_be_inline((tt_uint32_t)(x))))) : 1)
+// 	return n;
+// }
+// /// align by pow2
+// #define tt_align_pow2(x)                (((x) > 1)? (tt_ispow2(x)? (x) : ((tt_size_t)1 << (32 - tt_bits_cl0_u32_be_inline((tt_uint32_t)(x))))) : 1)
 
 /// align by cpu
 #if TT_CPU_BIT_64
@@ -100,5 +100,8 @@ static __tt_inline__ tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
 
 /// unsigned integer to pointer
 #define tt_u2p(x)                       ((tt_pointer_t)(tt_size_t)(x))
+
+/// dummy typdef
+#define __tt_typeref__(object)          struct __tt_##object##_dummy_t{tt_int_t dummy;} const* tt_##object##_ref_t
 
 #endif
