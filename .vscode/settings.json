@@ -38,7 +38,11 @@
         "vim.leader": "<space>",
         "vim.handleKeys": {
             "<C-a>": false,
-            "<C-f>": false
+            "<C-f>": false,            
+            "<C-c>": false,
+            "<C-v>": false,
+            "<C-x>": false
+
         },
     
 } 

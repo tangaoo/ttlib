@@ -1,71 +1,75 @@
 /* //////////////////////////////////////////////////////////////////////////////////////
 * includes
 */
-#include "../ttlib/ttlib.h" ///need opt
+#include "../ttlib/ttlib.h" //need opt
 
-#if 0
+tt_byte_t g_buffer[1000] = {0};
 
-tb_void_t tb_demo_static_fixed_pool_perf(tb_size_t item_size)
+tt_void_t tt_demo_static_fixed_pool(tt_void_t)
 {
-	// done
-	tb_static_fixed_pool_ref_t pool = tb_null;
-	do
-	{
+	tt_static_fixed_pool_ref_t pool = tt_null;
+
+	// trace g_buffer
+	tt_trace_d("g_buffer,%p", g_buffer);
+#if 0
+	// noraml 
+	do{
 		// init pool
-		pool = tb_static_fixed_pool_init((tb_byte_t*)malloc(1 * 1024 * 1024), 1 * 1024 * 1024, item_size, tb_false);
-		tb_assert_and_check_break(pool);
+		pool = tt_static_fixed_pool_init(g_buffer, sizeof(g_buffer), 8, tt_false);
+		tt_assert_and_check_break(pool);
 
-		// make data list
-		tb_size_t       maxn = 10;
-		tb_pointer_t*   list = (tb_pointer_t*)calloc(maxn, sizeof(tb_pointer_t));
-		tb_assert_and_check_break(list);
+		// malloc it
+		tt_byte_t* data = tt_static_fixed_pool_malloc(pool __tt_debug_val__);
 
-		// done 
-		__tb_volatile__ tb_size_t indx = 0;
-//		__tb_volatile__ tb_hong_t time = tb_mclock();
-		__tb_volatile__ tb_size_t rand = 0xbeaf;
-		for (indx = 0; indx < maxn; indx++)
-		{
-			// make data
-			list[indx] = tb_static_fixed_pool_malloc(pool __tb_debug_vals__);
-			tb_assert_and_check_break(list[indx]);
+		// free it
+		tt_bool_t ok = tt_static_fixed_pool_free(pool, data __tt_debug_val__);
 
-			// make rand
-			rand = (rand * 10807 + 1) & 0xffffffff;
-
-			// free data
-			__tb_volatile__ tb_size_t size = rand & 15;
-			if (size > 5 && indx)
-			{
-				size -= 5;
-				while (size--)
-				{
-					// the free index
-					tb_size_t free_indx = rand % indx;
-
-					// free it
-					if (list[free_indx]) tb_static_fixed_pool_free(pool, list[free_indx] __tb_debug_vals__);
-					list[free_indx] = tb_null;
-				}
-			}
-		}
-//		time = tb_mclock() - time;
-
-#ifdef __tb_debug__
-		// dump pool
-		tb_static_fixed_pool_dump(pool);
-#endif
-
-		// trace
-//		tb_trace_i("time: %lld ms", time);
-
-		// clear pool
-		tb_static_fixed_pool_clear(pool);
-
+	    if (pool) tt_static_fixed_pool_exit(pool);
+		
 	} while (0);
-
-	// exit pool
-	if (pool) tb_static_fixed_pool_exit(pool);
-}
-
 #endif
+
+#if 1
+	// do malloc times > manx 
+	do{
+		tt_trace_d("----------------------");
+		// init pool
+		pool = tt_static_fixed_pool_init(g_buffer, sizeof(g_buffer), 8, tt_false);
+		tt_assert_and_check_break(pool);
+
+		// manx
+		tt_size_t i    = 0;
+	    tt_size_t maxn = tt_static_fixed_pool_maxn(pool);
+		tt_byte_t* data[1000] = {0};
+
+		// malloc it
+		for(i = 0; i < 31; i++)
+		{
+			data[i] = tt_static_fixed_pool_malloc(pool __tt_debug_val__);
+			tt_trace_d("%d, data,%p", i, data[i]);	
+		}
+
+		for(i = 31; i < maxn; i++)
+		{
+			data[i] = tt_static_fixed_pool_malloc(pool __tt_debug_val__);
+			tt_trace_d("%d, data,%p", i, data[i]);	
+		}
+
+		// malloc error
+		// data[i] = tt_static_fixed_pool_malloc(pool __tt_debug_val__);
+		// tt_trace_d("%d, data,%p", i, data[i]);	
+
+		// free it
+		for(i = 0; i < maxn; i++)
+		{
+			tt_trace_d("%d, data,%p", i, data[i]);	
+			tt_static_fixed_pool_free(pool, data[i] __tt_debug_val__);
+		}
+
+	    if (pool) tt_static_fixed_pool_exit(pool);
+		
+	} while (0);
+#endif
+	// exit pool
+	if (pool) tt_static_fixed_pool_exit(pool);
+}

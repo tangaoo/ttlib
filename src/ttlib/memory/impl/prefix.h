@@ -7,6 +7,9 @@
  * @brief      prefix.h file
  */
 
+#ifndef TT_MEMORY_IMPL_H
+#define TT_MEMORY_IMPL_H
+
 /* //////////////////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -36,3 +39,5 @@ typedef struct __tt_pool_data_head_t
     tt_size_t                   size;
 
 }tt_pool_data_head_t, *tt_pool_data_head_ref_t;
+
+#endif

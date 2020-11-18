@@ -23,6 +23,7 @@ extern tt_void_t tt_demo_single_list_entry_main(tt_void_t);
 extern tt_void_t tt_demo_list_entry_main(tt_void_t);
 extern tt_void_t demo_crc8_main(tt_void_t);
 extern tt_void_t tt_demo_queue_entry_main(tt_void_t);
+extern tt_void_t tt_demo_static_fixed_pool(tt_void_t);
 
 
 
@@ -41,9 +42,12 @@ int main(void)
 	// tt_trace_d("long size, %d", sizeof(long));
 	// long tdata = -1;
 	// tt_trace_d("tdata, %ld", tdata);
-
-	// tt_demo_queue_entry_main();
+	// tt_trace_d("%d", tt_bits_cl0_u32_le_inline(~1));
+	tt_demo_static_fixed_pool();
+	
 #if 0
+    tt_demo_queue_entry_main();
+
 	tt_int32_t* pdata =  (tt_int32_t*)tt_malloc(sizeof(tt_int32_t));
 
 	tt_trace_raw("\n\n");

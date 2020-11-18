@@ -19,7 +19,7 @@
 static tt_pointer_t tt_native_allocator_malloc_(tt_allocator_ref_t allocator, tt_size_t size __tt_debug_decl__)
 {
     /// trace
-    tt_trace_d("malloc(%lu) at %s(): %lu, %s", size __tt_debug_args__);
+    tt_trace_d("malloc(%lu), at %s(), %lu, %s", size __tt_debug_args__);
 
     /// malloc it
     return tt_native_memory_malloc(size);

@@ -49,7 +49,7 @@ tt_pointer_t tt_allocator_malloc_(tt_allocator_ref_t allocator, tt_size_t size _
         data = allocator->large_malloc(allocator, size, tt_null __tt_debug_args__);
 
     /// trace
-    tt_trace_d("malloc(%lu): %p at %s(): %d, %s", size, data __tt_debug_args__);
+    tt_trace_d("malloc(%lu), %p, at %s(), %d, %s", size, data __tt_debug_args__);
     /// check
     tt_assertf(data, "malloc(%lu) failed!", size);
     tt_assertf(!(((tt_size_t)data) & (TT_POOL_DATA_ALIGN-1)), "malloc(%lu) unalign data, %p", size, data);

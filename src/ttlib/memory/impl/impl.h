@@ -12,5 +12,6 @@
 
 #include "memory.h"
 #include "static_large_allocator.h"
+#include "static_fixed_pool.h"
 
 #endif

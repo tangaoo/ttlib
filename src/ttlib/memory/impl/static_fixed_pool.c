@@ -7,12 +7,14 @@
  * @brief      static_fixed_pool.c file
  */
 
+#define TT_TRACE_MODULE_NAME                 "static_fixed_pool"
+#define TT_TRACE_DEBUG                       (1)
+
 /* //////////////////////////////////////////////////////////////////////////////////////
  * includes
  */
 #include "static_fixed_pool.h"
 
-#undef __tt_debug__
 /*//////////////////////////////////////////////////////////////////////////////////////
  * macros
  */
@@ -29,18 +31,18 @@
 #   define tt_static_fixed_pool_used_bset(used, i)          ((used)[i >> 3] & (0x01 << ((i) & 7)))
 
 //  find the first bit freed
-#   define tt_static_fixed_pool_find_first(v)               tt_bits_cl0_u32_le_inline(v)
+#   define tt_static_fixed_pool_find_first(v)               tt_bits_cl0_u32_le_inline(~(v))
 #endif
 
 //  cached the predicted index
-#define tt_static_fixed_pool_cache_pred(pool, i)         do { (pool)->pred_index = (i) >> TT_CPU_SHIFT + 1; } while(0)
+#define tt_static_fixed_pool_cache_pred(pool, i)         do { (pool)->pred_index = ((i) >> TT_CPU_SHIFT) + 1; } while(0)
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * types
  */
 
 // the static fixed pool type
-typedef __declspec(align(4)) struct __tt_static_fixed_pool_t
+typedef __declspec(align(TT_CPU_BITBYTE)) struct __tt_static_fixed_pool_t
 {
     // the read data addr after the used_info info
     tt_byte_t*             data;
@@ -81,7 +83,12 @@ typedef __declspec(align(4)) struct __tt_static_fixed_pool_t
  * private implementation
  */
 
-// get the item head from pred, and if this pred if full, update it
+/*! get the item head from pred, and if this pred if full, update it 
+ *
+ * @param pool          brief
+ *
+ * @return              tt_void
+ */
 static tt_pool_data_empty_head_ref_t tt_static_fixed_pool_malloc_pred(tt_static_fixed_pool_t* pool)
 {
     // check
@@ -103,7 +110,8 @@ static tt_pool_data_empty_head_ref_t tt_static_fixed_pool_malloc_pred(tt_static_
         tt_check_break((*data) + 1);
 
         // the free bit index
-        tt_size_t index = pred_index << TT_CPU_SHIFT + tt_static_fixed_pool_find_first(*data);
+        tt_size_t index = (pred_index << TT_CPU_SHIFT) + tt_static_fixed_pool_find_first(*data);
+
         // out of rang
         if(index > pool->item_maxn)
         {
@@ -136,6 +144,12 @@ static tt_pool_data_empty_head_ref_t tt_static_fixed_pool_malloc_pred(tt_static_
     
 }
 
+/*! find the free index from used_info
+ *
+ * @param pool          brief
+ *
+ * @return              tt_void
+ */
 static tt_pool_data_empty_head_ref_t tt_static_fixed_pool_malloc_find(tt_static_fixed_pool_t* pool)
 {
     // check
@@ -166,6 +180,32 @@ static tt_pool_data_empty_head_ref_t tt_static_fixed_pool_malloc_find(tt_static_
     return data;
 }
 
+/*! print base info of the pool, used for debug
+ *
+ * @param pool          brief
+ *
+ * @return              tt_void
+ */
+static tt_void_t tt_static_fixed_pool_print_info(tt_static_fixed_pool_t* pool __tt_debug_decl__)
+{
+   // check
+   tt_assert_and_check_return(pool); 
+
+   // print it
+   tt_trace_d("pool,%p, usedinfo,%p, data,%p, tail,%p, manx,%d, count,%d, pred,%d, itemsize,%d, itemspace,%d, at %s(), %lu, %s",
+              pool, 
+              pool->used_info, 
+              pool->data, 
+              pool->tail, 
+              pool->item_maxn, 
+              pool->item_count, 
+              pool->pred_index,
+              pool->item_size,
+              pool->item_space
+              __tt_debug_args__
+   );
+}
+
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
  */
@@ -187,18 +227,18 @@ tt_static_fixed_pool_ref_t tt_static_fixed_pool_init(tt_byte_t* data, tt_size_t 
     // for small allocator?
     pool->for_small = !!for_small;
     pool->data_head_size = (!!for_small)? sizeof(tt_pool_data_head_t): sizeof(tt_pool_data_empty_head_t);
-#ifndef __tt_debug__
+//#ifndef __tt_debug__
     // size of empty struct type is 1 !!!
     if(!for_small) pool->data_head_size = 0;
-#endif
+//#endif
     tt_assert_and_check_return_val(!(pool->data_head_size & (TT_POOL_DATA_ALIGN - 1)), tt_null);
 
-#ifdef __tt_debug__
+//#ifdef __tt_debug__
     // patch used for checking underflow
-    tt_size_t patch = 1;
-#else
+//    tt_size_t patch = 1;
+//#else
     tt_size_t patch = 0;
-#endif
+//#endif
 
     // init the item space
     pool->item_space = tt_align(pool->data_head_size + item_size + patch, TT_POOL_DATA_ALIGN);
@@ -229,7 +269,7 @@ tt_static_fixed_pool_ref_t tt_static_fixed_pool_init(tt_byte_t* data, tt_size_t 
     // init data
     pool->data = (tt_byte_t*)tt_align((tt_size_t)pool->used_info + pool->info_size, TT_POOL_DATA_ALIGN);
     tt_assert_and_check_return_val(data + size > pool->data, tt_null);
-    tt_assert_and_check_return_val(pool->item_maxn * pool->item_space <= (tt_size_t)(data + size - pool->data) +1, tt_null); //TODO 
+    tt_assert_and_check_return_val(pool->item_maxn * pool->item_space <= (tt_size_t)(data + size - pool->data), tt_null); //TODO 
 
     // init tail
     pool->tail = pool->data + pool->item_space * pool->item_maxn;
@@ -242,6 +282,11 @@ tt_static_fixed_pool_ref_t tt_static_fixed_pool_init(tt_byte_t* data, tt_size_t 
 
     // init the predict index(32 item)
     pool->pred_index = 1;
+
+    // print it
+#if TT_TRACE_DEBUG
+    tt_static_fixed_pool_print_info(pool __tt_debug_val__);
+#endif
 
     return (tt_static_fixed_pool_ref_t)pool;
 }
@@ -317,7 +362,10 @@ tt_pointer_t tt_static_fixed_pool_malloc(tt_static_fixed_pool_ref_t self __tt_de
 
     do{
         // full
-        tt_check_break(pool->item_size < pool->item_maxn);
+        tt_check_break(pool->item_count < pool->item_maxn);
+
+        // debug
+        pool->pred_index = 0;
 
         // predict it?
         data_head =  tt_static_fixed_pool_malloc_pred(pool);
@@ -340,6 +388,11 @@ tt_pointer_t tt_static_fixed_pool_malloc(tt_static_fixed_pool_ref_t self __tt_de
     // check
     tt_assertf(data, "malloc(%lu) failed!", pool->item_size);
     tt_assertf(!(((tt_size_t)data) & (TT_POOL_DATA_ALIGN - 1)), "malloc(%lu): unaligned data: %p", pool->item_size, data);
+
+    // print it
+#if TT_TRACE_DEBUG
+    tt_static_fixed_pool_print_info(pool __tt_debug_val__);
+#endif
 
     return data;
 }
@@ -376,8 +429,12 @@ tt_bool_t tt_static_fixed_pool_free(tt_static_fixed_pool_ref_t self, tt_pointer_
         ret = tt_true;
     }while(0);
 
-    return ret;
+    // print it
+#if TT_TRACE_DEBUG
+    tt_static_fixed_pool_print_info(pool __tt_debug_val__);
+#endif
 
+    return ret;
 }
 
 
