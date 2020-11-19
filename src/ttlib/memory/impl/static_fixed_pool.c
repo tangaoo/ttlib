@@ -167,7 +167,7 @@ static tt_pool_data_empty_head_ref_t tt_static_fixed_pool_malloc_find(tt_static_
     tt_check_return_val(p < e, tt_null);
 
     // find the free bit index
-    tt_size_t index = ((tt_byte_t*)p - pool->used_info) << 3 + tt_static_fixed_pool_find_first(*p);
+    tt_size_t index = (((tt_byte_t*)p - pool->used_info) << 3) + tt_static_fixed_pool_find_first(*p);
     tt_check_return_val(index < pool->item_maxn, tt_null);
     
     // allocate it
@@ -364,8 +364,8 @@ tt_pointer_t tt_static_fixed_pool_malloc(tt_static_fixed_pool_ref_t self __tt_de
         // full
         tt_check_break(pool->item_count < pool->item_maxn);
 
-        // debug
-        pool->pred_index = 0;
+        // debug, make pred not work
+        // pool->pred_index = 0;
 
         // predict it?
         data_head =  tt_static_fixed_pool_malloc_pred(pool);
