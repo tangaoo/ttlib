@@ -39,6 +39,7 @@ __tt_extern_c_enter__
 #	define tt_tracef_d(fmt, ...)                tt_tracef_p(__tt_prefix__, fmt, __VA_ARGS__) 
 #else
 #	define tt_trace_d(fmt, ...)
+#	define tt_tracef_d(fmt, ...)                tt_tracef_p(__tt_prefix__, fmt, __VA_ARGS__) 
 #endif
 
 #define tt_trace_i(fmt, ...)                    tt_trace_p(__tt_prefix__, fmt, __VA_ARGS__)
@@ -47,7 +48,7 @@ __tt_extern_c_enter__
 #define tt_trace_e(fmt, ...)                    tt_trace_error_p(__tt_prefix__, fmt, __VA_ARGS__)
 
 /// raw
- #define tt_trace_raw(fmt, ...)                  do{ tt_trace_done(tt_null, tt_null, fmt __tt_new_line__, __VA_ARGS__); }while(0)
+ #define tt_trace_raw(fmt, ...)                 do{ tt_trace_done(tt_null, tt_null, fmt, __VA_ARGS__); }while(0)
 
 
 __tt_extern_c_leave__

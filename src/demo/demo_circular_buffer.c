@@ -4,7 +4,7 @@
 #define TT_TRACE_MODULE_NAME          "DEMO_CB"
 #define TT_TRACE_MODULE_DEBUG         (1)
 
-#include "../ttlib/ttlib.h" ///need opt
+#include "ttlib.h" 
 #include <string.h>
 
 #define BUFF_SIZE        8

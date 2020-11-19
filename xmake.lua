@@ -5,9 +5,12 @@ add_rules("mode.debug", "mode.release")
 target("ttlib")
     set_kind("static")
     add_files("src/ttlib/**.c")
+
+    -- set third party lib
     add_includedirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include")
     add_linkdirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\lib\\x86")
     add_links("pthreadVC2")
+    
     
 
 target("ttlib_demo")
@@ -16,6 +19,9 @@ target("ttlib_demo")
     add_files("src/demo/**.c")    
     -- add_syslinks("pthread")
 
+    -- set ttlib .h file
+    add_includedirs("src/ttlib/")
+    
 --
 -- If you want to known more usage about xmake, please see https://xmake.io
 --

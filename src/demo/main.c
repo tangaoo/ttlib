@@ -13,7 +13,7 @@
 #if 1
 #include <stdlib.h>
 #include <stdio.h>
-#include "../ttlib/ttlib.h" ///need opt
+#include "ttlib.h"
 #include "demo.h"
 
 /// demo 
@@ -37,13 +37,17 @@ int main(void)
 	if (!tt_init(tt_null, tt_static_large_allocator_init((tb_byte_t*)malloc(1 * 1024 * 1024), 1 * 1024 * 1024, 8))) return -1;
 #endif		
 	
+	demo_utils_mix();
+	demo_utils_dump();
+
+
 //	tt_assert(1);
 //	tt_abort();
 	// tt_trace_d("long size, %d", sizeof(long));
 	// long tdata = -1;
 	// tt_trace_d("tdata, %ld", tdata);
 	// tt_trace_d("%d", tt_bits_cl0_u32_le_inline(~1));
-	tt_demo_static_fixed_pool();
+	// tt_demo_static_fixed_pool();
 	
 #if 0
     tt_demo_queue_entry_main();

@@ -1,7 +1,7 @@
 /* //////////////////////////////////////////////////////////////////////////////////////
 * includes
 */
-#include "../ttlib/ttlib.h" //need opt
+#include "ttlib.h"
 
 tt_byte_t g_buffer[1000] = {0};
 

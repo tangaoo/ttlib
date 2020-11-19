@@ -1,7 +1,7 @@
 #define TT_TRACE_MODULE_NAME    "single_list_entry_demo"
 #define TT_TRACE_DEBUG          1
 
-#include "../ttlib/ttlib.h" ///need opt
+#include "ttlib.h"
 
 typedef struct __tt_demo_single_list_entry_t{
 	tt_single_list_entry_t    entry;

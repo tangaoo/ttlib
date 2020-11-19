@@ -16,7 +16,7 @@
 /* //////////////////////////////////////////////////////////////////////////////////////
 * includes
 */
-#include "../ttlib/ttlib.h" ///need opt
+#include "ttlib.h"
 
 tt_uint32_t demo_utils_main(tt_void_t)
 {
