@@ -1,13 +1,14 @@
 /*
- * @Copyright (C)  2020  .Tango. all right reserved
+ * @Copyright (C) 2019-2020, TTLIB
  * @file       container.h
  * @ingroup    container
  * @author     tango
- * @date       2020-11 
+ * @date       2020-11-19 
  * @brief      container.h file
  */
-#ifndef _CONTAINER_CONTAINER_H_
-#define _CONTAINER_CONTAINER_H_
+
+#ifndef TT_CONTAINER_CONTAINER_H
+#define TT_CONTAINER_CONTAINER_H
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * includes

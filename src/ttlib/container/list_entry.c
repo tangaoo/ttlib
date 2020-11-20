@@ -1,5 +1,17 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       list_entry.c
+ * @ingroup    container
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      list_entry.c file
+ */
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "list_entry.h"
+#include "../memory/impl/static_fixed_pool.h"
 
 /* //////////////////////////////////////////////////////////////////////////////////////
 * iterator implementation

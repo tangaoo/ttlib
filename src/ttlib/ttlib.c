@@ -1,7 +1,22 @@
 
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       ttlib.c
+ * @ingroup    ttlib
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      ttlib.c file
+ */
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "ttlib.h"
 #include "memory/impl/impl.h"
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * implementation
+ */
 tt_bool_t tt_lib_init(tt_handle_t priv, tt_allocator_ref_t allocator)
 {
 	tt_bool_t ret = tt_false;

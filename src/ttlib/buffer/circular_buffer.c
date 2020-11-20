@@ -1,3 +1,11 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       circular_buffer.c
+ * @ingroup    buffer
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      circular_buffer.c file
+ */
 
 /*//////////////////////////////////////////////////////////////////////////////////////
 * includes

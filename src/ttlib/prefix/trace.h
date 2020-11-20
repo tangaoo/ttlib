@@ -1,6 +1,18 @@
-#ifndef _PREFIX_TRACE_H_
-#define _PREFIX_TRACE_H_
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       trace.h
+ * @ingroup    prefix
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      trace.h file
+ */
 
+#ifndef TT_PREFIX_TRACE_H
+#define TT_PREFIX_TRACE_H
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "../utils/trace.h"
 
 __tt_extern_c_enter__
@@ -49,7 +61,6 @@ __tt_extern_c_enter__
 
 /// raw
  #define tt_trace_raw(fmt, ...)                 do{ tt_trace_done(tt_null, tt_null, fmt, __VA_ARGS__); }while(0)
-
 
 __tt_extern_c_leave__
 

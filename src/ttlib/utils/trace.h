@@ -1,7 +1,18 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       trace.h
+ * @ingroup    utils
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      trace.h file
+ */
 
 #ifndef _TT_UTILS_TRACE_H_
 #define _TT_UTILS_TRACE_H_
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "prefix.h"
 
 __tt_extern_c_enter__

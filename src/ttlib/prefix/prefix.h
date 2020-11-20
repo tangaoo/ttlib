@@ -1,3 +1,12 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       prefix.h
+ * @ingroup    prefix
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      prefix.h file
+ */
+
 #ifndef _TT_PREFIX_PREFIX_H_
 #define _TT_PREFIX_PREFIX_H_
 

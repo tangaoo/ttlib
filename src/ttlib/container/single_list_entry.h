@@ -1,7 +1,18 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       single_list_entry.h
+ * @ingroup    container
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      single_list_entry.h file
+ */
 
-#ifndef _CONTAINER_SINGLE_LIST_ENTRY_H_
-#define _CONTAINER_SINGLE_LIST_ENTRY_H_
+#ifndef TT_CONTAINER_SINGLE_LIST_ENTRY_H
+#define TT_CONTAINER_SINGLE_LIST_ENTRY_H
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "prefix.h"
 #include "iterator.h"
 

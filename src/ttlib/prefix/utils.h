@@ -1,6 +1,18 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       utils.h
+ * @ingroup    prefix
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      utils.h file
+ */
+
 #ifndef _TT_PREFIX_UTILS_H
 #define _TT_PREFIX_UTILS_H
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "type.h"
 #include "check.h"
 
@@ -103,7 +115,5 @@
 
 /// dummy typdef
 #define __tt_typeref__(object)          struct __tt_##object##_dummy_t{tt_int_t dummy;} const* tt_##object##_ref_t
-
-
 
 #endif

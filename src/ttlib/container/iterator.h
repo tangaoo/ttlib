@@ -1,6 +1,14 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       iterator.h
+ * @ingroup    container
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      iterator.h file
+ */
 
-#ifndef _CONTAINER_ITERATOR_H_
-#define _CONTAINER_ITERATOR_H_
+#ifndef TT_CONTAINER_ITERATOR_H
+#define TT_CONTAINER_ITERATOR_H
 
 /* //////////////////////////////////////////////////////////////////////////////////////
 * includes

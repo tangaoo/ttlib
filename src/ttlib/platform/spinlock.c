@@ -1,3 +1,12 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       spinlock.c
+ * @ingroup    platform
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      spinlock.c file
+ */
+
 /* //////////////////////////////////////////////////////////////////////////////////////
 * includes
 */

@@ -1,6 +1,18 @@
-#ifndef _ALGORITHM_FOR_H_
-#define _ALGORITHM_FOR_H_
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       for.h
+ * @ingroup    algorithm
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      for.h file
+ */
 
+#ifndef TT_ALGORITHM_FOR_H
+#define TT_ALGORITHM_FOR_H
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "prefix.h"
 #include "../container/container.h"
 

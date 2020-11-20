@@ -1,9 +1,9 @@
 /*
- * @Copyright (C)  2020  .Tango. all right reserved
+ * @Copyright (C) 2019-2020, TTLIB
  * @file       static_fixed_pool.h
  * @ingroup    memory
  * @author     tango
- * @date       2020-11 
+ * @date       2020-11-19 
  * @brief      static_fixed_pool.h file
  */
 

@@ -1,12 +1,27 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       assert.h
+ * @ingroup    prefix
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      assert.h file
+ */
+
 #ifndef _TT_ASSERT_H_
 #define _TT_ASSERT_H_
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "abort.h"
 #include "config.h"
 #include "trace.h"
 
 __tt_extern_c_enter__
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * macros
+ */
 #if defined(__tt_debug__)
 #	define tt_assert(x)                                               do { if(!(!!(x))) {tt_trace_d("expr [%s], %s(), %d, %s", #x __tt_debug_val__); tt_abort_done();} }while(0)
 #   define tt_assert_and_check_abort(x)                               do {tt_assert(x); tt_check_abort(x); } while(0)

@@ -1,3 +1,11 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       crc8.h
+ * @ingroup    utils
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      crc8.h file
+ */
 
 #ifndef TB_HASH_CRC8_H
 #define TB_HASH_CRC8_H

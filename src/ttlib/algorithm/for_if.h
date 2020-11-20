@@ -1,6 +1,18 @@
-#ifndef _ALGORITHM_FOR_IF_H
-#define _ALGORITHM_FOR_IF_H
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       for_if.h
+ * @ingroup    algorithm
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      for_if.h file
+ */
 
+#ifndef TT_ALGORITHM_FOR_IF_H
+#define TT_ALGORITHM_FOR_IF_H
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "prefix.h"
 
 __tt_extern_c_enter__

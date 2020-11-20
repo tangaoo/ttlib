@@ -1,6 +1,18 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       check.h
+ * @ingroup    prefix
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      check.h file
+ */
+
 #ifndef _PREFIC_CHECK_H_
 #define _PREFIC_CHECK_H_
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "abort.h"
 
 __tt_extern_c_enter__
@@ -8,6 +20,7 @@ __tt_extern_c_enter__
 /* //////////////////////////////////////////////////////////////////////////////////////
 * macros
 */
+
 // check
 #define tt_check_return(x)                              do { if (!(x)) return ; } while (0)
 #define tt_check_return_val(x, v)                       do { if (!(x)) return (v); } while (0)

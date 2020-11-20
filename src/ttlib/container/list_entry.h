@@ -1,10 +1,20 @@
-#ifndef _TT_CONTAINER_LIST_ENTRY_H_
-#define _TT_CONTAINER_LIST_ENTRY_H_
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       list_entry.h
+ * @ingroup    container
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      list_entry.h file
+ */
 
+#ifndef TT_CONTAINER_LIST_ENTRY_H
+#define TT_CONTAINER_LIST_ENTRY_H
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
 #include "prefix.h"
 #include "iterator.h"
-
-
 
 /// the list entry
 #define tt_list_entry(head, entry)   ((((tt_byte_t*)(entry)) - (head)->eoffset))

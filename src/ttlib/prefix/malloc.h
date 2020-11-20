@@ -1,11 +1,13 @@
 /*
- * @Copyright (C)  2020  .Harman. all right reserved
+ * @Copyright (C) 2019-2020, TTLIB
  * @file       malloc.h
  * @ingroup    prefix
  * @author     tango
- * @date       2020-11 
+ * @date       2020-11-19 
  * @brief      malloc.h file
  */
+#ifndef TT_PREFIX_MALLOC_H
+#define TT_PREFIX_MALLOC_H
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * includes
@@ -13,7 +15,9 @@
 #include "keyword.h"
 #include "type.h"
 
-
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * macros
+ */
 #define tt_malloc(size)                         tt_allocator_malloc_(tt_allocator(), size __tt_debug_val__)
 #define tt_malloc0(size)                        tt_allocator_malloc0_(tt_allocator(), size __tt_debug_val__)
 #define tt_nalloc(item, size)                   tt_allocator_nalloc_(tt_allocator(), item, size __tt_debug_val__)
@@ -60,3 +64,5 @@ tt_pointer_t              tt_allocator_align_nalloc_(struct __tt_allocator_t* al
 tt_pointer_t              tt_allocator_align_nalloc0_(struct __tt_allocator_t* allocator, tt_size_t item,tt_size_t size, tt_size_t align __tt_debug_decl__);
 tt_pointer_t              tt_allocator_align_ralloc_(struct __tt_allocator_t* allocator, tt_pointer_t data, tt_size_t size, tt_size_t align __tt_debug_decl__);
 tt_bool_t                 tt_allocator_align_free_(struct __tt_allocator_t* allocator, tt_pointer_t data __tt_debug_decl__);
+
+#endif

@@ -1,5 +1,14 @@
-#ifndef _BUFFER_CIRCULAR_BUFFER_H_
-#define _BUFFER_CIRCULAR_BUFFER_H_
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       circular_buffer.h
+ * @ingroup    buffer
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      circular_buffer.h file
+ */
+
+#ifndef TT_BUFFER_CIRCULAR_BUFFER_H
+#define TT_BUFFER_CIRCULAR_BUFFER_H
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  * includes

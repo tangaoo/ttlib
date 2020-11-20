@@ -1,5 +1,18 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       config.h
+ * @ingroup    prefix
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      config.h file
+ */
+
 #ifndef _TT_PREFIC_CONFIG_
 #define _TT_PREFIC_CONFIG_
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * macros
+ */
 
 /// c++
 #ifdef __cplusplus

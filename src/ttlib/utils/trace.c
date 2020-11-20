@@ -1,4 +1,11 @@
-
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       trace.c
+ * @ingroup    utils
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      trace.c file
+ */
 
 #define _CRT_SECURE_NO_WARNINGS
 

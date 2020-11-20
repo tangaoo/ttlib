@@ -1,6 +1,14 @@
+/*
+ * @Copyright (C) 2019-2020, TTLIB
+ * @file       type.h
+ * @ingroup    prefix
+ * @author     tango
+ * @date       2020-11-19 
+ * @brief      type.h file
+ */
 
-#ifndef _TT_PREFIX_TYPE_H_
-#define _TT_PREFIX_TYPE_H_
+#ifndef TT_PREFIX_TYPE_H
+#define TT_PREFIX_TYPE_H
 
 /*//////////////////////////////////////////////////////////////////////////////////////
 * includes 
@@ -89,6 +97,5 @@ typedef tt_pointer_t                               tt_handle_t;
 typedef tt_uint32_t                                tt_size_t;
 
 #endif
-
 
 #endif
