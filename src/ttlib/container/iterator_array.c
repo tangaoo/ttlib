@@ -89,7 +89,7 @@ static tt_void_t tt_array_iterator_ptr_copy(tt_iterator_ref_t iterator, tt_size_
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
  */
-tt_iterator_ref_t       tt_array_iterator_init_ptr(tt_iterator_array_ref_t iterator, tt_pointer_t* items, tt_size_t count)
+tt_iterator_ref_t       tt_iterator_array_init_ptr(tt_iterator_array_ref_t iterator, tt_pointer_t* items, tt_size_t count)
 {
     // assert
     tt_assert(iterator && items && count);

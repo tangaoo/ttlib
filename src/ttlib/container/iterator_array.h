@@ -48,7 +48,7 @@ typedef  struct __tt_iterator_array_t
  *
  * @return              tt_void
  */
-tt_iterator_ref_t       tt_array_iterator_init_ptr(tt_iterator_array_ref_t itor, tt_pointer_t* items, tt_size_t count);
+tt_iterator_ref_t       tt_iterator_array_init_ptr(tt_iterator_array_ref_t itor, tt_pointer_t* items, tt_size_t count);
 
 
 __tt_extern_c_leave__

@@ -14,6 +14,7 @@
  * includes
  */
 #include "iterator.h"
+#include "iterator_array.h"
 #include "list_entry.h"
 #include "single_list_entry.h"
 #include "queue_entry.h"
