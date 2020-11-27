@@ -15,6 +15,7 @@
 #include "fixed_pool.h"
 #include "impl/static_fixed_pool.h"
 #include "../container/container.h"
+#include "../algorithm/algorithm.h"
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * macros
@@ -141,7 +142,7 @@ static tt_fixed_pool_slot_t* tt_fixed_pool_slot_init(tt_fixed_pool_t* pool)
     tt_bool_t             ok = tt_false;
     tt_fixed_pool_slot_t* slot = tt_null;
     do {
-// #ifdef __tt_debug__
+//#ifdef __tt_debug__
 //        tt_size_t patch = 1;
 //#else
         tt_size_t patch = 0;
@@ -226,6 +227,40 @@ static tt_fixed_pool_slot_t* tt_fixed_pool_slot_init(tt_fixed_pool_t* pool)
 
 }
 
+static tt_long_t tt_fixed_pool_slot_comp(tt_iterator_ref_t iterator, tt_cpointer_t item, tt_cpointer_t data)
+{
+    // check
+    tt_assert(item);
+
+    tt_fixed_pool_slot_t* slot = (tt_fixed_pool_slot_t*)item;
+
+    // comp (item > data => 1; item = data => 0; item < data => -1)
+    return (tt_byte_t*)slot > (tt_byte_t*)data? 1 : ((tt_byte_t*)slot + slot->size) > (tt_byte_t*)data? 0 : -1;
+
+}
+
+// fast find slot according to data
+static tt_fixed_pool_slot_t* tt_fixed_pool_slot_find(tt_fixed_pool_t* pool, tt_pointer_t data)
+{
+    // check
+    tt_assert_and_check_return_val(pool && data, tt_null);
+
+    // make iterator_array
+    tt_iterator_array_t iterator_array;
+    tt_iterator_ref_t   iterator = tt_iterator_array_init_ptr(&iterator_array, (tt_pointer_t*)pool->slot_list, pool->slot_count);
+    tt_assert(iterator);
+
+    // find it
+    tt_size_t itor = tt_binary_find_all_if(iterator, tt_fixed_pool_slot_comp, data);
+    tt_check_return_val(itor != tt_iterator_tail(iterator), tt_null);
+
+    // the slot
+    tt_fixed_pool_slot_t* slot = pool->slot_list[itor];
+    tt_assert_and_check_return_val(slot, tt_null);
+    
+    return slot;
+    
+}
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
