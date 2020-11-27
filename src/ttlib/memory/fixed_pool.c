@@ -161,7 +161,7 @@ static tt_fixed_pool_slot_t* tt_fixed_pool_slot_init(tt_fixed_pool_t* pool)
         // init slot
         slot->size = real_space;
         slot->pool = tt_static_fixed_pool_init((tt_byte_t*)&slot[1], real_space - sizeof(tt_fixed_pool_slot_t), pool->item_size, pool->for_small);
-        tt_assertf_and_check_break(slot->pool);
+        tt_assert_and_check_break(slot->pool);
 
         // no slot list?
         if(!pool->slot_list)
@@ -271,8 +271,8 @@ tt_fixed_pool_ref_t tt_fixed_pool_init_(tt_allocator_ref_t large_allocator, tt_s
     if(!ok)
     {
         // exit pool
-        if(pool) tt_fixed_pool_exit(pool);
-        pool = tt_null
+        if(pool) tt_fixed_pool_exit((tt_fixed_pool_ref_t)pool);
+        pool = tt_null;
     }
 
     // ok?
@@ -291,7 +291,7 @@ tt_void_t tt_fixed_pool_exit(tt_fixed_pool_ref_t self)
     tt_assert_and_check_return(pool);
 
     // clear it
-    tt_fixed_pool_clear(pool);
+    tt_fixed_pool_clear((tt_fixed_pool_ref_t)pool);
 
     // exit the current slot
     if(pool->current_slots) tt_fixed_pool_slot_exit(pool, pool->current_slots);
@@ -355,10 +355,10 @@ tt_void_t tt_fixed_pool_clear(tt_fixed_pool_ref_t self)
             tt_assert(slot != pool->current_slots);
 
             // save next
-            tt_size_t next = tt_iterator_next(partial_iterator);
+            tt_size_t next = tt_iterator_next(partial_iterator, itor);
 
             // exit slot
-            tt_fixed_pool_slot_exit(slot);
+            tt_fixed_pool_slot_exit(pool, slot);
 
             // next
             itor = next;
@@ -381,10 +381,10 @@ tt_void_t tt_fixed_pool_clear(tt_fixed_pool_ref_t self)
             tt_assert(slot != pool->current_slots);
 
             // save next
-            tt_size_t next = tt_iterator_next(full_iterator);
+            tt_size_t next = tt_iterator_next(full_iterator, itor);
 
             // exit slot
-            tt_fixed_pool_slot_exit(slot);
+            tt_fixed_pool_slot_exit(pool, slot);
 
             // next
             itor = next;
@@ -418,16 +418,16 @@ tt_pointer_t tt_fixed_pool_malloc_(tt_fixed_pool_ref_t self __tt_debug_decl__)
         if(!pool->current_slots || tt_static_fixed_pool_full(pool->current_slots->pool))
         {
             // move the current slot to full slot if exists
-            if(pool->current_slots) tt_list_entry_insert_tail(&pool->full_slots, pool->current_slots);
+            if(pool->current_slots) tt_list_entry_insert_tail(&pool->full_slots, &pool->current_slots->entry);
 
             // clear the current slot
             pool->current_slots = tt_null;
 
             // attempt to get a slot from partial slot list
-            if(!tt_list_entry_is_null(pool->partial_slots))
+            if(!tt_list_entry_is_null(&pool->partial_slots))
             {
                 // the head entry
-                tt_list_entry_ref_t entry = tt_list_entry_head(pool->partial_slots);
+                tt_list_entry_ref_t entry = tt_list_entry_head(&pool->partial_slots);
                 tt_assert_and_check_break(entry);
 
                 // the head slot
@@ -446,7 +446,7 @@ tt_pointer_t tt_fixed_pool_malloc_(tt_fixed_pool_ref_t self __tt_debug_decl__)
         tt_assert_and_check_break(tt_static_fixed_pool_full(pool->current_slots->pool));
 
         // make data from current slots
-        data = tt_static_fixed_pool_malloc(pool->current_slots->pool);
+        data = tt_static_fixed_pool_malloc(pool->current_slots->pool __tt_debug_args__);
         tt_assert_and_check_break(data);
 
         // done init
@@ -464,7 +464,7 @@ tt_pointer_t tt_fixed_pool_malloc_(tt_fixed_pool_ref_t self __tt_debug_decl__)
     {
         // exit data
         if(data && pool->current_slots && pool->current_slots->pool)
-            tt_static_fixed_pool_free(pool->current_slots, data __tt_debug_args__);
+            tt_static_fixed_pool_free(pool->current_slots->pool, data __tt_debug_args__);
         data = tt_null;
     }
 
@@ -482,7 +482,7 @@ tt_pointer_t tt_fixed_pool_malloc0_(tt_fixed_pool_ref_t self __tt_debug_decl__)
     tt_assert_and_check_return_val(pool, tt_null);
 
     // malloc it
-    tt_pointer_t data = tt_fixed_pool_malloc_(pool __tt_debug_args__);
+    tt_pointer_t data = tt_fixed_pool_malloc_((tt_fixed_pool_ref_t)pool __tt_debug_args__);
     tt_assert_and_check_return_val(data, tt_null);
 
     // clear it
@@ -506,7 +506,7 @@ tt_bool_t tt_fixed_pool_free_(tt_fixed_pool_ref_t self, tt_pointer_t data __tt_d
 
         // find the slot
         tt_fixed_pool_slot_t* slot = tt_fixed_pool_slot_find(pool, data);
-        tt_assertf_and_check_break("the data(%p) is not belong to the pool(%p)", data, pool);
+        tt_assertf_and_check_break(slot, "the data(%p) is not belong to the pool(%p)", data, pool);
         tt_assert_and_check_break(slot->pool);
 
         // the slot is full?
@@ -525,16 +525,16 @@ tt_bool_t tt_fixed_pool_free_(tt_fixed_pool_ref_t self, tt_pointer_t data __tt_d
             if(full)
             {
                 // remove the slot from full slot list
-                tt_list_entry_remove(&pool->full_slots, slot->entry);
+                tt_list_entry_remove(&pool->full_slots, &slot->entry);
 
                 // insert the slot to partial list
-                tt_list_entry_insert_tail(&pool->partial_slots, slot->entry);
+                tt_list_entry_insert_tail(&pool->partial_slots, &slot->entry);
             }
             // the slot is null?
             else if(tt_static_fixed_pool_null(slot->pool))
             {
                 // remove the slot form partial slot list
-                tt_list_entry_remove(&pool->partial_slots, slot->entry);
+                tt_list_entry_remove(&pool->partial_slots, &slot->entry);
 
                 // exit the slot
                 tt_fixed_pool_slot_exit(pool, slot);

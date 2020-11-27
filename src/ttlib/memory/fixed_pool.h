@@ -196,10 +196,11 @@ tt_pointer_t                  tt_fixed_pool_malloc0_(tt_fixed_pool_ref_t pool __
 /*! free data
  *
  * @param pool                the pool
+ * @param data                the data
  *
  * @return                    tt_true or tt_false
  */
-tt_bool_t                     tt_fixed_pool_free_(tt_fixed_pool_ref_t pool __tt_debug_decl__);
+tt_bool_t                     tt_fixed_pool_free_(tt_fixed_pool_ref_t pool, tt_pointer_t data __tt_debug_decl__);
 
 
 

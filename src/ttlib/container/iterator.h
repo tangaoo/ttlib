@@ -93,6 +93,8 @@ typedef struct __tt_iterator_t
 
 }tt_iterator_t, *tt_iterator_ref_t;
 
+// the iterator comp func type
+typedef tt_long_t             (*tt_iterator_comp_t)(tt_iterator_ref_t iterator, tt_cpointer_t litem, tt_cpointer_t ritem);
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * interfaces
