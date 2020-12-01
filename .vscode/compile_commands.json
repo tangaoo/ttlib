@@ -1,0 +1,206 @@
+[
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/demo_queue_buffer.c.o", "src/demo/demo_queue_buffer.c"],
+  "file": "src/demo/demo_queue_buffer.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/demo_single_list_entry.c.o", "src/demo/demo_single_list_entry.c"],
+  "file": "src/demo/demo_single_list_entry.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/demo_list_entry.c.o", "src/demo/demo_list_entry.c"],
+  "file": "src/demo/demo_list_entry.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/demo_vector.c.o", "src/demo/demo_vector.c"],
+  "file": "src/demo/demo_vector.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/demo_static_fixed_pool.c.o", "src/demo/demo_static_fixed_pool.c"],
+  "file": "src/demo/demo_static_fixed_pool.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/utils/demo_utils_mix.c.o", "src/demo/utils/demo_utils_mix.c"],
+  "file": "src/demo/utils/demo_utils_mix.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/utils/demo_utils_dump.c.o", "src/demo/utils/demo_utils_dump.c"],
+  "file": "src/demo/utils/demo_utils_dump.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/main.c.o", "src/demo/main.c"],
+  "file": "src/demo/main.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/demo_circular_buffer.c.o", "src/demo/demo_circular_buffer.c"],
+  "file": "src/demo/demo_circular_buffer.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/demo_queue_entry.c.o", "src/demo/demo_queue_entry.c"],
+  "file": "src/demo/demo_queue_entry.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-Isrc/ttlib", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib_demo/macosx/x86_64/src/demo/demo_utils.c.o", "src/demo/demo_utils.c"],
+  "file": "src/demo/demo_utils.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/libm/ilog2i.c.o", "src/ttlib/libm/ilog2i.c"],
+  "file": "src/ttlib/libm/ilog2i.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/memory/impl/memory.c.o", "src/ttlib/memory/impl/memory.c"],
+  "file": "src/ttlib/memory/impl/memory.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/memory/impl/static_fixed_pool.c.o", "src/ttlib/memory/impl/static_fixed_pool.c"],
+  "file": "src/ttlib/memory/impl/static_fixed_pool.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/memory/impl/static_large_allocator.c.o", "src/ttlib/memory/impl/static_large_allocator.c"],
+  "file": "src/ttlib/memory/impl/static_large_allocator.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/memory/allocator.c.o", "src/ttlib/memory/allocator.c"],
+  "file": "src/ttlib/memory/allocator.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/memory/native_allocator.c.o", "src/ttlib/memory/native_allocator.c"],
+  "file": "src/ttlib/memory/native_allocator.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/memory/fixed_pool.c.o", "src/ttlib/memory/fixed_pool.c"],
+  "file": "src/ttlib/memory/fixed_pool.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/platform/native_memory.c.o", "src/ttlib/platform/native_memory.c"],
+  "file": "src/ttlib/platform/native_memory.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/platform/native_memcpy.c.o", "src/ttlib/platform/native_memcpy.c"],
+  "file": "src/ttlib/platform/native_memcpy.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/platform/mutex.c.o", "src/ttlib/platform/mutex.c"],
+  "file": "src/ttlib/platform/mutex.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/platform/spinlock.c.o", "src/ttlib/platform/spinlock.c"],
+  "file": "src/ttlib/platform/spinlock.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/memory_pool/memoryPool.c.o", "src/ttlib/memory_pool/memoryPool.c"],
+  "file": "src/ttlib/memory_pool/memoryPool.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/utils/trace.c.o", "src/ttlib/utils/trace.c"],
+  "file": "src/ttlib/utils/trace.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/utils/dump.c.o", "src/ttlib/utils/dump.c"],
+  "file": "src/ttlib/utils/dump.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/utils/crc8.c.o", "src/ttlib/utils/crc8.c"],
+  "file": "src/ttlib/utils/crc8.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/utils/mix.c.o", "src/ttlib/utils/mix.c"],
+  "file": "src/ttlib/utils/mix.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/algorithm/binary_find_if.c.o", "src/ttlib/algorithm/binary_find_if.c"],
+  "file": "src/ttlib/algorithm/binary_find_if.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/image/image.c.o", "src/ttlib/image/image.c"],
+  "file": "src/ttlib/image/image.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/iterator_array.c.o", "src/ttlib/container/iterator_array.c"],
+  "file": "src/ttlib/container/iterator_array.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/single_list_entry.c.o", "src/ttlib/container/single_list_entry.c"],
+  "file": "src/ttlib/container/single_list_entry.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/vector.c.o", "src/ttlib/container/vector.c"],
+  "file": "src/ttlib/container/vector.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/single_list.c.o", "src/ttlib/container/single_list.c"],
+  "file": "src/ttlib/container/single_list.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/list_entry.c.o", "src/ttlib/container/list_entry.c"],
+  "file": "src/ttlib/container/list_entry.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/element/uint8.c.o", "src/ttlib/container/element/uint8.c"],
+  "file": "src/ttlib/container/element/uint8.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/element/size.c.o", "src/ttlib/container/element/size.c"],
+  "file": "src/ttlib/container/element/size.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/element/long.c.o", "src/ttlib/container/element/long.c"],
+  "file": "src/ttlib/container/element/long.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/container/iterator.c.o", "src/ttlib/container/iterator.c"],
+  "file": "src/ttlib/container/iterator.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/ttlib.c.o", "src/ttlib/ttlib.c"],
+  "file": "src/ttlib/ttlib.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/buffer/queue_buffer.c.o", "src/ttlib/buffer/queue_buffer.c"],
+  "file": "src/ttlib/buffer/queue_buffer.c"
+},
+{
+  "directory": "/Users/yangmengyun/Desktop/codes/ttlib-master",
+  "arguments": ["/usr/bin/xcrun -sdk macosx clang", "-c", "-Qunused-arguments", "-arch", "x86_64", "-m64", "-IF:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include", "-I/usr/local/include", "-I/usr/include", "-o", "build/.objs/ttlib/macosx/x86_64/src/ttlib/buffer/circular_buffer.c.o", "src/ttlib/buffer/circular_buffer.c"],
+  "file": "src/ttlib/buffer/circular_buffer.c"
+}]
