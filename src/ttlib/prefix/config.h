@@ -20,7 +20,7 @@
 #endif
 
 /// debug
-#define __tt_debug__          1
+#define __tt_debug__           1
 
 /// platform
 #if 1
@@ -32,7 +32,8 @@
 #endif
 
 /// gcc complie
-#define TT_COMPILER_IS_GCC     0
+#define TT_COMPILER_IS_GCC      1 
+#define TT_COMPILER_IS_MSVC     0 
 
 /// endian
 //#define TT_WORD_BIGENDIAN

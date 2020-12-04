@@ -15,15 +15,15 @@
  */
 #include "prefix.h"
 
-#define  POSIX             1
-#define  NO_POSIX          0
+#define  TT_POSIX             1
+#define  TT_POSIX_NO          0
 
-#if defined(POSIX) && POSIX
+#if defined(TT_POSIX) && TT_POSIX
 #   include "pthread.h"
 typedef pthread_mutex_t    tt_mutex_t;
 typedef pthread_mutex_t*   tt_mutex_ref_t;
 
-#else if defined(NO_POSIX) && NO_POSIX
+#elif defined(TT_POSIX_NO) && TT_POSIX_NO
 typedef tt_int32_t         tt_mutex_t;
 typedef tt_int32_t*        tt_mutex_ref_t;
 

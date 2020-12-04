@@ -11,7 +11,8 @@
  * includes
  */
 #include "native_memcpy.h"
-#include "stdio.h"
+#include <stdio.h>
+#include <string.h>
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * interfaces

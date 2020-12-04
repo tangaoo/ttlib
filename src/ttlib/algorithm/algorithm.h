@@ -16,5 +16,6 @@
 #include "for.h"
 #include "for_if.h"
 #include "binary_find_if.h"
+#include "binary_find.h"
 
 #endif

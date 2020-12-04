@@ -87,7 +87,7 @@ tt_pointer_t tt_iterator_item(tt_iterator_ref_t iterator, tt_size_t itor)
 	return iterator->op->item(iterator, itor);
 }
 
-tt_int32_t tt_iterator_comp(tt_iterator_ref_t iterator, tt_cpointer_t litem, tt_cpointer_t ritem)
+tt_long_t tt_iterator_comp(tt_iterator_ref_t iterator, tt_cpointer_t litem, tt_cpointer_t ritem)
 {
 	/// check
 	tt_assert(iterator && iterator->op && iterator->op->comp);

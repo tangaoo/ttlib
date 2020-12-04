@@ -39,6 +39,7 @@ static __inline tt_size_t tt_bits_cl0_u32_le_inline(tt_uint32_t x)
 
     return n;
 }
+#if 0
 static __inline tt_size_t tt_bits_cl0_u64_be_inline(tt_uint64_t x)
 {
     tt_check_return_val(x, 64);
@@ -57,5 +58,6 @@ static __inline tt_size_t tt_bits_cl0_u64_le_inline(tt_uint64_t x)
 
     return n;
 }
+#endif
 
 #endif

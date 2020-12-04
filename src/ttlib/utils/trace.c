@@ -17,7 +17,7 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-#define snprintf _snprintf   // >=C99 support 'snprintf'
+//#define snprintf _snprintf   // >=C99 support 'snprintf'
 #define TT_TRACE_LINE_SIZE      1024
 
 /*//////////////////////////////////////////////////////////////////////////////////////
@@ -85,7 +85,7 @@ tt_void_t tt_trace_done_with_args(tt_char_t const* prefix, tt_char_t const* modu
 		e[-1] = '\0';
 
 		// deal it
-		if (g_trace_mode == TT_TRACE_MODE_PRINT) printf(s);	
+		if (g_trace_mode == TT_TRACE_MODE_PRINT) printf("%s", s);	
 
 	} while (0);
 
@@ -98,7 +98,7 @@ tt_void_t tt_trace_done(tt_char_t const* prefix, tt_char_t const* module, tt_cha
 {
 	//check format
 
-	va_list args = tt_null;
+	va_list args;
 	va_start(args, format);
 
 	tt_trace_done_with_args(prefix, module, format, args);

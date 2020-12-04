@@ -13,7 +13,7 @@
 #include "mutex.h"
 
 
-#if defined(POSIX) && POSIX
+#if defined(TT_POSIX) && TT_POSIX
 /* //////////////////////////////////////////////////////////////////////////////////////
  * private interfaces
  */
@@ -91,7 +91,7 @@ tt_bool_t tt_mutex_leave(tt_mutex_ref_t mutex)
     return pthread_mutex_unlock((pthread_mutex_t*)mutex) == 0 ? tt_true : tt_false;
 }
 
-#else if defined(NO_POSIX) && NO_POSIX
+#elif defined(TT_POSIX_NO) && TT_POSIX_NO
 /* //////////////////////////////////////////////////////////////////////////////////////
  * interfaces
  */

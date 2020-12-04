@@ -184,7 +184,7 @@ tt_pointer_t        tt_iterator_item(tt_iterator_ref_t iterator, tt_size_t itor)
 *
 * @return          =: 0, >: 1, <: -1
 */
-tt_int32_t          tt_iterator_comp(tt_iterator_ref_t iterator, tt_cpointer_t litem, tt_cpointer_t ritem);
+tt_long_t          tt_iterator_comp(tt_iterator_ref_t iterator, tt_cpointer_t litem, tt_cpointer_t ritem);
 
 /*! copy the iterator item
 *

@@ -6,6 +6,7 @@
  * @date       2020-11-19 
  * @brief      memoryPool.c file
  */
+#if 0
 
 #include "memoryPool.h"
 
@@ -73,5 +74,5 @@ unsigned char MemFree(tMemoryPool *pMemPool, void *addr)
 	return 0;
 }
 
-
+#endif
 

@@ -24,6 +24,7 @@ extern tt_void_t tt_demo_list_entry_main(tt_void_t);
 extern tt_void_t demo_crc8_main(tt_void_t);
 extern tt_void_t tt_demo_queue_entry_main(tt_void_t);
 extern tt_void_t tt_demo_static_fixed_pool(tt_void_t);
+extern tt_void_t demo_utils_dump(tt_void_t);
 
 
 
@@ -81,7 +82,7 @@ int main(void)
 	return 0;
 }
 
-#else if
+#else
 
 #include <stdio.h>
 #include <pthread.h>

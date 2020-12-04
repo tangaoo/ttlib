@@ -23,9 +23,9 @@ tt_void_t demo_circular_buffer_full(tt_void_t)
 	tt_circular_buffer_init(&s_cb, buffer, sizeof(buffer));
 
 	/// write full
-	tt_circular_buffer_writ(&s_cb, in, strlen(in));
-	tt_circular_buffer_writ(&s_cb, in, strlen(in));
-	tt_circular_buffer_writ(&s_cb, in, strlen(in));
+	tt_circular_buffer_writ(&s_cb, in, strlen((tt_char_t*)in));
+	tt_circular_buffer_writ(&s_cb, in, strlen((tt_char_t*)in));
+	tt_circular_buffer_writ(&s_cb, in, strlen((tt_char_t*)in));
 
 	tt_circular_buffer_exit(&s_cb);
 }
@@ -38,9 +38,9 @@ tt_void_t demo_circular_buffer_empty(tt_void_t)
 	tt_circular_buffer_init(&s_cb, buffer, sizeof(buffer));
 
 	/// write full
-	tt_circular_buffer_writ(&s_cb, in, strlen(in));
-	tt_circular_buffer_writ(&s_cb, in, strlen(in));
-	tt_circular_buffer_writ(&s_cb, in, strlen(in));
+	tt_circular_buffer_writ(&s_cb, in, strlen((tt_char_t*)in));
+	tt_circular_buffer_writ(&s_cb, in, strlen((tt_char_t*)in));
+	tt_circular_buffer_writ(&s_cb, in, strlen((tt_char_t*)in));
 
 	/// read empty
 	tt_circular_buffer_read(&s_cb, out, sizeof(out));
@@ -101,7 +101,7 @@ tt_void_t demo_circular_buffer_write_cover(tt_void_t)
 	memset(buffer, 0, sizeof(buffer));
 
 	tt_circular_buffer_init(&s_cb, buffer, sizeof(buffer));
-	tt_circular_buffer_writ_cover(&s_cb, "AAAAAAA", 7);
+	tt_circular_buffer_writ_cover(&s_cb, (tt_byte_t*)"AAAAAAA", 7);
 	tt_circular_buffer_writ_cover(&s_cb, cover, 10);
 
 	tt_circular_buffer_exit(&s_cb);

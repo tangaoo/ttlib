@@ -14,6 +14,7 @@
  * includes
  */
 #include "static_fixed_pool.h"
+#include "../../platform/platform.h"
 
 /*//////////////////////////////////////////////////////////////////////////////////////
  * macros
@@ -28,7 +29,7 @@
 #   define tt_static_fixed_pool_used_set0(used, i)          do { (used)[i >> 3] &= ~(0x01 << ((i) & 7)); } while(0)
 
 //  the index have been allocated?
-#   define tt_static_fixed_pool_used_bset(used, i)          ((used)[i >> 3] & (0x01 << ((i) & 7)))
+#   define tt_static_fixed_pool_used_bset(used, i)          ((used)[(i) >> 3] & (0x01 << ((i) & 7)))
 
 //  find the first bit freed
 #   define tt_static_fixed_pool_find_first(v)               tt_bits_cl0_u32_le_inline(~(v))
@@ -42,7 +43,7 @@
  */
 
 // the static fixed pool type
-typedef __declspec(align(TT_CPU_BITBYTE)) struct __tt_static_fixed_pool_t
+typedef __tt_aligned__(TT_CPU_BITBYTE) struct __tt_static_fixed_pool_t
 {
     // the read data addr after the used_info info
     tt_byte_t*             data;
@@ -77,7 +78,7 @@ typedef __declspec(align(TT_CPU_BITBYTE)) struct __tt_static_fixed_pool_t
     // for small alloctor?
     tt_uint16_t            for_small;
     
-} tt_static_fixed_pool_t;
+} __tt_aligned__(TT_CPU_BITBYTE) tt_static_fixed_pool_t;
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * private implementation
