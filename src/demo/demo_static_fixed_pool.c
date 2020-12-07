@@ -5,7 +5,7 @@
 
 tt_byte_t g_buffer[1000] = {0};
 
-tt_void_t tt_demo_static_fixed_pool(tt_void_t)
+tt_void_t tt_demo_static_fixed_pool_main(tt_void_t)
 {
 	tt_static_fixed_pool_ref_t pool = tt_null;
 

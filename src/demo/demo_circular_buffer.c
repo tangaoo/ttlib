@@ -107,7 +107,7 @@ tt_void_t demo_circular_buffer_write_cover(tt_void_t)
 	tt_circular_buffer_exit(&s_cb);
 }
 
-tt_void_t demo_circular_buffer(tt_void_t)
+tt_void_t tt_demo_circular_buffer_main(tt_void_t)
 {
 	demo_circular_buffer_full();
 	demo_circular_buffer_empty();

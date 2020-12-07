@@ -21,7 +21,7 @@
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
  */
-tt_void_t demo_utils_dump(tt_void_t)
+tt_void_t tt_demo_utils_dump_main(tt_void_t)
 {
     tt_trace_raw("\n");
     tt_trace_d("----------------------- demo_utils_dump");

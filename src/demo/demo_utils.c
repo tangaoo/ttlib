@@ -18,7 +18,7 @@
 */
 #include "ttlib.h"
 
-tt_uint32_t demo_utils_main(tt_void_t)
+tt_uint32_t tt_demo_utils_main(tt_void_t)
 {
 	tt_trace_d("***********demo_utils***********");
 
@@ -62,7 +62,7 @@ tt_uint32_t demo_utils_main(tt_void_t)
 	return tt_true;
 }
 
-tt_void_t demo_crc8_main(tt_void_t)
+tt_void_t tt_demo_crc8_main(tt_void_t)
 {
 	tt_uint8_t crcVal;
 	tt_char_t *str = "hello, world";
