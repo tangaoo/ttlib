@@ -5,6 +5,7 @@ add_rules("mode.debug", "mode.release")
 target("ttlib")
     set_kind("static")
     add_files("src/ttlib/**.c")
+    add_headerfiles("src/(ttlib/**.h)")
 
     -- set third party lib
     -- add_includedirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include")
