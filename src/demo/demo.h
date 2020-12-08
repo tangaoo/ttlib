@@ -14,25 +14,25 @@
  * includes
  */
 #include "ttlib.h"
-#include "utils/demo_utils_mix.h"
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * macros
  */
-#define TT_DEMO_DECL(name) tt_int_t tt_demo_##name##_main(tt_int_t argc, tt_char_t** argv) 
+#define TT_DEMO_MAIN_DECL(name) tt_int_t tt_demo_##name##_main(tt_int_t argc, tt_char_t** argv) 
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * extern
  */
 __tt_extern_c_enter__
 
-TT_DEMO_DECL(utils);
-TT_DEMO_DECL(circular_buffer);
-TT_DEMO_DECL(single_list_entry);
-TT_DEMO_DECL(crc8);
-TT_DEMO_DECL(queue_entry);
-TT_DEMO_DECL(static_fixed_pool);
-TT_DEMO_DECL(utils_dump);
+TT_DEMO_MAIN_DECL(utils);
+TT_DEMO_MAIN_DECL(utils_dump);
+TT_DEMO_MAIN_DECL(utils_mix);
+TT_DEMO_MAIN_DECL(circular_buffer);
+TT_DEMO_MAIN_DECL(single_list_entry);
+TT_DEMO_MAIN_DECL(crc8);
+TT_DEMO_MAIN_DECL(queue_entry);
+TT_DEMO_MAIN_DECL(static_fixed_pool);
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * extern

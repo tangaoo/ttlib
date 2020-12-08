@@ -12,7 +12,7 @@
 /* //////////////////////////////////////////////////////////////////////////////////////
  * interfaces
  */
-tt_void_t demo_utils_mix(tt_void_t)
+tt_void_t tt_demo_utils_mix_main(tt_void_t)
 {
     tt_trace_raw("\n");
     tt_trace_d("----------------------- demo_utils_mix");
@@ -21,4 +21,7 @@ tt_void_t demo_utils_mix(tt_void_t)
         tt_trace_d("env is little endian");
     else
         tt_trace_d("env is big endian");
+    
+    // sizeof tt_size_t
+    tt_trace_i("%d", sizeof(tt_size_t));
 }
