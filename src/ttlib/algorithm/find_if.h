@@ -38,7 +38,7 @@ __tt_extern_c_enter__
  *
  * @return             tt_true or tt_false
  */
-tt_bool_t            tt_find_if(tt_iterator_ref_t iterator, tt_size_t head, tt_size_t tail, tt_predicate_func_t pred, tt_cpointer_t data);
+tt_size_t              tt_find_if(tt_iterator_ref_t iterator, tt_size_t head, tt_size_t tail, tt_predicate_func_t pred, tt_cpointer_t data);
 
 
 /*! find the all item if pred
@@ -49,7 +49,8 @@ tt_bool_t            tt_find_if(tt_iterator_ref_t iterator, tt_size_t head, tt_s
  *
  * @return             tt_true or tt_false
  */
-tt_bool_t            tt_find_if(tt_iterator_ref_t iterator, tt_predicate_func_t pred, tt_cpointer_t data);
+tt_size_t              tt_find_all_if(tt_iterator_ref_t iterator, tt_predicate_func_t pred, tt_cpointer_t data);
+
 /* //////////////////////////////////////////////////////////////////////////////////////
  * extern
  */
