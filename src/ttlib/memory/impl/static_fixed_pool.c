@@ -23,16 +23,16 @@
 
 #else
 //  allocate the index
-#   define tt_static_fixed_pool_used_set1(used, i)          do { (used)[i >> 3] |= (0x01 << ((i) & 7)); } while(0)
+#   define tt_static_fixed_pool_used_set1(used, i)       do { (used)[i >> 3] |= (0x01 << ((i) & 7)); } while(0)
 
 //  free the index
-#   define tt_static_fixed_pool_used_set0(used, i)          do { (used)[i >> 3] &= ~(0x01 << ((i) & 7)); } while(0)
+#   define tt_static_fixed_pool_used_set0(used, i)       do { (used)[i >> 3] &= ~(0x01 << ((i) & 7)); } while(0)
 
 //  the index have been allocated?
-#   define tt_static_fixed_pool_used_bset(used, i)          ((used)[(i) >> 3] & (0x01 << ((i) & 7)))
+#   define tt_static_fixed_pool_used_bset(used, i)       ((used)[(i) >> 3] & (0x01 << ((i) & 7)))
 
 //  find the first bit freed
-#   define tt_static_fixed_pool_find_first(v)               tt_bits_cl0_u32_le_inline(~(v))
+#   define tt_static_fixed_pool_find_first(v)            tt_bits_fb0_le(~(v))
 #endif
 
 //  cached the predicted index

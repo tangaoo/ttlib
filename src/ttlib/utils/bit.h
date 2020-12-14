@@ -11,6 +11,11 @@
 #define TT_UTILS_BIT_H
 
 /* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
+#include "prefix.h"
+
+/* //////////////////////////////////////////////////////////////////////////////////////
  * cl0
  */
 static __inline tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
@@ -39,13 +44,12 @@ static __inline tt_size_t tt_bits_cl0_u32_le_inline(tt_uint32_t x)
 
     return n;
 }
-#if 0
 static __inline tt_size_t tt_bits_cl0_u64_be_inline(tt_uint64_t x)
 {
     tt_check_return_val(x, 64);
 
-    tt_size_t n = tt_bits_cl0_u32_be((tt_uint32_t)(x >> 32));
-    if (n == 32) n += tt_bits_cl0_u32_be((tt_uint32_t)x);
+    tt_size_t n = tt_bits_cl0_u32_be_inline((tt_uint32_t)(x >> 32));
+    if (n == 32) n += tt_bits_cl0_u32_be_inline((tt_uint32_t)x);
 
     return n;
 }
@@ -53,11 +57,16 @@ static __inline tt_size_t tt_bits_cl0_u64_le_inline(tt_uint64_t x)
 {
     tt_check_return_val(x, 64);
 
-    tt_size_t n = tt_bits_cl0_u32_le((tt_uint32_t)x);
-    if (n == 32) n += tt_bits_cl0_u32_le((tt_uint32_t)(x >> 32));
+    tt_size_t n = tt_bits_cl0_u32_le_inline((tt_uint32_t)x);
+    if (n == 32) n += tt_bits_cl0_u32_le_inline((tt_uint32_t)(x >> 32));
 
     return n;
 }
+
+#if (TT_CPU_BITSIZE == 32)
+#   define tt_bits_fb0_le(x)   tt_bits_cl0_u32_le_inline(x)
+#else
+#   define tt_bits_fb0_le(x)   tt_bits_cl0_u64_le_inline(x)
 #endif
 
 #endif

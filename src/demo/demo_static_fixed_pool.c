@@ -59,6 +59,7 @@ tt_void_t tt_demo_static_fixed_pool_main(tt_void_t)
 		// data[i] = tt_static_fixed_pool_malloc(pool __tt_debug_val__);
 		// tt_trace_d("%d, data,%p", i, data[i]);	
 
+		tt_trace_d("free------------------------");
 		// free it
 		for(i = 0; i < maxn; i++)
 		{
@@ -66,7 +67,7 @@ tt_void_t tt_demo_static_fixed_pool_main(tt_void_t)
 			tt_static_fixed_pool_free(pool, data[i] __tt_debug_val__);
 		}
 		// free error
-		tt_static_fixed_pool_free(pool, data[i] __tt_debug_val__);
+		//tt_static_fixed_pool_free(pool, data[i] __tt_debug_val__);
 
 	    if (pool) tt_static_fixed_pool_exit(pool);
 		
