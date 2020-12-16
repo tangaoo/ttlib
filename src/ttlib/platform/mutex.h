@@ -15,8 +15,8 @@
  */
 #include "prefix.h"
 
-#define  TT_POSIX             1
-#define  TT_POSIX_NO          0
+#define  TT_POSIX             0
+#define  TT_POSIX_NO          1
 
 #if defined(TT_POSIX) && TT_POSIX
 #   include "pthread.h"
