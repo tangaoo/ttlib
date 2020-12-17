@@ -44,9 +44,9 @@
 #	define __tt_debug_val__ 
 #endif
 
-#if TT_COMPILER_IS_GCC
+#if defined(TT_COMPILER_IS_GCC)
 #   define __tt_aligned__(a)                    __attribute__((aligned(a)))
-#elif TT_COMPILER_IS_MSVC
+#elif defined(TT_COMPILER_IS_MSVC)
 #   define __tt_aligned__(a)                    __declspec(align(a))
 #endif
 

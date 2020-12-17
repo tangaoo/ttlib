@@ -76,14 +76,14 @@
 // #define tt_align_pow2(x)                (((x) > 1)? (tt_ispow2(x)? (x) : ((tt_size_t)1 << (32 - tt_bits_cl0_u32_be_inline((tt_uint32_t)(x))))) : 1)
 
 /// align by cpu
-#if TT_CPU_BIT_64
+#ifdef TT_CPU_BIT_64
 #   define tb_align_cpu(x)              tb_align8(x)
 #else
 #   define tb_align_cpu(x)              tb_align4(x)
 #endif
 
 /// offsetof
-#if TT_COMPILER_IS_GCC   
+#if defined(TT_COMPILER_IS_GCC)
 #   define tt_offsetof(s, m)            (tt_size_t)__builtin_offsetof(s, m)
 #else
 #   define tt_offsetof(s, m)            (tt_size_t)&(((s const*)0)->m)

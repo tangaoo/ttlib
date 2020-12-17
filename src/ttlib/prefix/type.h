@@ -15,6 +15,7 @@
 */
 #include <stdio.h>
 #include "config.h"
+#include "cpu.h"
 #include "keyword.h"
 
 /*//////////////////////////////////////////////////////////////////////////////////////
@@ -37,7 +38,7 @@
 #	define tt_noarg_t                              tt_void_t
 #endif
 
-#if defined TT_WIN_MSVC
+#if defined(TT_COMPILER_IS_MSVC) || defined(TT_COMPILER_IS_GCC) || defined(TT_COMPILER_IS_CLANG)
 /*//////////////////////////////////////////////////////////////////////////////////////
 * type
 */
@@ -64,7 +65,7 @@ typedef tt_void_t const *                          tt_cpointer_t;
 typedef tt_pointer_t                               tt_handle_t;
 
 /// long and size
-#	if defined(TT_WIN_MSVC) && TT_CPU_BIT_64
+#	if defined(TT_COMPILER_IS_MSVC) && defined(TT_CPU_BIT_64)
 typedef tt_int64_t                                 tt_long_t;
 typedef tt_uint64_t                                tt_ulong_t;
 #	else
@@ -75,7 +76,7 @@ typedef tt_ulong_t                                 tt_size_t;
 
 
 
-#elif (defined TT_DSP)
+#elif defined(TT_COMPILER_IS_DSP) 
 
 typedef signed char                                tt_int8_t;
 typedef unsigned char                              tt_uint8_t;
