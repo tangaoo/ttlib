@@ -11,6 +11,7 @@ target("ttlib")
     -- add_includedirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include")
     -- add_linkdirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\lib\\x86")
     -- add_links("pthreadVC2")
+    add_syslinks("pthread")
     
     
 
