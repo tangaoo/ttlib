@@ -27,7 +27,7 @@ tt_bool_t tt_lib_init(tt_handle_t priv, tt_allocator_ref_t allocator)
 		if(!tt_trace_init()) break;
 
 		/// the memory init
-		// if(!tt_memory_env_init(allocator)) break;
+		if(!tt_memory_env_init(allocator)) break;
 
 		tt_trace_d("ttlib init success!");
 		ret = tt_true;		
