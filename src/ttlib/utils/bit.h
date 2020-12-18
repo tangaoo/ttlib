@@ -16,9 +16,26 @@
 #include "prefix.h"
 
 /* //////////////////////////////////////////////////////////////////////////////////////
+ * macros
+ */
+
+// val=target variable, pos=bit number to act upon 0-n
+#define TT_BIT_SET(val, pos)                 ((val) |= (1ULL<<(pos)))
+#define TT_BIT_CLEAR(val, pos)               ((val) &= ~(1ULL<<(pos)))
+#define TT_BIT_FLIP(val, pos)                ((val) ^= (1ULL<<(pos)))
+#define TT_BIT_CHECK(val, pos)               (!!((val) & (1ULL<<(pos))))  // '!!' to make sure this returns 0 or 1
+
+// x=target variable, y=mask 
+#define TT_BITMASK_SET(val, mask)            ((val) |= (mask))
+#define TT_BITMASK_CLEAR(val, mask)          ((val) &= (~(mask)))
+#define TT_BITMASK_FLIP(val, mask)           ((val) ^= (mask))
+#define TT_BITMASK_CHECK_ALL(val, mask)      (!(~(val) & (mask)))
+#define TT_BITMASK_CHECK_ANY(val, mask)      ((val) & (mask))
+
+/* //////////////////////////////////////////////////////////////////////////////////////
  * cl0
  */
-static __inline tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
+static __tt_inline__ tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
 {
     tt_check_return_val(x, 32);
 
@@ -31,7 +48,7 @@ static __inline tt_size_t tt_bits_cl0_u32_be_inline(tt_uint32_t x)
 
     return n;
 }
-static __inline tt_size_t tt_bits_cl0_u32_le_inline(tt_uint32_t x)
+static __tt_inline__ tt_size_t tt_bits_cl0_u32_le_inline(tt_uint32_t x)
 {
     tt_check_return_val(x, 32);
 
@@ -44,7 +61,7 @@ static __inline tt_size_t tt_bits_cl0_u32_le_inline(tt_uint32_t x)
 
     return n;
 }
-static __inline tt_size_t tt_bits_cl0_u64_be_inline(tt_uint64_t x)
+static __tt_inline__ tt_size_t tt_bits_cl0_u64_be_inline(tt_uint64_t x)
 {
     tt_check_return_val(x, 64);
 
@@ -53,7 +70,7 @@ static __inline tt_size_t tt_bits_cl0_u64_be_inline(tt_uint64_t x)
 
     return n;
 }
-static __inline tt_size_t tt_bits_cl0_u64_le_inline(tt_uint64_t x)
+static __tt_inline__ tt_size_t tt_bits_cl0_u64_le_inline(tt_uint64_t x)
 {
     tt_check_return_val(x, 64);
 

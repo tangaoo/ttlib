@@ -23,7 +23,7 @@
 #elif defined(_MSC_VER)
 #   define TT_COMPILER_IS_MSVC
 // c6000 dsp
-#elif defined(_DSP) // TODO, need check
+#elif defined(_TMS320C6X) 
 #   define TT_COMPILER_IS_DSP
 // unkonwn
 #else

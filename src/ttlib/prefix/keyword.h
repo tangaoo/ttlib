@@ -32,7 +32,6 @@
 #define __tt_file__                                   __FILE__
 #define __tt_line__                                   __LINE__
 #define __tt_new_line__                               "\n"
-#define __tt_inline__                                 __inline
 
 #if __tt_debug__
 #	define __tt_debug_decl__                          , tt_char_t const* func_, tt_uint32_t line_, tt_char_t const* file_
@@ -45,8 +44,10 @@
 #endif
 
 #if defined(TT_COMPILER_IS_GCC)
+#   define __tt_inline__                        __inline__
 #   define __tt_aligned__(a)                    __attribute__((aligned(a)))
 #elif defined(TT_COMPILER_IS_MSVC)
+#   define __tt_inline__                        __inline
 #   define __tt_aligned__(a)                    __declspec(align(a))
 #endif
 
