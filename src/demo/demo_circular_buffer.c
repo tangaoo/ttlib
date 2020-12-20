@@ -5,6 +5,7 @@
 #define TT_TRACE_MODULE_DEBUG         (1)
 
 #include "ttlib.h" 
+#include "color.h" 
 #include <string.h>
 
 #define BUFF_SIZE        8
@@ -109,6 +110,9 @@ tt_void_t demo_circular_buffer_write_cover(tt_void_t)
 
 tt_void_t tt_demo_circular_buffer_main(tt_void_t)
 {
+	// print title
+	tt_print_title("demo circular buffer");
+
 	demo_circular_buffer_full();
 	demo_circular_buffer_empty();
 	demo_circular_buffer_writ_slow();

@@ -10,7 +10,7 @@
                 "UNICODE",
                 "_UNICODE"
             ],
-            "compilerPath": "C:\\TDM-GCC-64\\bin\\gcc.exe",
+            "compilerPath": "/usr/bin/clang",
             "cStandard": "gnu11",
             "cppStandard": "c++17",
             "intelliSenseMode": "gcc-x64"

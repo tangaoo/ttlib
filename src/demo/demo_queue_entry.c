@@ -14,6 +14,7 @@
  * includes
  */
 #include "ttlib.h"
+#include "color.h" 
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * types
@@ -34,6 +35,9 @@ tt_queue_entry_head_t q = {0};
 
 tt_void_t tt_demo_queue_entry_main(tt_void_t)
 {
+	// print title
+	tt_print_title("demo queue entry");
+
     tt_demo_queue_entry_ref_t queue_tmp = tt_null;
     /// init queue
     tt_queue_entry_init(&q, tt_demo_queue_entry_t, entry);

@@ -8,14 +8,15 @@
  * includes
  */
 #include "ttlib.h" 
+#include "../color.h" 
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * interfaces
  */
 tt_void_t tt_demo_utils_mix_main(tt_void_t)
 {
-    tt_trace_raw("\n");
-    tt_trace_d("----------------------- demo_utils_mix");
+	// print title
+	tt_print_title("demo utils mix");
 
     if(tt_little_endian()) 
         tt_trace_d("env is little endian");

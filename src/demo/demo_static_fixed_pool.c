@@ -2,11 +2,15 @@
 * includes
 */
 #include "ttlib.h"
+#include "color.h" 
 
 tt_byte_t g_buffer[1000] = {0};
 
 tt_void_t tt_demo_static_fixed_pool_main(tt_void_t)
 {
+	// print title
+	tt_print_title("demo static fixed pool");
+
 	tt_static_fixed_pool_ref_t pool = tt_null;
 
 	// trace g_buffer

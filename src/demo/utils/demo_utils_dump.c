@@ -17,14 +17,15 @@
  * includes
  */
 #include "ttlib.h"
+#include "../color.h" 
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
  */
 tt_void_t tt_demo_utils_dump_main(tt_void_t)
 {
-    tt_trace_raw("\n");
-    tt_trace_d("----------------------- demo_utils_dump");
+	// print title
+	tt_print_title("demo utils dump");
 
     // memory_dump_test
 	do{

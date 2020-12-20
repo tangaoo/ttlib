@@ -2,6 +2,7 @@
 #define TT_TRACE_DEBUG          1
 
 #include "ttlib.h"
+#include "color.h" 
 
 typedef struct __tt_demo_list_entry_t{
 	tt_list_entry_t           entry;
@@ -33,6 +34,9 @@ static tt_demo_list_entry_t node[10] = {
 
 tt_void_t tt_demo_list_entry_main(tt_void_t)
 {
+	// print title
+	tt_print_title("demo list entry");
+
 	tt_list_entry_init(&g_list, tt_demo_list_entry_t, entry, tt_demo_entry_copy_t);
 
 	tt_size_t entry = 0;

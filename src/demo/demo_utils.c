@@ -17,10 +17,12 @@
 * includes
 */
 #include "ttlib.h"
+#include "color.h"
 
 tt_uint32_t tt_demo_utils_main(tt_void_t)
 {
-	tt_trace_d("***********demo_utils***********");
+	// print title
+	tt_print_title("demo utils");
 
 	tt_trace_d("-1 abs, %d", tt_abs(-1));
 	tt_trace_d("max(1, 2), %d", tt_max(1, 2));
@@ -64,6 +66,9 @@ tt_uint32_t tt_demo_utils_main(tt_void_t)
 
 tt_void_t tt_demo_crc8_main(tt_void_t)
 {
+	// print title
+	tt_print_title("demo crc8 main");
+
 	tt_uint8_t crcVal;
 	tt_char_t *str = "hello, world";
 

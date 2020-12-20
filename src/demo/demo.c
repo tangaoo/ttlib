@@ -50,8 +50,8 @@ static tt_demo_t g_demo[] = {
 	TT_DEMO_MAIN_ITEM(circular_buffer),
 	TT_DEMO_MAIN_ITEM(single_list_entry),
 	TT_DEMO_MAIN_ITEM(crc8),
-	// TT_DEMO_MAIN_ITEM(queue_entry),
-	// TT_DEMO_MAIN_ITEM(static_fixed_pool),
+	TT_DEMO_MAIN_ITEM(queue_entry),
+	TT_DEMO_MAIN_ITEM(static_fixed_pool),
 
 };
 
@@ -87,14 +87,17 @@ tt_int_t main(tt_int_t argc, tt_char_t** argv)
 	// not find
 	if(!name)
 	{
-		tt_trace_i("please check demo name!");	
-
 		tt_size_t i;
 		tt_size_t n = tt_arrayn(g_demo);
 
 		// done all
-		for(i = 0; i < n; i++) g_demo[i].main(argc - 1, argv - 1);
-
+		// for(i = 0; i < n; i++) g_demo[i].main(argc - 1, argv - 1);
+ 
+		// print usage
+		tt_trace_i("%s", "---------------------------------------");
+		tt_trace_i("|  please check demo name!            |");	
+		tt_trace_i("|  usage, xmake r ttlib_demo utils    |");
+		tt_trace_i("%s", "---------------------------------------");
 		// walk and prinf
 		for(i = 0; i < n; i++) tt_trace_i("%s", g_demo[i].name);
 	}
