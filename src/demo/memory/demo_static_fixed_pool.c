@@ -2,7 +2,7 @@
 * includes
 */
 #include "ttlib.h"
-#include "color.h" 
+#include "../color.h" 
 
 tt_byte_t g_buffer[1000] = {0};
 

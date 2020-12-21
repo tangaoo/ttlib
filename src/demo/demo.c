@@ -52,6 +52,7 @@ static tt_demo_t g_demo[] = {
 	TT_DEMO_MAIN_ITEM(crc8),
 	TT_DEMO_MAIN_ITEM(queue_entry),
 	TT_DEMO_MAIN_ITEM(static_fixed_pool),
+	TT_DEMO_MAIN_ITEM(fixed_pool),
 
 };
 
@@ -62,6 +63,10 @@ tt_int_t main(tt_int_t argc, tt_char_t** argv)
 #else
 #endif		
 	
+	// debug
+	argc = 2;
+	argv[1] = "fixed_pool";
+
 	// find the demo main
 	tt_int_t         ok;
 	tt_char_t const* name = tt_null;
@@ -70,6 +75,17 @@ tt_int_t main(tt_int_t argc, tt_char_t** argv)
 	{
 		tt_size_t i;
 		tt_size_t n = tt_arrayn(g_demo);
+
+		// done all demo
+		if(!strcmp(argv[1], "all"))
+		{
+			for(i = 0; i < n; i++) g_demo[i].main(argc - 1, argv - 1);
+
+			// save name
+			name = "all";
+		}
+
+		// done one
 		for(i = 0; i < n; i++)
 		{
 			if(g_demo[i].name && !strcmp(g_demo[i].name, argv[1])) 
@@ -104,5 +120,5 @@ tt_int_t main(tt_int_t argc, tt_char_t** argv)
 
 	// exit
 	tt_lib_exit();
-	return 0;
+	return ok;
 }

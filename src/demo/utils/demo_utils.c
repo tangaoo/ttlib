@@ -17,7 +17,7 @@
 * includes
 */
 #include "ttlib.h"
-#include "color.h"
+#include "../color.h"
 
 tt_uint32_t tt_demo_utils_main(tt_void_t)
 {

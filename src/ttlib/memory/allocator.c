@@ -8,6 +8,12 @@
  */
 
 /* //////////////////////////////////////////////////////////////////////////////////////
+ * trace
+ */
+#define TT_TRACE_MODULE_NAME          "ALLOCATOR"
+#define TT_TRACE_MODULE_DEBUG         (1)
+
+/* //////////////////////////////////////////////////////////////////////////////////////
  * includes
  */
 #include "allocator.h"
@@ -163,7 +169,7 @@ tt_pointer_t tt_allocator_large_malloc_(tt_allocator_ref_t allocator, tt_size_t 
         data = allocator->large_malloc(allocator, size, real __tt_debug_args__);
     else if(allocator->malloc)
     {
-        *real = size;
+        if(real) *real = size;
         data = allocator->malloc(allocator, size __tt_debug_args__);        
     }
 

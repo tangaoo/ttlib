@@ -28,7 +28,7 @@ __tt_extern_c_enter__
  */
 #define tt_fixed_pool_malloc(pool)          tt_fixed_pool_malloc_(pool __tt_debug_val__)
 #define tt_fixed_pool_malloc0(pool)         tt_fixed_pool_malloc0_(pool __tt_debug_val__)
-#define tt_fixed_pool_free(pool, item)      tt_fixed_pool_free(pool, (tt_pointer_t)item __tt_debug_val__)
+#define tt_fixed_pool_free(pool, item)      tt_fixed_pool_free_(pool, (tt_pointer_t)item __tt_debug_val__)
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * types

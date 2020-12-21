@@ -5,7 +5,7 @@
 #define TT_TRACE_MODULE_DEBUG         (1)
 
 #include "ttlib.h" 
-#include "color.h" 
+#include "../color.h" 
 #include <string.h>
 
 #define BUFF_SIZE        8

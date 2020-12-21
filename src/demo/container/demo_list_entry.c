@@ -2,7 +2,7 @@
 #define TT_TRACE_DEBUG          1
 
 #include "ttlib.h"
-#include "color.h" 
+#include "../color.h" 
 
 typedef struct __tt_demo_list_entry_t{
 	tt_list_entry_t           entry;
