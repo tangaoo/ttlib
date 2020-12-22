@@ -10,6 +10,12 @@
  */
 
 /* //////////////////////////////////////////////////////////////////////////////////////
+ * trace
+ */
+#define TT_TRACE_MODULE_NAME          "FIXED_POOL"
+#define TT_TRACE_MODULE_DEBUG         (1)
+
+/* //////////////////////////////////////////////////////////////////////////////////////
  * includes
  */
 #include "fixed_pool.h"
@@ -123,7 +129,7 @@ static tt_void_t tt_fixed_pool_slot_exit(tt_fixed_pool_t* pool, tt_fixed_pool_sl
     tt_size_t itor = tt_binary_find_all(iterator, (tt_cpointer_t)slot); //TODO need 
     tt_assert_and_check_return(itor != tt_iterator_tail(iterator) && itor < pool->slot_count && pool->slot_list[itor]);
 
-    // remove the slot
+    // remove the slot, just del a item of array, and move array
     if(itor < pool->slot_count-1) tt_memmov(pool->slot_list + itor, pool->slot_list + itor + 1, (pool->slot_count - itor - 1) * sizeof(tt_fixed_pool_slot_t*));
 
     // update the slot count
@@ -250,10 +256,13 @@ static tt_fixed_pool_slot_t* tt_fixed_pool_slot_find(tt_fixed_pool_t* pool, tt_p
     tt_iterator_ref_t   iterator = tt_iterator_array_init_ptr(&iterator_array, (tt_pointer_t*)pool->slot_list, pool->slot_count);
     tt_assert(iterator);
 
+    tt_trace_d("+");
     // find it
     tt_size_t itor = tt_binary_find_all_if(iterator, tt_fixed_pool_slot_comp, data);
     tt_check_return_val(itor != tt_iterator_tail(iterator), tt_null);
 
+    tt_trace_d("-");
+    
     // the slot
     tt_fixed_pool_slot_t* slot = pool->slot_list[itor];
     tt_assert_and_check_return_val(slot, tt_null);
@@ -473,12 +482,12 @@ tt_pointer_t tt_fixed_pool_malloc_(tt_fixed_pool_ref_t self __tt_debug_decl__)
                 tt_list_entry_remove(&pool->partial_slots, entry);
             }
             // make a new slot
-            else tt_fixed_pool_slot_init(pool);
+            else pool->current_slots = tt_fixed_pool_slot_init(pool);
         }
 
         // check
         tt_assert_and_check_break(pool->current_slots && pool->current_slots->pool);
-        tt_assert_and_check_break(tt_static_fixed_pool_full(pool->current_slots->pool));
+        tt_assert_and_check_break(!tt_static_fixed_pool_full(pool->current_slots->pool));
 
         // make data from current slots
         data = tt_static_fixed_pool_malloc(pool->current_slots->pool __tt_debug_args__);

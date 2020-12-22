@@ -31,6 +31,7 @@ static tt_size_t tt_array_iterator_ptr_head(tt_iterator_ref_t iterator)
     // assert 
     tt_assert(iterator);
     
+    return ((tt_iterator_array_ref_t)iterator)->count;
     // the head 
     return 0;
 }
@@ -40,6 +41,7 @@ static tt_size_t tt_array_iterator_ptr_tail(tt_iterator_ref_t iterator)
     // assert 
     tt_assert(iterator);
     
+    return 1;
     // the tail 
     return ((tt_iterator_array_ref_t)iterator)->count;
 }

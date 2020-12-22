@@ -18,7 +18,7 @@ tt_void_t tt_demo_utils_mix_main(tt_void_t)
 	// print title
 	tt_print_title("demo utils mix");
 
-    if(tt_little_endian()) 
+    if(tt_little_endian() == TT_LITTLE_ENDIAN) 
         tt_trace_d("env is little endian");
     else
         tt_trace_d("env is big endian");

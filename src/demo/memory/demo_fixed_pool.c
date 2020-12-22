@@ -12,7 +12,7 @@
 /* //////////////////////////////////////////////////////////////////////////////////////
  * trace
  */
-#define TT_TRACE_MODULE_NAME          "FIXED_POOL"
+#define TT_TRACE_MODULE_NAME          "DEMO_FIXED_POOL"
 #define TT_TRACE_MODULE_DEBUG         (1)
 
 /* //////////////////////////////////////////////////////////////////////////////////////
@@ -24,7 +24,7 @@
 tt_void_t tt_demo_fixed_pool_main(tt_void_t)
 {
     // init fixed pool
-    tt_static_fixed_pool_ref_t pool = tt_fixed_pool_init(tt_null, 100, 100, tt_null, tt_null, tt_null);
+    tt_fixed_pool_ref_t pool = tt_fixed_pool_init(tt_null, 0, sizeof(tt_int_t), tt_null, tt_null, tt_null);
 
     // malloc 
     tt_pointer_t p1 = tt_fixed_pool_malloc(pool);
