@@ -17,7 +17,10 @@
 #include <stdio.h>
 #include <stdarg.h>
 
-//#define snprintf _snprintf   // >=C99 support 'snprintf'
+#ifdef TT_COMPILER_IS_MSVC
+#	define snprintf _snprintf   // >=C99 support 'snprintf'
+#endif
+
 #define TT_TRACE_LINE_SIZE      1024
 
 /*//////////////////////////////////////////////////////////////////////////////////////

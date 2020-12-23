@@ -256,13 +256,10 @@ static tt_fixed_pool_slot_t* tt_fixed_pool_slot_find(tt_fixed_pool_t* pool, tt_p
     tt_iterator_ref_t   iterator = tt_iterator_array_init_ptr(&iterator_array, (tt_pointer_t*)pool->slot_list, pool->slot_count);
     tt_assert(iterator);
 
-    tt_trace_d("+");
     // find it
     tt_size_t itor = tt_binary_find_all_if(iterator, tt_fixed_pool_slot_comp, data);
     tt_check_return_val(itor != tt_iterator_tail(iterator), tt_null);
 
-    tt_trace_d("-");
-    
     // the slot
     tt_fixed_pool_slot_t* slot = pool->slot_list[itor];
     tt_assert_and_check_return_val(slot, tt_null);

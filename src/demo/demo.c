@@ -64,8 +64,8 @@ tt_int_t main(tt_int_t argc, tt_char_t** argv)
 #endif		
 	
 	// debug
-	argc = 2;
-	argv[1] = "fixed_pool";
+	// argc = 2;
+	// argv[1] = "fixed_pool";
 
 	// find the demo main
 	tt_int_t         ok;
@@ -120,5 +120,6 @@ tt_int_t main(tt_int_t argc, tt_char_t** argv)
 
 	// exit
 	tt_lib_exit();
-	return ok;
+	// return ok;
+	return 0;
 }

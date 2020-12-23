@@ -34,6 +34,6 @@ tt_void_t tt_demo_fixed_pool_main(tt_void_t)
     tt_trace_d("%p, %p", p1, p2);
 
     tt_fixed_pool_free(pool, p1);
-    tt_fixed_pool_free(pool, p1);
+    tt_fixed_pool_free(pool, p2);
 
 }

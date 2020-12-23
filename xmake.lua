@@ -7,13 +7,17 @@ target("ttlib")
     add_files("src/ttlib/**.c")
     add_headerfiles("src/(ttlib/**.h)")
 
+    if is_plat("windows") then
     -- set third party lib
-    -- add_includedirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include")
-    -- add_linkdirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\lib\\x86")
-    -- add_links("pthreadVC2")
-    add_syslinks("pthread")
-    
-    
+        add_includedirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\include")
+        add_linkdirs("F:\\work\\tool\\pthreads-w32-2-9-1-release\\Pre-built.2\\lib\\x86")
+        add_links("pthreadVC2")
+    end
+
+    if is_plat("linux", "macosx") then
+        add_syslinks("pthread")
+    end
+
 
 target("ttlib_demo")
     set_kind("binary")
