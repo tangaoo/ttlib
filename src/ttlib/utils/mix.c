@@ -15,7 +15,7 @@
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
  */
-tt_bool_t tt_little_endian(tt_void_t)
+tt_int_t tt_little_endian(tt_void_t)
 {
     tt_uint16_t data   = 0x1234;
     tt_byte_t const* p = (tt_byte_t const*)&data;

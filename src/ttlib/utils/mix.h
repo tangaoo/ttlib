@@ -35,9 +35,9 @@ typedef enum {
  *
  * @param             void 
  *
- * @return            tt_true or tt_false 
+ * @return            TT_LITTLE_ENDIA or TT_BIG_ENDIAN
  */
-tt_bool_t tt_little_endian(tt_void_t);
+tt_int_t tt_little_endian(tt_void_t);
 
 
 #endif
