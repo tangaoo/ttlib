@@ -110,10 +110,10 @@ tt_int_t main(tt_int_t argc, tt_char_t** argv)
 		// for(i = 0; i < n; i++) g_demo[i].main(argc - 1, argv - 1);
  
 		// print usage
-		tt_trace_i("%s", "---------------------------------------");
+		tt_trace_i("%s", "+-------------------------------------+");
 		tt_trace_i("|  please check demo name!            |");	
 		tt_trace_i("|  usage, xmake r ttlib_demo utils    |");
-		tt_trace_i("%s", "---------------------------------------");
+		tt_trace_i("%s", "+-------------------------------------+");
 		// walk and prinf
 		for(i = 0; i < n; i++) tt_trace_i("%s", g_demo[i].name);
 	}

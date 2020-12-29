@@ -38,7 +38,7 @@ tt_void_t tt_demo_static_fixed_pool_main(tt_void_t)
 	do{
 		tt_trace_d("----------------------");
 		// init pool
-		pool = tt_static_fixed_pool_init(g_buffer, sizeof(g_buffer), 8, tt_false);
+		pool = tt_static_fixed_pool_init(g_buffer, sizeof(g_buffer), 4, tt_false);
 		tt_assert_and_check_break(pool);
 
 		// manx
