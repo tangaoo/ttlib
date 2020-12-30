@@ -7,8 +7,8 @@
  * @brief      cpu.h file
  */
 
-#ifndef _PREFIC_CUP_H_
-#define _PREFIC_CUP_H_
+#ifndef TT_PREFIC_CUP_H
+#define TT_PREFIC_CUP_H
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * macros
