@@ -19,10 +19,7 @@
  */
 
 // get base of head_data
-#define tt_static_large_data_allocator_base(head_data)  (&(((tt_pool_data_head_t*)((tt_static_large_data_head_t*)(data_head) + 1))[-1]))  //TODO &
-
-// get next head_data
-#define tt_static_large_head_next(head_data)    (tt_static_large_data_head_t*)(head_data) + ((tt_static_large_data_head_t*)(head_data))->space
+#define tt_static_large_data_allocator_base(head_data)  (&(((tt_pool_data_head_t*)((tt_static_large_data_head_t*)(data_head) + 1))[-1]))  
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * types
@@ -124,3 +121,103 @@ typedef __tt_aligned__(TT_CPU_BITBYTE) struct __tt_static_large_allocator_t
     tt_static_large_data_pred_t    pred[10];
 
 }__tt_aligned__(TT_CPU_BITBYTE) tt_static_large_allocator_t, *tt_static_large_allocator_ref_t;
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * implementation
+ */
+
+// find next data_head according to current 
+static __tt_inline__ tt_static_large_data_head_ref_t tt_static_large_allocator_next_head(tt_static_large_allocator_ref_t allocator, tt_static_large_data_head_ref_t current_head)
+{
+    // check
+    tt_check_return_val(allocator && current_head, tt_null);
+
+    // done
+    tt_static_large_data_head_ref_t next_head;
+    tt_bool_t                       ok = 0;
+    do
+    {
+        // find next head
+        next_head = (tt_byte_t* )(current_head + 1) + current_head->space; 
+
+        // is tail?
+        tt_check_break(next_head < allocator->data_tail);
+
+        // ok
+        ok = 1;
+
+    } while (0);
+
+    // not ok?
+    if(!ok) next_head = tt_null;
+    
+    return next_head;
+}
+
+// merge next free data until not free
+static __tt_inline__ tt_static_large_data_head_ref_t tt_static_large_allocator_merge_data(tt_static_large_allocator_ref_t allocator, tt_static_large_data_head_ref_t current_head)
+{
+    // check
+    tt_check_return_val(allocator && current_head, tt_null);
+
+    // merge
+    tt_static_large_data_head_ref_t next_head = tt_null;
+    while((next_head = tt_static_large_allocator_next_head(current_head)) && next_head->bfree)
+    {
+        current_head->space += sizeof(tt_static_large_data_head_t) + next_head->space;
+    }
+
+    return current_head;
+}
+
+// find the pred index
+static __tt_inline__ tt_size_t tt_static_large_allocator_pred_index(tt_static_large_allocator_ref_t allocator, tt_size_t space)
+{
+    // check
+    tt_assert(allocator);
+
+    // the large data element size, and check algin
+    tt_size_t size = space + sizeof(tt_static_large_data_head_t);
+    tt_assert(!(size & (allocator->page_size - 1)));
+
+    // computer page cnt
+    size /= allocator->page_size;
+
+    // computer index
+    tt_size_t index = tt_ilog2i(tt_algin_pow2(size));
+    if(index >= tt_arrayn(allocator->pred)) index = tt_arrayn(allocator->pred) - 1;
+
+    return index;
+}
+
+// update the pred
+static __tt_inline__ tt_void_t tt_static_large_data_allocator_pred_update(tt_static_large_allocator_ref_t allocator, tt_static_large_data_head_ref_t data_head)
+{
+    // check
+    tt_assert_and_check_return(allocator && data_head);
+    tt_check_return(data_head < allocator->data_tail);
+
+    // find the index
+    tt_size_t index = tt_static_large_allocator_pred_index(allocator, data_head->space);
+    tt_static_large_data_head_ref_t pred_head = allocator->pred[index].data_head;
+
+    // update maybe make Memory fragmentation 
+    if(!pred_head && pred_head->space < data_head->space) allocator->pred[index].data_head = data_head;
+
+}
+
+// remove one pred
+static __tt_inline__ tt_void_t tt_static_large_data_allocator_pred_remove(tt_static_large_allocator_ref_t allocator, tt_static_large_data_head_ref_t data_head)
+{
+    // check
+    tt_assert_and_check_return(allocator && data_head);
+
+    // find the index
+    tt_size_t index = tt_static_large_allocator_pred_index(allocator, data_head->space);
+
+    // remove the pred
+    if(data_head == allocator->pred[index].data_head) allocator->pred[index].data_head = tt_null;
+}
+
+// find the data_head and malloc it
+static __tt_inline__ tt_static_large_data_head_ref_t tt_static_large_data_allocator_malloc_find(tt_static_large_allocator_ref_t allocator, )
