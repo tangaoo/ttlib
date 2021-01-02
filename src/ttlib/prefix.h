@@ -1,6 +1,16 @@
+/*!The TT Library
+ *
+ * @Copyright (C) 2019-2021, TTLIB
+ *
+ * @file       prefix.h
+ * @ingroup    prefix
+ * @author     tango
+ * @date       2021-01-02 
+ * @brief      prefix.h file
+ */
 
-#ifndef _TT_PREFIX_H_
-#define _TT_PREFIX_H_
+#ifndef TT_PREFIX_H
+#define TT_PREFIX_H
 
 /*//////////////////////////////////////////////////////////////////////////////////////
 * includes 
