@@ -53,7 +53,7 @@ static tt_demo_t g_demo[] = {
 	TT_DEMO_MAIN_ITEM(queue_entry),
 	TT_DEMO_MAIN_ITEM(static_fixed_pool),
 	TT_DEMO_MAIN_ITEM(fixed_pool),
-
+	TT_DEMO_MAIN_ITEM(static_large_allocator),
 };
 
 tt_int_t main(tt_int_t argc, tt_char_t** argv)

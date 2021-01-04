@@ -23,6 +23,9 @@
 
 tt_void_t tt_demo_fixed_pool_main(tt_void_t)
 {
+	// print title
+	tt_print_title("demo fixed pool");
+
     // init fixed pool
     tt_fixed_pool_ref_t pool = tt_fixed_pool_init(tt_null, 0, sizeof(tt_int_t), tt_null, tt_null, tt_null);
 

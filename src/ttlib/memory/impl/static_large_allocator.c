@@ -152,7 +152,7 @@ static __tt_inline__ tt_static_large_data_head_ref_t tt_static_large_allocator_n
     do
     {
         // find next head
-        next_head = (tt_byte_t* )(current_head + 1) + current_head->space; 
+        next_head = (tt_static_large_data_head_ref_t)((tt_byte_t* )&current_head[1] + current_head->space); 
 
         // is tail?
         tt_check_break(next_head < allocator->data_tail);
@@ -322,6 +322,9 @@ static tt_static_large_data_head_ref_t tt_static_large_data_allocator_malloc_fin
         // not found, move to next
         data_head = tt_static_large_allocator_next_head(allocator, data_head);
     }
+
+    // failure
+    return tt_null;
 }
 
 // find the pred and malloc it
@@ -570,7 +573,7 @@ static tt_pointer_t tt_static_large_allocator_ralloc(tt_allocator_ref_t self, tt
         if(!aloc_head)
         {
             // malloc it
-            aloc_head = tt_static_large_allocator_malloc(allocator, size, real __tt_debug_args__);
+            aloc_head = tt_static_large_allocator_malloc_done(allocator, size, real __tt_debug_args__);
             tt_check_break(aloc_head);
 
             // not the same

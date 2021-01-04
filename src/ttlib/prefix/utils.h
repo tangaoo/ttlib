@@ -64,9 +64,9 @@
 
 /// align by cpu
 #ifdef TT_CPU_BIT_64
-#   define tb_align_cpu(x)              tb_align8(x)
+#   define tt_align_cpu(x)              tt_align8(x)
 #else
-#   define tb_align_cpu(x)              tb_align4(x)
+#   define tt_align_cpu(x)              tt_align4(x)
 #endif
 
 /// offsetof

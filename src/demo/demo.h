@@ -34,6 +34,7 @@ TT_DEMO_MAIN_DECL(crc8);
 TT_DEMO_MAIN_DECL(queue_entry);
 TT_DEMO_MAIN_DECL(static_fixed_pool);
 TT_DEMO_MAIN_DECL(fixed_pool);
+TT_DEMO_MAIN_DECL(static_large_allocator);
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * extern
