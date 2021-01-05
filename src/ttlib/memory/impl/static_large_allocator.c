@@ -222,8 +222,8 @@ static __tt_inline__ tt_void_t tt_static_large_data_allocator_pred_update(tt_sta
     tt_size_t index = tt_static_large_allocator_pred_index(allocator, data_head->space);
     tt_static_large_data_head_ref_t pred_head = allocator->pred[index].data_head;
 
-    // update maybe make Memory fragmentation 
-    if(!pred_head && pred_head->space < data_head->space) allocator->pred[index].data_head = data_head;
+    // update maybe make memory gap 
+    if(!pred_head || pred_head->space < data_head->space) allocator->pred[index].data_head = data_head;
 
 }
 
@@ -693,11 +693,11 @@ tt_allocator_ref_t   tt_static_large_allocator_init(tt_byte_t* data, tt_size_t s
     allocator->data_head->space = allocator->data_size - sizeof(tt_static_large_data_head_t);
     tt_assert_and_check_return_val(!((tt_size_t)allocator->data_head & (TT_CPU_BITBYTE - 1)), tt_null);
 
-    // add this free head to pred cache
-    tt_static_large_data_allocator_pred_update(allocator, allocator->data_head);
-
     // init tail
     allocator->data_tail = (tt_static_large_data_head_t*)((tt_byte_t*)&allocator->data_head[1] + allocator->data_head->space);
+
+    // add this free head to pred cache
+    tt_static_large_data_allocator_pred_update(allocator, allocator->data_head);
 
     // ok?
     return (tt_allocator_ref_t)allocator;
