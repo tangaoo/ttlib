@@ -20,17 +20,17 @@
  */
 
 // val=target variable, pos=bit number to act upon 0-n
-#define TT_BIT_SET(val, pos)                 ((val) |= (1ULL<<(pos)))
-#define TT_BIT_CLEAR(val, pos)               ((val) &= ~(1ULL<<(pos)))
-#define TT_BIT_FLIP(val, pos)                ((val) ^= (1ULL<<(pos)))
-#define TT_BIT_CHECK(val, pos)               (!!((val) & (1ULL<<(pos))))  // '!!' to make sure this returns 0 or 1
+#define tt_bit_set(val, pos)                 ((val) |= (1ULL<<(pos)))
+#define tt_bit_clear(val, pos)               ((val) &= ~(1ULL<<(pos)))
+#define tt_bit_flip(val, pos)                ((val) ^= (1ULL<<(pos)))
+#define tt_bit_check(val, pos)               (!!((val) & (1ULL<<(pos))))  // '!!' to make sure this returns 0 or 1
 
 // x=target variable, y=mask 
-#define TT_BITMASK_SET(val, mask)            ((val) |= (mask))
-#define TT_BITMASK_CLEAR(val, mask)          ((val) &= (~(mask)))
-#define TT_BITMASK_FLIP(val, mask)           ((val) ^= (mask))
-#define TT_BITMASK_CHECK_ALL(val, mask)      (!(~(val) & (mask)))
-#define TT_BITMASK_CHECK_ANY(val, mask)      ((val) & (mask))
+#define tt_bitmask_set(val, mask)            ((val) |= (mask))
+#define tt_bitmask_clear(val, mask)          ((val) &= (~(mask)))
+#define tt_bitmask_flip(val, mask)           ((val) ^= (mask))
+#define tt_bitmask_check_all(val, mask)      (!(~(val) & (mask)))
+#define tt_bitmask_check_any(val, mask)      ((val) & (mask))
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * cl0
