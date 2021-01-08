@@ -23,6 +23,7 @@
 #include "trace.h"
 #include "type.h"
 #include "utils.h"
+#include "state.h"
 
 /// add utils/utils.h
 #include "../utils/utils.h"
