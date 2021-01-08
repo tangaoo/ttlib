@@ -1,6 +1,6 @@
 /*!the tt library
  *
- * @copyright (c) 2019-2020, ttlib
+ * @copyright (c) 2019-2021, ttlib
  *
  * @file       predicate.c
  * @ingroup    algorithm

@@ -1,6 +1,6 @@
 /*!The TT Library
  *
- * @Copyright (C) 2019-2020, TTLIB
+ * @Copyright (C) 2019-2021, TTLIB
  *
  * @file       fixed_pool.h
  * @ingroup    memory

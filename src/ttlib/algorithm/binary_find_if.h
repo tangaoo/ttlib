@@ -1,6 +1,6 @@
 /*!The TT Library
  *
- * @Copyright (C) 2019-2020, TTLIB
+ * @Copyright (C) 2019-2021, TTLIB
  *
  * @file       binary_find_if.h
  * @ingroup    algorithm

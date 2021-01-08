@@ -1,5 +1,5 @@
 /*
- * @Copyright (C) 2019-2020, TTLIB
+ * @Copyright (C) 2019-2021, TTLIB
  * @file       utils.h
  * @ingroup    prefix
  * @author     tango

@@ -1,5 +1,5 @@
 /*
- * @Copyright (C) 2019-2020, TTLIB
+ * @Copyright (C) 2019-2021, TTLIB
  * @file       native_memory.c
  * @ingroup    platform
  * @author     tango
