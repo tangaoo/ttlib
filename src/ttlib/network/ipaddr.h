@@ -1,0 +1,42 @@
+/*!The TT Library
+ *
+ * @Copyright (C) 2019-2021, TTLIB
+ *
+ * @file       ipaddr.h
+ * @ingroup    network
+ * @author     tango
+ * @date       2021-01-25 
+ * @brief      ipaddr.h file
+ */
+
+#ifndef TT_NETWORK_IPADDR_H
+#define TT_NETWORK_IPADDR_H
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * includes
+ */
+#include "prefix.h"
+#include "ipv4.h"
+#include "ipv6.h"
+#include "unixaddr.h"
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * extern
+ */
+__tt_extern_c_enter__
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * macros
+ */
+
+// the address string data maxn
+
+
+
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * extern
+ */
+__tt_extern_c_leave__
+
+#endif
