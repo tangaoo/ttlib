@@ -35,8 +35,8 @@ __tt_extern_c_enter__
 #endif
 
 /// trace 
-#ifndef TT_TRACE_DEBUG
-#	define TT_TRACE_DEBUG                       (1)
+#ifndef TT_TRACE_MODULE_DEBUG
+#	define TT_TRACE_MODULE_DEBUG                (1)
 #endif
 
 /* //////////////////////////////////////////////////////////////////////////////////////
@@ -62,7 +62,7 @@ __tt_extern_c_enter__
 #define tt_tracef_assert_p(prefix, fmt, ...)    do{ tt_trace_done(prefix, TT_TRACE_MODULE_NAME, "[assert ], %s(), %d, %s: "fmt, __tt_func__, __tt_line__ , __tt_file__ ,##__VA_ARGS__); }while(0)
 #define tt_tracef_warning_p(prefix, fmt, ...)   do{ tt_trace_done(prefix, TT_TRACE_MODULE_NAME, "[warning], %s(), %d, %s: "fmt, __tt_func__, __tt_line__ , __tt_file__ ,##__VA_ARGS__); }while(0)
 
-#if TT_TRACE_DEBUG && defined(__tt_debug__)
+#if TT_TRACE_MODULE_DEBUG && defined(__tt_debug__)
 #	define tt_trace_d(fmt, ...)                 tt_trace_p(__tt_prefix__, fmt, ##__VA_ARGS__) 
 #	define tt_tracef_d(fmt, ...)                tt_tracef_p(__tt_prefix__, fmt, ##__VA_ARGS__) 
 #else
