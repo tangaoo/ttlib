@@ -78,6 +78,47 @@ tt_bool_t tt_ipv4_cstr_set(tt_ipv4_ref_t ipv4, tt_char_t const* cstr)
     tt_assert_and_check_return_val(ipv4 && cstr, tt_null);
 
     // done
-    
+    tt_uint32_t         v;
+    tt_uint32_t         r;
+    tt_char_t           c  = '\0';
+    tt_size_t           i  = 0;
+    tt_char_t const*    p  = cstr;
+    tt_bool_t           ok = tt_false;
+    do
+    {
+        // the charactor
+        c = *p++;
+        
+        // is digit?
+        if (tt_isdigit10(c) && v <= 0xff)
+        {
+            v *= 10;
+            v += (u_int32_t)(c - '0') & 0xff;
+        }
+        // '.' or '\0'?
+        else if (c == '.' || c == '\0')
+        {
+            r |= v << ((i++) * 8);
+            v = 0;
+        }
+        // failed
+        else
+        {
+            // trace
+            tt_trace_d("invalid ipv4 addr: %s", cstr);
 
+            i = 0;
+            break;
+        }
+
+    } while (c);
+
+    // ok?
+    if (i == 4) 
+    {
+        ok = tt_true;
+        ipv4->u32 = r;
+    }
+
+    return ok;
 }
