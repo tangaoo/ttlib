@@ -11,7 +11,9 @@
         "type_traits": "cpp",
         "utility": "cpp",
         "*.tcc": "cpp",
-        "random": "cpp"
+        "random": "cpp",
+        "__locale": "c",
+        "cstring": "c"
     },
    
         "vim.easymotion": true,
