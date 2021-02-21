@@ -194,7 +194,7 @@ tt_char_t const*      tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t* data,
  */
 tt_char_t const*      tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_uint8_t family);
 
-/*! the ip is equal?
+/*! only set ip address
  *
  * @param ipaddr      the ip addr
  * @param other       the other addr with ip data, clear it if be none
@@ -203,8 +203,100 @@ tt_char_t const*      tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const*
  */
 tt_void_t             tt_ipaddr_ip_set(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t other);
 
+/*! get the ipv4
+ *
+ * @param ipaddr      the ip addr
+ *
+ * @return            ipv4
+ */
+tt_ipv4_ref_t         tt_ipaddr_ipv4(tt_ipaddr_ref_t ipaddr);
 
+/*! set the ipv4
+ *
+ * @param ipaddr      the ip addr
+ * @param ipv4        the ipv4, clear it if be null
+ *
+ * @return            tt_void_t
+ */
+tt_void_t             tt_ipaddr_ipv4_set(tt_ipaddr_ref_t ipaddr, tt_ipv4_ref_t ipv4);
 
+/*! get the ipv6
+ *
+ * @param ipaddr      the ip addr
+ *
+ * @return            ipv6
+ */
+tt_ipv6_ref_t         tt_ipaddr_ipv6(tt_ipaddr_ref_t ipaddr);
+
+/*! set the ipv6
+ *
+ * @param ipaddr      the ip addr
+ * @param ipv6        the ipv6, clear it if be null
+ *
+ * @return            tt_void_t
+ */
+tt_void_t             tt_ipaddr_ipv6_set(tt_ipaddr_ref_t ipaddr, tt_ipv4_ref_t ipv6);
+
+/*! get the unix socket path
+ *
+ * @param ipaddr      the ip addr
+ *
+ * @return            unixaddr
+ */
+tt_unixaddr_ref_t     tt_ipaddr_unix(tt_ipaddr_ref_t ipaddr);
+
+/*! set the unix socket path
+ *
+ * @param ipaddr      the ip addr
+ * @param unixaddr    the unixaddr
+ *
+ * @return            tt_void_t
+ */
+tt_void_t             tt_ipaddr_unix_set(tt_ipaddr_ref_t ipaddr, tt_unixaddr_ref_t unixaddr);
+
+/*! set the unix socket path from string
+ *
+ * @param ipaddr      the ip addr
+ * @param cstr        the unix addr string 
+ * @param is_abstract true if the address is abstract address
+ *
+ * @return            tt_false or tt_true
+ */
+tt_void_t             tt_ipaddr_unix_set_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_bool_t is_abstract);
+
+/*! get the family
+ *
+ * @param ipaddr      the ip addr
+ *
+ * @return            the family
+ */
+tt_size_t             tt_ipaddr_family(tt_ipaddr_ref_t ipaddr);
+
+/*! set the family
+ *
+ * @param ipaddr      the ip addr
+ * @param family      the family
+ *
+ * @return            tt_void_t
+ */
+tt_void_t             tt_ipaddr_family_set(tt_ipaddr_ref_t ipaddr, tt_size_t family);
+
+/*! get the port
+ *
+ * @param ipaddr      the ip addr
+ *
+ * @return            the port
+ */
+tt_size_t             tt_ipaddr_port(tt_ipaddr_ref_t ipaddr);
+
+/*! set the port
+ *
+ * @param ipaddr      the ip addr
+ * @param port        the port
+ *
+ * @return            tt_void_t
+ */
+tt_void_t             tt_ipaddr_port_set(tt_ipaddr_ref_t ipaddr, tt_size_t port);
 
 
 /* //////////////////////////////////////////////////////////////////////////////////////
