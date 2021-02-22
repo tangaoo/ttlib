@@ -92,7 +92,7 @@ tt_void_t             tt_ipaddr_clear(tt_ipaddr_ref_t ipaddr);
  *
  * @return            tt_void_t
  */
-tt_void_t             tt_ipaddr_clear(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t copy);
+tt_void_t             tt_ipaddr_copy(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t copy);
 
 /*! is empty?
  *

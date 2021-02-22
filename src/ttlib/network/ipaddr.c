@@ -29,13 +29,46 @@ static __tt_inline__ tt_bool_t tt_ipaddr_ipv4_to_ipv6(tt_ipv4_ref_t ipv4, tt_ipv
 
 tt_void_t tt_ipaddr_clear(tt_ipaddr_ref_t ipaddr) 
 {
+    // check
+    tt_assert_and_check_return(ipaddr);
 
+    // done
+    ipaddr->family  = TT_IPADDR_FAMILY_NONE;
+    ipaddr->port    = 0;
+    ipaddr->have_ip = 0;
 }
 
-tt_void_t             tt_ipaddr_clear(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t copy) 
+tt_void_t tt_ipaddr_copy(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t copy) 
+{
+    // check
+    tt_assert_and_check_return(ipaddr && copy);
 
- 
-tt_bool_t             tt_ipaddr_is_empty(tt_ipaddr_ref_t ipaddr) 
+    // done
+    if(!copy->have_ip)
+    {
+        ipaddr->family = copy->family;
+        ipaddr->port   = copy->port;
+    }
+    // attempt to copy ipv4
+    else if(copy->family == TT_IPADDR_FAMILY_IPV4)
+    {
+        ipaddr->family  = TT_IPADDR_FAMILY_IPV4;
+        ipaddr->port    = copy->port;
+        ipaddr->have_ip = 1;
+        ipaddr->u.ipv4  = copy->u.ipv4;
+    }
+    else
+        *ipaddr = *copy;
+}
+
+tt_bool_t tt_ipaddr_is_empty(tt_ipaddr_ref_t ipaddr) 
+{
+    // check
+    tt_assert_and_check_return_val(ipaddr, tt_false);
+    
+    // done
+    return !ipaddr->have_ip;
+}
 
  
 tt_bool_t             tt_ipaddr_is_equal(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t other) 
