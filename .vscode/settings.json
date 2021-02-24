@@ -13,7 +13,9 @@
         "*.tcc": "cpp",
         "random": "cpp",
         "__locale": "c",
-        "cstring": "c"
+        "cstring": "c",
+        "ipaddr.h": "c",
+        "unixaddr.h": "c"
     },
    
         "vim.easymotion": true,

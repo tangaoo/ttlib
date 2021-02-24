@@ -130,7 +130,7 @@ tt_char_t const*      tt_ipaddr_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t* data, tt
  *
  * @return            the ipaddr const addr
  */
-tt_bool_t             tt_ipaddr_set(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_int16_t port, tt_int8_t family);
+tt_bool_t             tt_ipaddr_cstr_set(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_int16_t port, tt_int8_t family);
 
 /*! clear ip 
  *
@@ -201,7 +201,7 @@ tt_char_t const*      tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const*
  *
  * @return            tt_void_t
  */
-tt_void_t             tt_ipaddr_ip_set(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t other);
+tt_void_t             tt_ipaddr_ip_cstr_set(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_uint8_t family);
 
 /*! get the ipv4
  *
