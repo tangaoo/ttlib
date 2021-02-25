@@ -179,9 +179,31 @@ tt_bool_t tt_ipaddr_ip_is_any(tt_ipaddr_ref_t ipaddr)
 
     return is_any;
 }
-
  
-tt_bool_t             tt_ipaddr_ip_is_loopback(tt_ipaddr_ref_t ipaddr) 
+tt_bool_t tt_ipaddr_ip_is_loopback(tt_ipaddr_ref_t ipaddr) 
+{
+    // check
+    tt_assert_and_check_return_val(ipaddr, tt_true);
+
+    // done
+    tt_bool_t is_loopback = tt_false;
+    switch(ipaddr->family)
+    {
+    case TT_IPADDR_FAMILY_IPV4:
+        is_loopback = tt_ipv4_is_loopback(ipaddr->u.ipv4);
+        break;
+    case TT_IPADDR_FAMILY_IPV6:
+        is_loopback = tt_ipv6_is_loopback(ipaddr->u.ipv6);
+        break;
+    case TT_IPADDR_FAMILY_UNIX:
+        is_loopback = tt_false;
+        break;
+    default:
+        break;
+    }
+    
+    return is_loopback;
+}
 
  
 tt_bool_t             tt_ipaddr_ip_is_equal(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t other) 
