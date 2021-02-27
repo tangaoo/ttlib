@@ -66,7 +66,7 @@ tt_char_t const* tt_unixaddr_cstr(tt_unixaddr_ref_t unixaddr, tt_char_t* data, t
     return data;
 }
 
-tt_bool_t tt_unixaddr_str_set(tt_unixaddr_ref_t unixaddr, tt_char_t const* cstr, tt_bool_t is_abstract)
+tt_bool_t tt_unixaddr_cstr_set(tt_unixaddr_ref_t unixaddr, tt_char_t const* cstr, tt_bool_t is_abstract)
 {
     // check
     tt_assert_and_check_return_val(unixaddr && cstr, tt_false);

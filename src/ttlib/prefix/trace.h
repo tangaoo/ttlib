@@ -78,6 +78,8 @@ __tt_extern_c_enter__
 /// raw
  #define tt_trace_raw(fmt, ...)                 do{ tt_trace_done(tt_null, tt_null, fmt, ##__VA_ARGS__); }while(0)
 
+/// no impl
+#define tt_trace_noimpl()                       tt_trace_w("no impl");
 /* //////////////////////////////////////////////////////////////////////////////////////
  * extern
  */

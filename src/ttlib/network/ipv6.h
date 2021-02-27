@@ -84,7 +84,7 @@ tt_bool_t               tt_ipv6_is_equal(tt_ipv6_ref_t ipv6, tt_ipv6_ref_t other
 
 tt_char_t const*        tt_ipv6_cstr(tt_ipv6_ref_t ipv6, tt_char_t* data, tt_size_t maxn);
 
-tt_bool_t               tt_ipv6_cstr_set(tt_ipv6_ref_t ipv6, tt_char_t const* data);
+tt_bool_t               tt_ipv6_cstr_set(tt_ipv6_ref_t ipv6, tt_char_t const* cstr);
 
 
 /* //////////////////////////////////////////////////////////////////////////////////////
