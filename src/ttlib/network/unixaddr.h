@@ -73,7 +73,7 @@ tt_bool_t               tt_unixaddr_is_abstract(tt_unixaddr_ref_t unixaddr);
  *
  * @return              tt_void_t
  */
-tt_void_t               tt_unixaddr_is_equal(tt_unixaddr_ref_t unixaddr, tt_unixaddr_ref_t other);
+tt_bool_t               tt_unixaddr_is_equal(tt_unixaddr_ref_t unixaddr, tt_unixaddr_ref_t other);
 
 /*! unixaddr to cstr
  *
@@ -97,7 +97,7 @@ tt_char_t const*        tt_unixaddr_cstr(tt_unixaddr_ref_t unixaddr, tt_char_t* 
  *
  * @return              tt_true or tt_false
  */
-tt_bool_t               tt_unixaddr_str_set(tt_unixaddr_ref_t unixaddr, tt_char_t const* cstr, tt_bool_t is_abstract);
+tt_bool_t               tt_unixaddr_cstr_set(tt_unixaddr_ref_t unixaddr, tt_char_t const* cstr, tt_bool_t is_abstract);
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * extern

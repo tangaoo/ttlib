@@ -174,25 +174,15 @@ tt_bool_t             tt_ipaddr_ip_is_loopback(tt_ipaddr_ref_t ipaddr);
  */
 tt_bool_t             tt_ipaddr_ip_is_equal(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t other);
 
-/*! get the ip string
- *
- * @param ipaddr      the ip addr
- * @param data        the ip addr str data
- * @param maxn        the ip addr str max length
- *
- * @return            the ipaddr const addr
- */
-tt_char_t const*      tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t* data, tt_size_t maxn);
-
-/*! set the ip form string
+/*! stringify ip 
  *
  * @param ipaddr      the addr, only analyze format if be null
- * @param cstr        the ip addr str 
- * @param family      the family, will analyze family automaticly if be none
+ * @param data        the ip addr str data
+ * @param maxn        max number string
  *
  * @return            tt_true_t or tt_false_t 
  */
-tt_char_t const*      tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_uint8_t family);
+tt_char_t const*      tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t* data, tt_size_t maxn);
 
 /*! only set ip address
  *
@@ -201,7 +191,7 @@ tt_char_t const*      tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const*
  *
  * @return            tt_void_t
  */
-tt_void_t             tt_ipaddr_ip_cstr_set(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_uint8_t family);
+tt_bool_t             tt_ipaddr_ip_cstr_set(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_uint8_t family);
 
 /*! get the ipv4
  *
@@ -235,7 +225,7 @@ tt_ipv6_ref_t         tt_ipaddr_ipv6(tt_ipaddr_ref_t ipaddr);
  *
  * @return            tt_void_t
  */
-tt_void_t             tt_ipaddr_ipv6_set(tt_ipaddr_ref_t ipaddr, tt_ipv4_ref_t ipv6);
+tt_void_t             tt_ipaddr_ipv6_set(tt_ipaddr_ref_t ipaddr, tt_ipv6_ref_t ipv6);
 
 /*! get the unix socket path
  *
@@ -262,7 +252,7 @@ tt_void_t             tt_ipaddr_unix_set(tt_ipaddr_ref_t ipaddr, tt_unixaddr_ref
  *
  * @return            tt_false or tt_true
  */
-tt_void_t             tt_ipaddr_unix_set_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_bool_t is_abstract);
+tt_bool_t             tt_ipaddr_unix_set_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_bool_t is_abstract);
 
 /*! get the family
  *

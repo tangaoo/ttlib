@@ -100,6 +100,18 @@
 /// unsigned integer to pointer
 #define tt_u2p(x)                       ((tt_pointer_t)(tt_size_t)(x))
 
+// is digit
+#define tt_isdigit(x)                   ((x) > 0x2f && (x) < 0x3a)
+
+// is 0b digit
+#define tt_isdigit2(x)                  ((x) == '0' || (x) == '1')
+
+// is 8 digit
+#define tt_isdigit8(x)                  (((x) > 0x2f && (x) < 0x38))
+
+// is 10 digit
+#define tt_isdigit10(x)                 (tt_isdigit(x))
+
 /// dummy typdef
 #define __tt_typeref__(object)          struct __tt_##object##_dummy_t{tt_int_t dummy;} const* tt_##object##_ref_t
 

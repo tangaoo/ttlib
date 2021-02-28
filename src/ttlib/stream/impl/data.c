@@ -9,6 +9,8 @@
  * @brief      data.c file
  */
 
+#if 0
+
 /* //////////////////////////////////////////////////////////////////////////////////////
  * includes
  */
@@ -159,3 +161,5 @@ static tt_bool_t tt_stream_data_seek(tt_stream_ref_t stream, tt_size_t offset)
     // ok
     return tt_true;
 }
+
+#endif

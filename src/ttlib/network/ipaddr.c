@@ -13,6 +13,7 @@
  * includes
  */
 #include "ipaddr.h"
+#include "../platform/native_memcpy.h"
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * private implementation
@@ -114,7 +115,7 @@ tt_char_t const* tt_ipaddr_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t* data, tt_size
         tt_assert_and_check_return_val(maxn >= TT_UNIXADDR_CSTR_MAXN, tt_null);
 
         // make it
-        tt_unixaddr_cstr(ipaddr->u.unixaddr, data, maxn);
+        tt_unixaddr_cstr(&ipaddr->u.unixaddr, data, maxn);
     }
     else
     {
@@ -143,7 +144,7 @@ tt_bool_t tt_ipaddr_cstr_set(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_i
 tt_void_t tt_ipaddr_ip_clear(tt_ipaddr_ref_t ipaddr) 
 {
     // check
-    tt_asert_and_check_return(ipaddr);
+    tt_assert_and_check_return(ipaddr);
 
     // clear ip
     ipaddr->have_ip = 0;
@@ -152,7 +153,7 @@ tt_void_t tt_ipaddr_ip_clear(tt_ipaddr_ref_t ipaddr)
 tt_bool_t tt_ipaddr_ip_is_empty(tt_ipaddr_ref_t ipaddr) 
 {
     // check
-    tt_asert_and_check_return_val(ipaddr, tt_true);
+    tt_assert_and_check_return_val(ipaddr, tt_true);
 
     // ip empty?
     return !ipaddr->have_ip;
@@ -161,7 +162,7 @@ tt_bool_t tt_ipaddr_ip_is_empty(tt_ipaddr_ref_t ipaddr)
 tt_bool_t tt_ipaddr_ip_is_any(tt_ipaddr_ref_t ipaddr) 
 {
     // check
-    tt_asert_and_check_return_val(ipaddr, tt_true);
+    tt_assert_and_check_return_val(ipaddr, tt_true);
 
     // check ip empty?
     tt_check_return_val(ipaddr->have_ip, tt_true);
@@ -179,7 +180,7 @@ tt_bool_t tt_ipaddr_ip_is_any(tt_ipaddr_ref_t ipaddr)
     case TT_IPADDR_FAMILY_UNIX:
         is_any = tt_false;
         break;
-    default
+    default:
         break;
     }
 
@@ -196,10 +197,10 @@ tt_bool_t tt_ipaddr_ip_is_loopback(tt_ipaddr_ref_t ipaddr)
     switch(ipaddr->family)
     {
     case TT_IPADDR_FAMILY_IPV4:
-        is_loopback = tt_ipv4_is_loopback(ipaddr->u.ipv4);
+        is_loopback = tt_ipv4_is_loopback(&ipaddr->u.ipv4);
         break;
     case TT_IPADDR_FAMILY_IPV6:
-        is_loopback = tt_ipv6_is_loopback(ipaddr->u.ipv6);
+        is_loopback = tt_ipv6_is_loopback(&ipaddr->u.ipv6);
         break;
     case TT_IPADDR_FAMILY_UNIX:
         is_loopback = tt_false;
@@ -248,15 +249,15 @@ tt_bool_t tt_ipaddr_ip_is_equal(tt_ipaddr_ref_t ipaddr, tt_ipaddr_ref_t other)
          else if (ipaddr->family == TT_IPADDR_FAMILY_IPV6)
          {
              tt_ipv4_t ipv4;
-             ipv4 = tt_ipaddr_ipv6_to_ipv4(ipaddr->u.ipv6, &ipv4);
-             ok = tt_ipv4_is_equal(ipv4, other->u.ipv4);
+             ok = tt_ipaddr_ipv6_to_ipv4(&ipaddr->u.ipv6, &ipv4);
+             if(ok) ok = tt_ipv4_is_equal(&ipv4, &other->u.ipv4);
          }
          // other is ipv6?
          else if (other->family == TT_IPADDR_FAMILY_IPV6)
          {
              tt_ipv4_t ipv4;
-             ipv4 = tt_ipaddr_ipv6_to_ipv4(other->u.ipv6, &ipv4);
-             ok = tt_ipv4_is_equal(ipaddr->u.ipv4, ipv4);
+             ok = tt_ipaddr_ipv6_to_ipv4(&other->u.ipv6, &ipv4);
+             if(ok) ok = tt_ipv4_is_equal(&ipaddr->u.ipv4, &ipv4);
          }
          else
          {
@@ -279,7 +280,7 @@ tt_char_t const* tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t* data, tt_s
     switch (ipaddr->family)
     {
     case TT_IPADDR_FAMILY_IPV6:
-        if(ipaddr->have_ip) cstr = tt_ipv6_cstr(ipaddr, data, maxn);
+        if(ipaddr->have_ip) cstr = tt_ipv6_cstr(&ipaddr->u.ipv6, data, maxn);
         else
         {
             // check
@@ -295,7 +296,7 @@ tt_char_t const* tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t* data, tt_s
         break;
 
     case TT_IPADDR_FAMILY_IPV4:
-        if(ipaddr->have_ip) cstr = tt_ipv4_cstr(ipaddr, data, maxn);
+        if(ipaddr->have_ip) cstr = tt_ipv4_cstr(&ipaddr->u.ipv4, data, maxn);
         else
         {
             // check
@@ -311,14 +312,14 @@ tt_char_t const* tt_ipaddr_ip_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t* data, tt_s
         break;
 
     case TT_IPADDR_FAMILY_UNIX:
-        if(ipaddr->have_ip) cstr = tt_unixaddr_cstr(ipaddr, data, maxn);
+        if(ipaddr->have_ip) cstr = tt_unixaddr_cstr(&ipaddr->u.unixaddr, data, maxn);
         else
         {
             // check
             tt_assert(maxn >= TT_UNIXADDR_CSTR_MAXN);
 
             // make empty unixaddr 
-            memset(data, 0, maxn);
+            tt_memset(data, 0, maxn);
 
             // ok
             cstr = data;
@@ -371,7 +372,7 @@ tt_bool_t tt_ipaddr_ip_cstr_set(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, t
 
     case TT_IPADDR_FAMILY_UNIX:
         // make unixaddr
-        ok = tt_unixaddr_str_set(&tmp.u.unixaddr, cstr, tt_false);
+        ok = tt_unixaddr_cstr_set(&tmp.u.unixaddr, cstr, tt_false);
         if(ok) tmp.family = family;
         break;
     
@@ -448,14 +449,16 @@ tt_ipv4_ref_t tt_ipaddr_ipv4(tt_ipaddr_ref_t ipaddr)
     switch (ipaddr->family)
     {
     case TT_IPADDR_FAMILY_IPV6:
-        tt_ipv4_t tmp;
-        if (tt_ipaddr_ipv6_to_ipv4(ipaddr->u.ipv6, &tmp))
         {
-            ipaddr->family = TT_IPADDR_FAMILY_IPV4;
-            ipaddr->u.ipv4 = tmp;
-            ipv4 = &ipaddr->u.ipv4;
+            tt_ipv4_t tmp;
+            if (tt_ipaddr_ipv6_to_ipv4(&ipaddr->u.ipv6, &tmp))
+            {
+                ipaddr->family = TT_IPADDR_FAMILY_IPV4;
+                ipaddr->u.ipv4 = tmp;
+                ipv4 = &ipaddr->u.ipv4;
+            }
         }
-        break;
+    break;
 
     case TT_IPADDR_FAMILY_IPV4:
         ipv4 = &ipaddr->u.ipv4;
@@ -504,12 +507,14 @@ tt_ipv6_ref_t tt_ipaddr_ipv6(tt_ipaddr_ref_t ipaddr)
     switch (ipaddr->family)
     {
     case TT_IPADDR_FAMILY_IPV4:
-        tt_ipv6_t tmp;
-        if (tt_ipaddr_ipv4_to_ipv6(ipaddr->u.ipv4, &tmp))
         {
-            ipaddr->family = TT_IPADDR_FAMILY_IPV6;
-            ipaddr->u.ipv6 = tmp;
-            ipv6 = &ipaddr->u.ipv6;
+            tt_ipv6_t tmp;
+            if (tt_ipaddr_ipv4_to_ipv6(&ipaddr->u.ipv4, &tmp))
+            {
+                ipaddr->family = TT_IPADDR_FAMILY_IPV6;
+                ipaddr->u.ipv6 = tmp;
+                ipv6 = &ipaddr->u.ipv6;
+            }
         }
         break;
 
@@ -556,7 +561,7 @@ tt_unixaddr_ref_t tt_ipaddr_unix(tt_ipaddr_ref_t ipaddr)
     tt_check_return_val(ipaddr->have_ip, tt_null);
 
     // done
-    if(ipaddr->family == TT_IPADDR_FAMILY_UNIX) return ipaddr->u.unixaddr;
+    if(ipaddr->family == TT_IPADDR_FAMILY_UNIX) return &ipaddr->u.unixaddr;
 
     return tt_null;
 }
@@ -564,7 +569,7 @@ tt_unixaddr_ref_t tt_ipaddr_unix(tt_ipaddr_ref_t ipaddr)
 tt_void_t tt_ipaddr_unix_set(tt_ipaddr_ref_t ipaddr, tt_unixaddr_ref_t unixaddr) 
 {
     // check
-    tt_assert_and_check_return_val(ipaddr);
+    tt_assert_and_check_return(ipaddr);
 
     // no ip
     if(!unixaddr)
@@ -582,11 +587,11 @@ tt_void_t tt_ipaddr_unix_set(tt_ipaddr_ref_t ipaddr, tt_unixaddr_ref_t unixaddr)
 tt_bool_t tt_ipaddr_unix_set_cstr(tt_ipaddr_ref_t ipaddr, tt_char_t const* cstr, tt_bool_t is_abstract) 
 {
     // check 
-    tt_assert_and_check_return(ipaddr && cstr, tt_false);
+    tt_assert_and_check_return_val(ipaddr && cstr, tt_false);
 
     // make ipaddr
     tt_ipaddr_t tmp;
-    if(!tt_unixaddr_cstr_set(tmp.u.unixaddr, cstr))
+    if(!tt_unixaddr_cstr_set(&tmp.u.unixaddr, cstr, is_abstract))
     {
         return tt_false;
     }
