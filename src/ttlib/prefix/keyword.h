@@ -7,14 +7,13 @@
  * @brief      keyword.h file
  */
 
-#ifndef _PREFIX_KEYWORD_H_
-#define _PREFIX_KEYWORD_H_
+#ifndef TT_PREFIX_KEYWORD_H
+#define TT_PREFIX_KEYWORD_H
 
 /*//////////////////////////////////////////////////////////////////////////////////////
 * includes 
 */
 #include "config.h"
-#include "type.h"
 
 //extern c
 #ifdef __cplusplus
@@ -50,5 +49,8 @@
 #   define __tt_inline__                        __inline
 #   define __tt_aligned__(a)                    __declspec(align(a))
 #endif
+
+/// dummy typdef
+#define __tt_typeref__(object)          struct __tt_##object##_dummy_t{tt_int_t dummy;} const* tt_##object##_ref_t
 
 #endif

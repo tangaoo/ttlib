@@ -18,9 +18,12 @@
 #include "cpu.h"
 #include "keyword.h"
 
+
+
 /*//////////////////////////////////////////////////////////////////////////////////////
 * macros
 */
+
 #define tt_true                                    ((tt_bool_t)1)
 #define tt_false                                   ((tt_bool_t)0)
 
@@ -75,9 +78,7 @@ typedef unsigned long                              tt_ulong_t;
 typedef tt_ulong_t                                 tt_size_t;
 
 
-
 #elif defined(TT_COMPILER_IS_DSP) 
-
 typedef signed char                                tt_int8_t;
 typedef unsigned char                              tt_uint8_t;
 typedef signed short                               tt_int16_t;
@@ -96,7 +97,9 @@ typedef tt_void_t *                                tt_pointer_t;
 typedef tt_void_t const *                          tt_cpointer_t;
 typedef tt_pointer_t                               tt_handle_t;
 typedef tt_uint32_t                                tt_size_t;
-
 #endif
+
+// socket type
+typedef __tt_typeref__(socket);
 
 #endif

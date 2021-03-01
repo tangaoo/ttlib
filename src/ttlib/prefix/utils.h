@@ -112,7 +112,5 @@
 // is 10 digit
 #define tt_isdigit10(x)                 (tt_isdigit(x))
 
-/// dummy typdef
-#define __tt_typeref__(object)          struct __tt_##object##_dummy_t{tt_int_t dummy;} const* tt_##object##_ref_t
 
 #endif
