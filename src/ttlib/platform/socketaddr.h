@@ -17,6 +17,7 @@
  */
 #include "../network/network.h"
 #include "native_memcpy.h"
+#include "../utils/bits.h"
 #include <netinet/in.h>
 #include <sys/un.h>
 #include <sys/socket.h>
@@ -69,7 +70,7 @@ static __tt_inline__ tt_size_t tt_sockaddr_save(tt_ipaddr_ref_t ipaddr, struct s
             tt_ipaddr_ipv4_set(ipaddr, &ipv4);
 
             // save port 
-            tt_ipaddr_port_set(ipaddr, /*tt_bits_be_to_ne_16*/(addr4->sin_port)); // TODO
+            tt_ipaddr_port_set(ipaddr, tt_bits_be_to_ne_u16(addr4->sin_port));
 
             // save size
             size = sizeof(struct sockaddr);
@@ -148,7 +149,7 @@ static __tt_inline__ tt_size_t tt_sockaddr_load(struct sockaddr_storage* saddr, 
             ipv4->sin_addr.s_addr = tt_ipaddr_ip_is_any(ipaddr) ? INADDR_ANY : ipaddr->u.ipv4.u32;
 
             // load port
-            ipv4->sin_port = /*tt_bits_ne_to_be_u16*/(ipaddr->port); // TODO
+            ipv4->sin_port = tt_bits_ne_to_be_u16(ipaddr->port);
 
             // size
             size = sizeof(struct sockaddr_in);

@@ -24,6 +24,7 @@
 #include "type.h"
 #include "utils.h"
 #include "state.h"
+#include "endian.h"
 
 /// add utils/utils.h
 #include "../utils/utils.h"

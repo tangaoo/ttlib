@@ -15,7 +15,7 @@
  */
 #include "crc8.h"
 #include "trace.h"
-#include "bit.h"
+#include "bits.h"
 #include "dump.h"
 #include "mix.h"
 
