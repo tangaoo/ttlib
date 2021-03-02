@@ -224,6 +224,7 @@ tt_bool_t               tt_socket_brecv(tt_socket_ref_t socket, tt_byte_t* data,
  */
 tt_bool_t               tt_socket_bsend(tt_socket_ref_t socket, tt_byte_t const* data, tt_size_t size);
 
+#if 0
 /*! recvv the socket data for tcp
  *
  * @param socket        the socket
@@ -243,6 +244,7 @@ tt_long_t               tt_socket_recvv(tt_socket_ref_t socket, tt_iovec_t* list
  * @return              the real size or -1
  */
 tt_long_t               tt_socket_sendv(tt_socket_ref_t socket, tt_iovec_t const* list, tt_size_t size);
+#endif
 
 /*! send file data
  *
@@ -252,7 +254,7 @@ tt_long_t               tt_socket_sendv(tt_socket_ref_t socket, tt_iovec_t const
  *
  * @return              the real size or -1
  */
-tt_long_t               tt_socket_sendf(tt_socket_ref_t socket, tt_file_ref_t file, tt_hize_t offset,  tt_hize_t size);
+tt_hong_t               tt_socket_sendf(tt_socket_ref_t socket, tt_file_ref_t file, tt_hize_t offset,  tt_hize_t size);
 
 /*! urecv the socket data for udp
  *
@@ -276,6 +278,7 @@ tt_long_t               tt_socket_urecv(tt_socket_ref_t socket, tt_ipaddr_ref_t 
  */
 tt_long_t               tt_socket_usend(tt_socket_ref_t socket, tt_ipaddr_ref_t addr, tt_byte_t const* data, tt_size_t size);
 
+#if 0
 /*! urecvv the socket data for udp
  *
  * @param socket        the socket
@@ -297,6 +300,7 @@ tt_long_t               tt_socket_urecvv(tt_socket_ref_t socket, tt_ipaddr_ref_t
  * @return              the real size or -1
  */
 tt_long_t               tt_socket_usendv(tt_socket_ref_t socket, tt_ipaddr_ref_t addr, tt_iovec_t const* data, tt_size_t size);
+#endif
 
 /*! wait socket events
  *

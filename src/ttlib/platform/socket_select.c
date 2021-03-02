@@ -58,7 +58,7 @@ tt_long_t tt_socket_wait_impl(tt_socket_ref_t sock, tt_size_t events, tt_long_t 
 
     tt_long_t r = select(fd + 1, prfds, pwfds, tt_null, timeout >= 0? &t : tt_null);
     // timeout or interrupted?
-    if(!r || (r == -1 && errno = EINTR)) return 0;
+    if(!r || (r == -1 && errno == EINTR)) return 0;
 
     // check
     tt_assert_and_check_return_val(r >= 0, -1);

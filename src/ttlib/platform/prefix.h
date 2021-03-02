@@ -15,5 +15,15 @@
  */
 #include "../prefix.h"
 
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * macros
+ */
+
+// fd to sock
+#define tt_fd2socket(fd)            ((fd) >= 0? (tt_socket_ref_t)((tt_long_t)(fd) + 1) : tt_null)
+
+// sock to fd
+#define tt_socket2fd(sock)          (tt_int_t)((sock)? (((tt_long_t)(sock)) - 1) : -1)
+
 
 #endif

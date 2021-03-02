@@ -16,6 +16,7 @@
 #include "prefix.h"
 #include "socket.h"
 #include "socketaddr.h"
+#include "stdarg.h"
 #include <unistd.h>
 #include <fcntl.h>
 #include <sys/types.h>
@@ -27,7 +28,13 @@
 #include <errno.h>
 #include <signal.h>
 #include <sys/uio.h>
-#include <sys/sendfile.h>
+
+/* //////////////////////////////////////////////////////////////////////////////////////
+ * declaration
+ */
+__tt_extern_c_enter__
+tt_long_t tt_socket_wait_impl(tt_socket_ref_t sock, tt_size_t events, tt_long_t timeout);
+__tt_extern_c_leave__
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * private implementation
@@ -55,7 +62,7 @@ static tt_int_t tt_socket_proto(tt_size_t type, tt_size_t family)
     if(family == TT_IPADDR_FAMILY_UNIX) return 0;
 
     // get socket protocal 
-    switch(type & 0xff))
+    switch(type & 0xff)
     {
     case TT_SOCKET_TYPE_IPPROTO_TCP:
         return IPPROTO_TCP;
@@ -104,7 +111,7 @@ tt_socket_ref_t tt_socket_init(tt_size_t type, tt_size_t family)
     {
         // init socket type and protocol
         tt_int_t t = tt_socket_type(type);
-        tt_int_t p = tt_socket_proto(type);
+        tt_int_t p = tt_socket_proto(type, family);
         tt_assert_and_check_break(t >=0 && p >= 0);
 
         // init socket family
@@ -197,48 +204,48 @@ tt_bool_t tt_socket_ctrl(tt_socket_ref_t socket, tt_size_t ctrl, ...)
         {
             // enable the nagle's algorithm
             tt_int_t enable = (tt_int_t)va_arg(args, tt_bool_t);
-            if(!setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, (tt_char_t*)&enable, size_t(enable))) ok = tt_true;
+            if(!setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, (tt_char_t*)&enable, sizeof(enable))) ok = tt_true;
 
         }
         break;
     case TT_SOCKET_CTRL_GET_TCP_NODELAY:
         {
-            tt_trace_noimpl("TT_SOCKET_CTRL_GET_TCP_NODELAY");
+            tt_trace_noimpl();
         }
         break;
     case TT_SOCKET_CTRL_SET_RECV_BUFF_SIZE:
         {
-            tt_trace_noimpl("TT_SOCKET_CTRL_SET_RECV_BUFF_SIZE");
+            tt_trace_noimpl();
         }
         break;
     case TT_SOCKET_CTRL_GET_RECV_BUFF_SIZE:
         {
-            tt_trace_noimpl("TT_SOCKET_CTRL_GET_RECV_BUFF_SIZE");
+            tt_trace_noimpl();
         }
         break;
     case TT_SOCKET_CTRL_SET_SEND_BUFF_SIZE:
         {
-            tt_trace_noimpl("TT_SOCKET_CTRL_SET_SEND_BUFF_SIZE");
+            tt_trace_noimpl();
         }
         break;
     case TT_SOCKET_CTRL_GET_SEND_BUFF_SIZE:
         {
-            tt_trace_noimpl("TT_SOCKET_CTRL_GET_SEND_BUFF_SIZE");
+            tt_trace_noimpl();
         }
         break;
     case TT_SOCKET_CTRL_SET_NOSIGPIPE:
         {
-            tt_trace_noimpl("TT_SOCKET_CTRL_SET_NOSIGPIPE");
+            tt_trace_noimpl();
         }
         break;
     case TT_SOCKET_CTRL_SET_KEEPALIVE:
         {
-            tt_trace_noimpl("TT_SOCKET_CTRL_SET_KEEPALIVE");
+            tt_trace_noimpl();
         }
         break;
     case TT_SOCKET_CTRL_SET_TCP_KEEPALIVE:
         {
-            tt_trace_noimpl("TT_SOCKET_CTRL_SET_TCP_KEEPALIVE");
+            tt_trace_noimpl();
         }
         break;
     default:
@@ -280,7 +287,7 @@ tt_long_t tt_socket_connect(tt_socket_ref_t sock, tt_ipaddr_ref_t addr)
     return -1;
 }
 
-tt_bool_t tt_socket_bind(tt_socket_ref_t sock, tt_ipaddr_ref_t addr);
+tt_bool_t tt_socket_bind(tt_socket_ref_t sock, tt_ipaddr_ref_t addr)
 {
     //check
     tt_assert_and_check_return_val(sock && addr, tt_false);
@@ -291,7 +298,7 @@ tt_bool_t tt_socket_bind(tt_socket_ref_t sock, tt_ipaddr_ref_t addr);
     if(!(n = tt_sockaddr_load(&d, addr))) return tt_false;
 
     // reuse addr
-#ifndef SO_REUSEADDR
+#ifdef SO_REUSEADDR
     {
         tt_int_t reuseaddr = 1;
         if(setsockopt(tt_socket2fd(sock), SOL_SOCKET, SO_REUSEADDR, (tt_int_t *)&reuseaddr, sizeof(reuseaddr)) < 0)
@@ -301,14 +308,14 @@ tt_bool_t tt_socket_bind(tt_socket_ref_t sock, tt_ipaddr_ref_t addr);
     }
 #endif
 
-#ifndef SO_REUSEPORT
+#ifdef SO_REUSEPORT
     if(tt_ipaddr_port(addr))
     {
         tt_int_t reuseport = 1;
         if(setsockopt(tt_socket2fd(sock), SOL_SOCKET, SO_REUSEPORT, (tt_int_t *)&reuseport, sizeof(reuseport)) < 0)
         {
             tt_trace_e("reuseport: %u failed", tt_ipaddr_port(addr));
-        
+        } 
     }
 #endif
 
@@ -316,7 +323,7 @@ tt_bool_t tt_socket_bind(tt_socket_ref_t sock, tt_ipaddr_ref_t addr);
     if(tt_ipaddr_family(addr) == TT_IPADDR_FAMILY_IPV6)
     {
         tt_int_t only_ipv6 = 1;
-        if(setsockopt(tt_socket2fd(sock), IPPROTO_IPV6, IPV6_V6ONLY, (tt_int_t *)&only_ipv6, sizeof(reuseport)) < 0)
+        if(setsockopt(tt_socket2fd(sock), IPPROTO_IPV6, IPV6_V6ONLY, (tt_int_t *)&only_ipv6, sizeof(only_ipv6)) < 0)
         {
             tt_trace_e("set only ipv6 failed");
         }
@@ -346,7 +353,7 @@ tt_socket_ref_t tt_socket_accept(tt_socket_ref_t sock, tt_ipaddr_ref_t addr)
     tt_long_t               fd = accept(tt_socket2fd(sock), (struct sockaddr *)&d, &n);
 
     // no client?
-    tt_check_return_val(fd > 0, tt_null)
+    tt_check_return_val(fd > 0, tt_null);
 
     // set non-block
     fcntl(fd, F_SETFL, fcntl(fd, F_GETFL) | O_NONBLOCK);
@@ -373,7 +380,7 @@ tt_socket_ref_t tt_socket_accept(tt_socket_ref_t sock, tt_ipaddr_ref_t addr)
     setsockopt(fd, IPPROTO_TCP, TCP_NODELAY, (tt_char_t *)&enable, sizeof(enable));
 
     // save address
-    if(addr) tt_socket_save(addr, &d);
+    if(addr) tt_sockaddr_save(addr, &d);
 
     // ok
     return tt_fd2socket(fd);
@@ -382,7 +389,7 @@ tt_socket_ref_t tt_socket_accept(tt_socket_ref_t sock, tt_ipaddr_ref_t addr)
 tt_bool_t tt_socket_local(tt_socket_ref_t sock, tt_ipaddr_ref_t addr)
 {
     //check
-    tt_assert_and_check_return_val(sock, tt_false)
+    tt_assert_and_check_return_val(sock, tt_false);
 
     // get local address
     struct sockaddr_storage d = {0};
@@ -484,6 +491,7 @@ tt_long_t tt_socket_send(tt_socket_ref_t sock, tt_byte_t const* data, tt_size_t 
     return -1;
 }
 
+#if 0
 tt_hong_t tt_socket_sendf(tt_socket_ref_t sock, tt_file_ref_t file, tt_hize_t offset, tt_hize_t size)
 {
     // check
@@ -502,6 +510,7 @@ tt_hong_t tt_socket_sendf(tt_socket_ref_t sock, tt_file_ref_t file, tt_hize_t of
     // error
     return -1;
 }
+#endif
 
 tt_long_t tt_socket_urecv(tt_socket_ref_t sock, tt_ipaddr_ref_t addr, tt_byte_t* data, tt_size_t size)
 {
@@ -551,7 +560,7 @@ tt_long_t tt_socket_usend(tt_socket_ref_t sock, tt_ipaddr_ref_t addr, tt_byte_t 
     if(!(n = tt_sockaddr_load(&d, addr))) return -1;
 
     // send
-    tt_long_t r = sendto(tt_socket2fd(sock), data, (tt_int_t)size, 0, (struct sockaddr*)d, n);
+    tt_long_t r = sendto(tt_socket2fd(sock), data, (tt_int_t)size, 0, (struct sockaddr*)&d, n);
 
     // trace
     tt_trace_d("usend: %p %lu bytes => %ld bytes, errno, %d", sock, size, r, errno);

@@ -77,6 +77,9 @@ typedef unsigned long                              tt_ulong_t;
 #	endif
 typedef tt_ulong_t                                 tt_size_t;
 
+// hong and hize
+typedef tt_int64_t                                 tt_hong_t;
+typedef tt_uint64_t                                tt_hize_t;
 
 #elif defined(TT_COMPILER_IS_DSP) 
 typedef signed char                                tt_int8_t;
@@ -99,7 +102,11 @@ typedef tt_pointer_t                               tt_handle_t;
 typedef tt_uint32_t                                tt_size_t;
 #endif
 
-// socket type
+// the socket type
 typedef __tt_typeref__(socket);
+
+// the socket type
+typedef __tt_typeref__(file);
+
 
 #endif
