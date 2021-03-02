@@ -93,7 +93,7 @@ tt_bool_t tt_ipv4_cstr_set(tt_ipv4_ref_t ipv4, tt_char_t const* cstr)
         if (tt_isdigit10(c) && v <= 0xff)
         {
             v *= 10;
-            v += (u_int32_t)(c - '0') & 0xff;
+            v += (tt_uint32_t)(c - '0') & 0xff;
         }
         // '.' or '\0'?
         else if (c == '.' || c == '\0')
