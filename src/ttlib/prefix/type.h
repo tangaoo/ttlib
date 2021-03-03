@@ -105,8 +105,34 @@ typedef tt_uint32_t                                tt_size_t;
 // the socket type
 typedef __tt_typeref__(socket);
 
-// the socket type
+// the file type
 typedef __tt_typeref__(file);
+
+// the time type
+typedef tt_hong_t                                  tt_time_t;
+
+// the suseconds type
+typedef tt_long_t                                  tt_susecond_t;
+
+// the timeval type
+typedef struct __tt_timeval_t
+{
+    // the seconds
+    tt_time_t       tv_sec;
+
+    // the useconds
+    tt_susecond_t   tv_usec;
+}tt_timeval_t; 
+
+// the timezone type
+typedef struct __tt_timezone_t
+{
+    // the minutes west of Greenwich
+    tt_int_t        tz_minuteswest;
+
+    // the type of dst correction
+    tt_int_t        tz_dsttime;
+}tt_timezone_t;
 
 
 #endif
