@@ -1,4 +1,4 @@
-## ttlib 
+## ttlib
 ttlib is a embedded software c library
 
 ### 初衷为解决两个问题。
@@ -7,7 +7,7 @@ ttlib is a embedded software c library
 - 嵌入式软件开发效率低、维护困难。嵌入式程序员大多喜欢从头开始，行业也少有标准库。
   
   
-### ttlib会包含哪些东西。
+### ttlib会包含哪些东西。（以下功能正在开发中）
 
 #### 平台库
 - 支持ARM(linux)、M3(rt-thread)、DSP(bios)等。
