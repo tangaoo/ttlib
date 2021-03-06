@@ -108,6 +108,9 @@ typedef __tt_typeref__(socket);
 // the file type
 typedef __tt_typeref__(file);
 
+// the semaphore type
+typedef __tt_typeref__(semaphore);
+
 // the time type
 typedef tt_hong_t                                  tt_time_t;
 

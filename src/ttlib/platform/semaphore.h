@@ -59,10 +59,14 @@ tt_bool_t               tt_semaphore_post(tt_semaphore_ref_t semaphore, tt_size_
  */
 tt_size_t               tt_semaphore_value(tt_semaphore_ref_t semaphore);
 
-
-
-
-
+/*! wait the semaphore
+ *
+ * @param semaphore     the semaphore
+ * @param timeout       the timeout (ms)
+ *
+ * @return              ok: 1; timeout or interrupted: 0, failed: -1
+ */
+tt_long_t               tt_semaphore_wait(tt_semaphore_ref_t semaphore, tt_long_t timeout);
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * extern
