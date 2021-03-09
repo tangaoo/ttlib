@@ -17,6 +17,11 @@
 #include <errno.h>
 #include <semaphore.h>
 
+tt_long_t sem_timedwait_bak(sem_t* h, struct timespec* t)
+{
+    tt_trace_noimpl();
+}
+static __attribute__((weakref("sem_timedwait_bak"))) sem_timedwait();
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
  */
@@ -109,7 +114,7 @@ tt_long_t tt_semaphore_wait(tt_semaphore_ref_t semaphore, tt_long_t timeout)
 
     // wait
     tt_long_t ok = 0;
-    // ok = sem_timedwait(h, &t);
+    ok = sem_timedwait(h, &t);
 
     // ok?
     tt_assert_and_check_return_val(ok, 1);
