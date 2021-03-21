@@ -140,5 +140,75 @@ typedef struct __tt_timezone_t
     tt_int_t        tz_dsttime;
 }tt_timezone_t;
 
+/// the value type
+typedef union __tt_value_t
+{
+    /// uint8
+    tt_uint8_t                      u8;
+
+    /// sint8
+    tt_int8_t                       s8;
+
+    /// char
+    tt_char_t                       c;
+
+    /// boolean
+    tt_bool_t                       b;
+
+    /// uint16
+    tt_uint16_t                     u16;
+
+    /// sint16
+    tt_int16_t                      s16;
+
+    /// uint32
+    tt_uint32_t                     u32;
+
+    /// sint32
+    tt_int32_t                      s32;
+
+    /// uint64
+    tt_uint64_t                     u64;
+
+    /// sint64
+    tt_int64_t                      s64;
+
+    /// size
+    tt_size_t                       ul;
+
+    /// long
+    tt_long_t                       l;
+
+    /// time
+    tt_time_t                       t;
+
+    /// pointer
+    tt_pointer_t                    ptr;
+
+    /// const pointer
+    tt_cpointer_t                   cptr;
+
+    /// sock
+    tt_socket_ref_t                 sock;
+
+    /// file
+    tt_file_ref_t                   file;
+
+    /// handle
+    tt_handle_t                     handle;
+
+    /// string
+    tt_char_t*                      str;
+
+    /// const string
+    tt_char_t const*                cstr;
+
+    /// float
+    tt_f32_t                        f;
+
+    /// double
+    tt_f64_t                        d;
+
+}tt_value_t, *tt_value_ref_t;
 
 #endif

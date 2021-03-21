@@ -1,5 +1,5 @@
 ## ttlib
-ttlib 是一个侧重嵌入式软件的C语言库。了解更多请参考[在线文档](https://tangaoo.github.io/)
+ttlib 是一个侧重嵌入式软件的C语言库。了解更多请参考[在线文档](https://tangaoo.github.io/)。
 
 ### 初衷为解决下面两个问题。
 

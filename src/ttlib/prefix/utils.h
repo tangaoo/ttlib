@@ -96,6 +96,7 @@
 
 /// pointer to u8
 #define tt_p2u8(x)                      ((tt_uint8_t)(tt_size_t)(x))
+#define tt_p2s32(x)                     ((tt_int32_t)(tt_long_t)(x))
 
 /// unsigned integer to pointer
 #define tt_u2p(x)                       ((tt_pointer_t)(tt_size_t)(x))

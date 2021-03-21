@@ -15,7 +15,8 @@
         "__locale": "c",
         "cstring": "c",
         "ipaddr.h": "c",
-        "unixaddr.h": "c"
+        "unixaddr.h": "c",
+        "thread.h": "c"
     },
    
         "vim.easymotion": true,
