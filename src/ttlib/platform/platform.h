@@ -17,5 +17,12 @@
 #include "spinlock.h"
 #include "native_memcpy.h"
 #include "native_memory.h"
+#include "even.h"
+#include "file.h"
+#include "semaphore.h"
+#include "socket.h"
+#include "thread.h"
+#include "time.h"
+
 
 #endif  

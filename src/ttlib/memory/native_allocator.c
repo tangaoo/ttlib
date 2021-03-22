@@ -11,7 +11,7 @@
  * trace
  */
 #define TT_TRACE_MODULE_NAME          "NATIVE_ALLOCATOR"
-#define TT_TRACE_MODULE_DEBUG         (1)
+#define TT_TRACE_MODULE_DEBUG         (0)
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * includes
