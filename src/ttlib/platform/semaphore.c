@@ -17,14 +17,12 @@
 #include <errno.h>
 #include <semaphore.h>
 
-// tt_int_t __attribute__((weak)) sem_timedwait(sem_t* h, struct timespec* t);
+tt_int_t sem_timedwait(sem_t *restrict sem, const struct timespec *restrict abstime) __attribute__((weak));
 
-tt_int_t __attribute__((weak)) sem_timedwait(sem_t* h, struct timespec* t)
+tt_int_t sem_timedwait(sem_t *restrict sem, const struct timespec *restrict abstime)
 {
     tt_trace_noimpl();
 }
-
-//static __attribute__((weakref("sem_timedwait_bak"))) sem_timedwait();
 
 /* //////////////////////////////////////////////////////////////////////////////////////
  * implementation
