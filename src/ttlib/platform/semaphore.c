@@ -17,9 +17,9 @@
 #include <errno.h>
 #include <semaphore.h>
 
-tt_long_t __attribute__((weak)) sem_timedwait(sem_t* h, struct timespec* t);
+// tt_int_t __attribute__((weak)) sem_timedwait(sem_t* h, struct timespec* t);
 
-tt_long_t sem_timedwait(sem_t* h, struct timespec* t)
+tt_int_t __attribute__((weak)) sem_timedwait(sem_t* h, struct timespec* t)
 {
     tt_trace_noimpl();
 }
