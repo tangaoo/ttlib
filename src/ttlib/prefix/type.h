@@ -14,6 +14,9 @@
 * includes 
 */
 #include <stdio.h>
+#ifndef __STDC_NO_ATOMICS__
+#   include <stdatomic.h>
+#endif
 #include "config.h"
 #include "cpu.h"
 #include "keyword.h"
@@ -100,6 +103,16 @@ typedef tt_void_t *                                tt_pointer_t;
 typedef tt_void_t const *                          tt_cpointer_t;
 typedef tt_pointer_t                               tt_handle_t;
 typedef tt_uint32_t                                tt_size_t;
+#endif
+
+// the atomic
+#ifndef __STDC_NO_ATOMICS__
+typedef volatile atomic_flag                       tt_atomic_flag_t;
+#else
+typedef volatile struct __tt_atomic_flag_t
+{
+    unsigned char __val;
+}                                                  tt_atomic_flag_t;
 #endif
 
 // the socket type

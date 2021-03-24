@@ -16,7 +16,8 @@
         "cstring": "c",
         "ipaddr.h": "c",
         "unixaddr.h": "c",
-        "thread.h": "c"
+        "thread.h": "c",
+        "atomic": "cpp"
     },
    
         "vim.easymotion": true,

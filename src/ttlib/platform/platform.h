@@ -23,6 +23,7 @@
 #include "socket.h"
 #include "thread.h"
 #include "time.h"
+#include "atomic.h"
 
 
 #endif  

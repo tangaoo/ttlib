@@ -17,6 +17,9 @@
 #include <errno.h>
 #include <semaphore.h>
 
+/*! 
+ *  @ref weak reference, if other library has 'sem_timedwait' use other library. otherwise use this.
+ */
 tt_int_t sem_timedwait(sem_t *restrict sem, const struct timespec *restrict abstime) __attribute__((weak));
 
 tt_int_t sem_timedwait(sem_t *restrict sem, const struct timespec *restrict abstime)
