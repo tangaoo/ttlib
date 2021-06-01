@@ -27,6 +27,7 @@ int attach_cpu(int cpu_index)
     CPU_ZERO(&mask);
     CPU_SET(cpu_index, &mask);
 
+    sched_setaffinity((pid_t)pid, sizeof(cpu_set_t), &cpu_set)
     if (pthread_setaffinity_np(pthread_self(), sizeof(mask), &mask) < 0)
     {
         printf("set affinity np ERROR!\n");

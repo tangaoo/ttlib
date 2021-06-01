@@ -13,3 +13,9 @@
  * includes
  */
 #include "spinlock2.h"
+#include "atomic.h"
+
+// the initial value
+#define TT_SPINLOCK_INIT            TT_ATOMIC_FLAG_INIT
+
+
