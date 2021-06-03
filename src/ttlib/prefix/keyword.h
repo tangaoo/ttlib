@@ -44,6 +44,7 @@
 
 #if defined(TT_COMPILER_IS_GCC)
 #   define __tt_inline__                        __inline__
+#   define __tt_inline_force__                  __inline__ __attribute__((always_inline))
 #   define __tt_aligned__(a)                    __attribute__((aligned(a)))
 #elif defined(TT_COMPILER_IS_MSVC)
 #   define __tt_inline__                        __inline

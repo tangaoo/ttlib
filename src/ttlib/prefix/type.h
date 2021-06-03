@@ -115,6 +115,12 @@ typedef volatile struct __tt_atomic_flag_t
 }                                                  tt_atomic_flag_t;
 #endif
 
+// the spinlock type
+typedef tt_atomic_flag_t                           tt_spinlock_t;
+
+// the spinlock ref type
+typedef tt_spinlock_t*                             tt_spinlock_ref_t;
+
 // the socket type
 typedef __tt_typeref__(socket);
 

@@ -18,4 +18,7 @@
 // the initial value
 #define TT_SPINLOCK_INIT            TT_ATOMIC_FLAG_INIT
 
+static __tt_inline_force__ tt_bool_t tt_spinlock_init(tt_spinlock_ref_t lock)
+{
 
+}
