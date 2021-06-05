@@ -17,7 +17,9 @@
         "ipaddr.h": "c",
         "unixaddr.h": "c",
         "thread.h": "c",
-        "atomic": "cpp"
+        "atomic": "cpp",
+        "pthread.h": "c",
+        "sched.h": "c"
     },
    
         "vim.easymotion": true,
